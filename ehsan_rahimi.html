@@ -1,0 +1,2539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ehsan Rahimi — Pollination Ecologist & Landscape Scientist</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --green-dark: #1d2020;
+    --green-mid: #f3072f;
+    --green-accent: #26865d;
+    --green-light: #e8f5ee;
+    --amber: #c9860a;
+    --amber-light: #fdf3e0;
+    --text-primary: #121312;
+    --text-secondary: #151615;
+    --text-muted: #7e8375;
+    --bg: #fcfcfc;
+    --bg-soft: #ddeedd;
+    --border: rgba(0,0,0,0.08);
+    --drawer-w: 300px;
+    --nav-h: 60px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    color: var(--text-primary);
+    background: var(--bg);
+    overflow-x: hidden;
+  }
+
+  /* ── TOPBAR ── */
+  .topbar {
+    position: fixed; top: 0; left: 0; right: 0; height: var(--nav-h);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 1.5rem;
+    background: rgba(15, 122, 90, 0.92);
+    backdrop-filter: blur(10px);
+    z-index: 200;
+  }
+  .topbar-name {
+    font-family: 'Lora', serif;
+    color: #f8f8f8;
+    font-size: 1.05rem;
+    letter-spacing: 0.01em;
+  }
+  .topbar-right { display: flex; align-items: center; gap: 1rem; }
+  .topbar-links { display: flex; gap: 1.25rem; }
+  .topbar-links a {
+    color: rgb(238, 243, 243);
+    text-decoration: none;
+    font-size: 0.82rem;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    transition: color 0.2s;
+  }
+  .topbar-links a:hover { color: #fff; }
+  .menu-btn {
+    background: none; border: none; cursor: pointer;
+    display: flex; flex-direction: column; gap: 5px; padding: 4px;
+  }
+  .menu-btn span {
+    display: block; width: 22px; height: 1.5px;
+    background: rgba(255,255,255,0.85);
+    transition: all 0.3s;
+  }
+  .menu-btn.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+  .menu-btn.open span:nth-child(2) { opacity: 0; }
+  .menu-btn.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+  /* ── DRAWER ── */
+  .drawer-overlay {
+    position: fixed; inset: 0; background: rgba(0,0,0,0.4);
+    z-index: 300; opacity: 0; pointer-events: none;
+    transition: opacity 0.3s;
+  }
+  .drawer-overlay.open { opacity: 1; pointer-events: all; }
+  .drawer {
+    position: fixed; top: 0; right: calc(-1 * var(--drawer-w));
+    width: var(--drawer-w); height: 100vh;
+    background: var(--green-dark);
+    z-index: 400;
+    transition: right 0.35s cubic-bezier(.4,0,.2,1);
+    display: flex; flex-direction: column;
+    overflow-y: auto;
+  }
+  .drawer.open { right: 0; }
+  .drawer-header {
+    padding: 1.5rem 1.5rem 1rem;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .drawer-header span {
+    font-family: 'Lora', serif; color: #fff;
+    font-size: 1rem; letter-spacing: 0.02em;
+  }
+  .close-btn {
+    background: none; border: none; color: rgba(255,255,255,0.6);
+    cursor: pointer; font-size: 1.4rem; line-height: 1;
+  }
+  .close-btn:hover { color: #fff; }
+  .drawer-section { padding: 1.25rem 1.5rem 0.5rem; }
+  .drawer-section-label {
+    font-size: 0.65rem; font-weight: 600; text-transform: uppercase;
+    letter-spacing: 0.1em; color: rgba(255,255,255,0.4);
+    margin-bottom: 0.75rem;
+  }
+  .drawer-nav { list-style: none; }
+  .drawer-nav li a {
+    display: flex; align-items: center; gap: 10px;
+    padding: 0.6rem 0; color: rgba(255,255,255,0.8);
+    text-decoration: none; font-size: 0.9rem;
+    border-bottom: 1px solid rgba(37, 35, 35, 0.06);
+    transition: color 0.2s;
+  }
+  .drawer-nav li a:hover { color: #fff; }
+  .drawer-nav li a .nav-dot {
+    width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0;
+  }
+  .drawer-sub { list-style: none; margin-top: 0.25rem; }
+  .drawer-sub li a {
+    display: block; padding: 0.45rem 0 0.45rem 18px;
+    color: rgba(255,255,255,0.55); text-decoration: none;
+    font-size: 0.82rem;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    transition: color 0.2s;
+  }
+  .drawer-sub li a:hover { color: rgba(255,255,255,0.9); }
+  .drawer-footer {
+    margin-top: auto; padding: 1.5rem;
+    border-top: 1px solid rgba(255,255,255,0.1);
+  }
+  .drawer-footer a {
+    display: inline-flex; align-items: center; gap: 6px;
+    color: rgba(255,255,255,0.55); text-decoration: none;
+    font-size: 0.8rem; margin-right: 1rem; margin-bottom: 0.5rem;
+    transition: color 0.2s;
+  }
+  .drawer-footer a:hover { color: #fff; }
+
+  /* ── HERO ── */
+  .hero {
+    position: relative;
+    height: 100vh; min-height: 600px;
+    display: flex; align-items: center;
+    overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute; inset: -80px 0 0 0;
+    background-image: url('https://images.unsplash.com/photo-1568526381923-caf3fd520382?w=1800&q=85');
+    background-size: cover; background-position: center 55%;
+    filter: brightness(0.50) saturate(1.15);
+    will-change: transform;
+  }
+  .hero-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(120deg, rgba(5,38,24,0.82) 0%, rgba(10,55,35,0.55) 55%, rgba(0,0,0,0.18) 100%);
+  }
+  .hero-content {
+    position: relative; z-index: 2;
+    padding: 0 8vw; max-width: 800px;
+  }
+  .hero-eyebrow {
+    font-size: 0.75rem; font-weight: 500; letter-spacing: 0.15em;
+    text-transform: uppercase; color: #eaee05;
+    margin-bottom: 1.25rem;
+  }
+  .hero-name {
+    font-family: 'Lora', serif;
+    font-size: clamp(2.4rem, 5vw, 3.8rem);
+    color: #ffffff; line-height: 1.15;
+    margin-bottom: 1rem;
+  }
+  .hero-tagline {
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    color: rgba(207, 230, 207, 0.89);
+    line-height: 1.6; max-width: 560px;
+    margin-bottom: 2rem; font-weight: 300;
+  }
+  .hero-stats {
+    display: flex; gap: 2.5rem; margin-bottom: 2.5rem;
+    flex-wrap: wrap;
+  }
+  .hero-stat-num {
+    font-family: 'Lora', serif;
+    font-size: 2rem; color: #d6eee3; font-weight: 600;
+  }
+  .hero-stat-label {
+    font-size: 0.75rem; color: rgba(195, 247, 9, 0.986);
+    text-transform: uppercase; letter-spacing: 0.08em;
+    margin-top: 2px;
+  }
+  .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn-primary {
+    display: inline-block; padding: 0.75rem 1.75rem;
+    background: var(--green-accent); color: #fff;
+    border-radius: 4px; text-decoration: none;
+    font-size: 0.88rem; font-weight: 500;
+    transition: background 0.2s;
+  }
+  .btn-primary:hover { background: #25875b; }
+  .btn-outline {
+    display: inline-block; padding: 0.75rem 1.75rem;
+    border: 1px solid rgba(255,255,255,0.45); color: rgba(255,255,255,0.85);
+    border-radius: 4px; text-decoration: none;
+    font-size: 0.88rem; font-weight: 400;
+    transition: all 0.2s;
+  }
+  .btn-outline:hover { border-color: #fff; color: #fff; }
+  .hero-scroll {
+    position: absolute; bottom: 2.5rem; left: 50%;
+    transform: translateX(-50%);
+    display: flex; flex-direction: column; align-items: center; gap: 6px;
+    color: rgba(255,255,255,0.4); font-size: 0.7rem;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    animation: bounce 2s infinite;
+  }
+  .hero-scroll-line {
+    width: 1px; height: 40px; background: rgba(255,255,255,0.25);
+  }
+  @keyframes bounce {
+    0%,100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(6px); }
+  }
+
+  /* ── MAIN LAYOUT ── */
+  .page-body { padding-top: var(--nav-h); }
+
+  /* ── ABOUT STRIP ── */
+  .about-strip {
+    background: #f2f5f3;
+    border-bottom: 1px solid var(--border);
+    padding: 3.5rem 8vw;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 3rem;
+  }
+  .about-strip h2 {
+    font-family: 'Lora', serif;
+    font-size: 1.6rem; color: #4b0ac5;
+    margin-bottom: 1rem;
+  }
+  .about-strip p {
+    font-size: 0.93rem; line-height: 1.8;
+    color: #0f1811; margin-bottom: 0.75rem;
+  }
+  .profile-links { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1.25rem; }
+  .profile-link {
+    display: inline-flex; align-items: center; gap: 5px;
+    padding: 0.4rem 0.9rem;
+    border: 1px solid var(--border); border-radius: 20px;
+    font-size: 0.78rem; color: var(--text-secondary);
+    text-decoration: none; transition: all 0.2s;
+  }
+  .profile-link:hover {
+    border-color: var(--green-accent);
+    color: var(--green-mid);
+    background: var(--green-light);
+  }
+  .skills-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+  .skill-block h4 {
+
+    display:inline-block;
+
+    padding:5px 12px;
+
+    border-radius:999px;
+
+    background:rgb(255, 255, 255);
+
+    border:1px solid rgba(126,87,194,.20);
+
+    color:#4b0ac5;
+
+    font-size:.72rem;
+
+    font-weight:700;
+
+    text-transform:uppercase;
+
+    letter-spacing:.08em;
+
+    margin-bottom:.8rem;
+}
+  .skill-list { list-style: none; }
+  .skill-list li {
+    font-size: 0.85rem; color: #191d1a;
+    padding: 0.2rem 0; border-bottom: 1px solid var(--border);
+  }
+
+  /* ── SECTION HEADERS ── */
+  .research-section {
+    padding: 4rem 8vw 2rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .section-header {
+    display: flex; align-items: flex-start; gap: 1rem;
+    margin-bottom: 1rem;
+  }
+  .section-dot {
+    width: 14px; height: 14px; border-radius: 50%;
+    flex-shrink: 0; margin-top: 5px;
+  }
+  .section-header h2 {
+    font-family: 'Lora', serif;
+    font-size: 1.65rem; color: var(--green-dark);
+    margin-bottom: 0.4rem;
+  }
+  .section-meta {
+    font-size: 0.8rem; color: var(--text-muted);
+    letter-spacing: 0.03em;
+  }
+  .section-intro {
+    font-size: 0.93rem; line-height: 1.8; color: var(--text-secondary);
+    max-width: 720px; margin-bottom: 2rem;
+    padding-left: 26px;
+  }
+
+  /* ── PAPER CARDS ── */
+  .papers-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1rem;
+    padding-left: 26px;
+  }
+  .paper-card {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: box-shadow 0.2s, border-color 0.2s;
+  }
+  .paper-card:hover {
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  }
+  .paper-card-header {
+    padding: 1rem 1.1rem 0.75rem;
+    cursor: pointer;
+    display: flex; justify-content: space-between; align-items: flex-start; gap: 0.75rem;
+  }
+  .paper-card-left { flex: 1; }
+  .paper-year-journal {
+    display: flex; align-items: center; gap: 6px;
+    margin-bottom: 0.5rem;
+  }
+  .paper-year {
+    font-size: 0.72rem; color: var(--text-muted); font-weight: 500;
+  }
+  .paper-journal {
+    font-size: 0.7rem; padding: 2px 7px; border-radius: 10px;
+    font-weight: 500;
+  }
+  .paper-title {
+    font-size: 0.88rem; font-weight: 500; line-height: 1.45;
+    color: var(--text-primary);
+  }
+  .paper-toggle {
+    flex-shrink: 0; width: 22px; height: 22px;
+    border-radius: 50%; border: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--text-muted); font-size: 0.9rem;
+    transition: all 0.2s; margin-top: 2px;
+  }
+  .paper-card.expanded .paper-toggle { background: var(--green-accent); border-color: var(--green-accent); color: #fff; }
+  .paper-body {
+    display: none;
+    padding: 0 1.1rem 1rem;
+    border-top: 1px solid var(--border);
+  }
+  .paper-card.expanded .paper-body { display: block; }
+  .paper-summary {
+    font-size: 0.83rem; line-height: 1.7;
+    color: var(--text-secondary);
+    margin: 0.75rem 0;
+  }
+  .paper-authors {
+    font-size: 0.75rem; color: var(--text-muted);
+    margin-bottom: 0.75rem;
+  }
+  .paper-doi {
+    display: inline-flex; align-items: center; gap: 4px;
+    font-size: 0.75rem; color: var(--green-mid);
+    text-decoration: none; font-weight: 500;
+  }
+  .paper-doi:hover { text-decoration: underline; }
+
+  /* ── SECTION COLORS ── */
+  .s1 .section-dot { background: #512d9e; }
+  .s1 .paper-journal { background: #e6f1fb; color: #04251c; }
+  .s1 .paper-card:hover { border-color: #2d9e6b; }
+
+  .s2 .section-dot { background: #1a6eb5; }
+  .s2 .paper-journal { background: #e6f1fb; color: #0c447c; }
+  .s2 .paper-card:hover { border-color: #1a6eb5; }
+
+  .s3 .section-dot { background: #8b5cf6; }
+  .s3 .paper-journal { background: #ede9fe; color: #3c3489; }
+  .s3 .paper-card:hover { border-color: #8b5cf6; }
+
+  .s4 .section-dot { background: #d97706; }
+  .s4 .paper-journal { background: #fef3c7; color: #633806; }
+  .s4 .paper-card:hover { border-color: #d97706; }
+
+  .s5 .section-dot { background: #dc2626; }
+  .s5 .paper-journal { background: #fee2e2; color: #7f1d1d; }
+  .s5 .paper-card:hover { border-color: #dc2626; }
+
+  .s6 .section-dot { background: #0891b2; }
+  .s6 .paper-journal { background: #e0f2fe; color: #042c53; }
+  .s6 .paper-card:hover { border-color: #0891b2; }
+
+  /* ── EDUCATION ── */
+  .edu-section {
+    padding: 4rem 8vw;
+    background: var(--bg-soft);
+  }
+  .edu-section h2 {
+    font-family: 'Lora', serif;
+    font-size: 1.65rem; color: var(--green-dark);
+    margin-bottom: 2rem;
+  }
+  .edu-timeline { display: flex; flex-direction: column; gap: 0; }
+  .edu-item {
+    display: flex; gap: 1.5rem;
+    padding-bottom: 2rem; position: relative;
+  }
+  .edu-item:not(:last-child)::before {
+    content: ''; position: absolute;
+    left: 5px; top: 14px; bottom: 0;
+    width: 1px; background: var(--border);
+  }
+  .edu-dot-wrap { flex-shrink: 0; padding-top: 4px; }
+  .edu-dot {
+    width: 12px; height: 12px; border-radius: 50%;
+    background: var(--green-accent); border: 2px solid var(--bg-soft);
+    box-shadow: 0 0 0 2px var(--green-accent);
+  }
+  .edu-title { font-size: 0.95rem; font-weight: 500; margin-bottom: 3px; }
+  .edu-place { font-size: 0.83rem; color: var(--text-secondary); margin-bottom: 3px; }
+  .edu-dates { font-size: 0.75rem; color: var(--text-muted); }
+
+  /* ── CONTACT ── */
+  .contact-section {
+    padding: 4rem 8vw;
+    background: var(--green-dark);
+    color: #fff;
+  }
+  .contact-section h2 {
+    font-family: 'Lora', serif;
+    font-size: 1.65rem; margin-bottom: 0.75rem;
+  }
+  .contact-sub { color: rgba(255,255,255,0.6); font-size: 0.9rem; margin-bottom: 2rem; line-height: 1.6; }
+  .contact-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1rem; }
+  .contact-item {
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 8px; padding: 1.1rem;
+  }
+  .contact-item-label { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.4); margin-bottom: 0.4rem; }
+  .contact-item-val { font-size: 0.88rem; color: rgba(255,255,255,0.85); }
+  .contact-item-val a { color: #06e77e; text-decoration: none; }
+  .contact-item-val a:hover { text-decoration: underline; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #0c3a2b;
+    padding: 1.5rem 8vw;
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 0.5rem;
+  }
+  footer p { font-size: 0.75rem; color: rgba(255,255,255,0.3); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 700px) {
+    .about-strip { grid-template-columns: 1fr; }
+    .skills-cols { grid-template-columns: 1fr; }
+    .topbar-links { display: none; }
+    .papers-grid { padding-left: 0; grid-template-columns: 1fr; }
+    .section-intro { padding-left: 0; }
+    .hero-stats { gap: 1.5rem; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-scroll { animation: none; }
+    * { transition: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<!-- TOPBAR -->
+<nav class="topbar">
+  <span class="topbar-name">ِDr.Ehsan Rahimi</span>
+  <div class="topbar-right">
+    <div class="topbar-links">
+      <a href="#about">About</a>
+      <a href="#research">Research</a>
+      <a href="#awards">Awards</a>
+      <a href="#teaching">Teaching</a>
+      <a href="#education">Education</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <button class="menu-btn" id="menuBtn" aria-label="Open navigation menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- DRAWER OVERLAY -->
+
+<div class="drawer-overlay" id="drawerOverlay"></div>
+
+<!-- DRAWER -->
+<aside class="drawer" id="drawer" aria-label="Site navigation">
+
+  <!-- HEADER -->
+
+  <div class="drawer-header">
+    <span>Navigation</span>
+    <button class="close-btn" id="closeBtn" aria-label="Close menu">
+      &times;
+    </button>
+  </div>
+
+  <!-- PAGES -->
+
+  <div class="drawer-section">
+
+    <div class="drawer-section-label">
+      Pages
+    </div>
+
+    <ul class="drawer-nav">
+
+      <li>
+        <a href="#about">
+          <span class="nav-dot" style="background:#bdeed8"></span>
+          About Me
+        </a>
+      </li>
+
+      <li>
+        <a href="#research">
+          <span class="nav-dot" style="background:#cad6d1"></span>
+          Research
+        </a>
+      </li>
+
+      <li>
+        <a href="#journals">
+          <span class="nav-dot" style="background:#62e2a9"></span>
+          Journals
+        </a>
+      </li>
+
+      <li>
+        <a href="#awards">
+          <span class="nav-dot" style="background:#c9860a"></span>
+          Awards
+        </a>
+      </li>
+
+      <li>
+        <a href="#teaching">
+          <span class="nav-dot" style="background:#1a6eb5"></span>
+          Teaching
+        </a>
+      </li>
+
+      <li>
+        <a href="#education">
+          <span class="nav-dot" style="background:#7ee8b8"></span>
+          Education
+        </a>
+      </li>
+
+      <li>
+        <a href="#contact">
+          <span class="nav-dot" style="background:#7ee8b8"></span>
+          Contact
+        </a>
+      </li>
+
+    </ul>
+
+  </div>
+
+  <!-- RESEARCH DOMAINS -->
+  <div class="drawer-section">
+    <div class="drawer-section-label">Research Domains</div>
+    <ul class="drawer-nav">
+      <li>
+        <a href="#s1"><span class="nav-dot" style="background:#dfe4d7"></span>Remote Sensing &amp; Landscape Assessment</a>
+        <ul class="drawer-sub">
+          <li><a href="#s11">Crop Mapping &amp; Vegetation Phenology</a></li>
+          <li><a href="#s12">Vegetation, Climate &amp; LST</a></li>
+          <li><a href="#s13">Heterogeneity &amp; Fragmentation</a></li>
+          <li><a href="#s14">Data &amp; Global Time-Series</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="#s2"><span class="nav-dot" style="background:#7fb51a"></span>Pollination Ecology &amp; Ecosystem Services</a>
+        <ul class="drawer-sub">
+          <li><a href="#s21">Plant–Pollinator Networks</a></li>
+          <li><a href="#s22">Pollination Service Modelling</a></li>
+          <li><a href="#s23">Crop–Pollinator Dynamics</a></li>
+          <li><a href="#s24">Urban Agriculture</a></li>
+          <li><a href="#s25">Pollinator Data &amp; Trends</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="#s3"><span class="nav-dot" style="background:#7c3aed"></span>Species Distribution Modelling &amp; Climate</a>
+        <ul class="drawer-sub">
+          <li><a href="#s31">Range Shifts of Pollinators &amp; Crops</a></li>
+          <li><a href="#s32">Invasion Ecology &amp; Niche Dynamics</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="#s4"><span class="nav-dot" style="background:#d97706"></span>Biodiversity, Protected Areas &amp; Wildlife</a>
+        <ul class="drawer-sub">
+          <li><a href="#s41">Protected Areas &amp; Environmental Pressures</a></li>
+          <li><a href="#s42">Wildlife Corridors &amp; Connectivity</a></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <!-- QUICK LINKS -->
+
+  <div class="drawer-section">
+
+    <div class="drawer-section-label">
+      Profiles
+    </div>
+
+    <ul class="drawer-nav">
+
+      <li>
+        <a href="https://scholar.google.com/citations?user=vUdulZUAAAAJ&hl=en"
+           target="_blank">
+          Google Scholar
+        </a>
+      </li>
+
+      <li>
+        <a href="https://orcid.org/0000-0002-8401-472X"
+           target="_blank">
+          ORCID
+        </a>
+      </li>
+
+      <li>
+        <a href="https://www.linkedin.com/in/ehsan-rahimi-288a10149/"
+           target="_blank">
+          LinkedIn
+        </a>
+      </li>
+
+      <li>
+        <a href="mailto:ehsanrahimi666@gmail.com">
+          Email
+        </a>
+      </li>
+
+    </ul>
+
+  </div>
+
+</aside>
+
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+
+  <div class="hero-content">
+
+```
+<h1 class="hero-name">
+  Ehsan Rahimi
+</h1>
+<div class="hero-eyebrow">
+  Postdoctoral Researcher · Gyeongkuk National University, South Korea
+</div>
+<p class="hero-tagline">
+  I study how climate, landscapes, and environmental change shape biodiversity patterns, species interactions, and ecosystem functioning across local to global scales using ecological modeling, remote sensing, and geospatial analysis.
+</p>
+<div class="hero-stats">
+
+  <div class="hero-stat">
+    <div class="hero-stat-num">60+</div>
+    <div class="hero-stat-label">Publications</div>
+  </div>
+
+   <div class="hero-stat">
+    <div class="hero-stat-num">650+</div>
+    <div class="hero-stat-label">Citations</div>
+  </div>
+
+  <div class="hero-stat">
+    <div class="hero-stat-num">14</div>
+    <div class="hero-stat-label">h-index</div>
+  </div>
+  
+  <div class="hero-stat">
+    <div class="hero-stat-num">34</div>
+    <div class="hero-stat-label">Journals</div>
+  </div>
+
+<div class="hero-stat">
+    <div class="hero-stat-num">2016-2026</div>
+    <div class="hero-stat-label">Active sapan </div>
+  </div>
+
+
+  
+  <div class="hero-stat">
+    <div class="hero-stat-num">4 Years</div>
+    <div class="hero-stat-label">Experience</div>
+  </div>
+  
+   <div class="hero-stat">
+    <div class="hero-stat-num">4</div>
+    <div class="hero-stat-label">Research domains</div>
+  </div>
+
+</div>
+<div class="hero-btns">
+  <a class="btn-primary" href="#research">
+    Explore My Research
+  </a>
+  <a class="btn-outline"
+     href="https://scholar.google.com/citations?user=vUdulZUAAAAJ&hl=en"
+     target="_blank">
+    Google Scholar
+  </a>
+</div>
+```
+
+  </div>
+
+  <div class="hero-scroll" aria-hidden="true">
+    <div class="hero-scroll-line"></div>
+    scroll
+  </div>
+
+</header>
+
+<div class="page-body" id="about">
+
+
+<!-- ABOUT -->
+
+<section class="about-strip">
+
+  <div class="about-text">
+
+    <h2>About me</h2>
+
+    <p>
+      I am an environmental scientist and postdoctoral researcher at
+      Gyeongkuk National University, South Korea, studying how climate,
+      biodiversity, land use, and landscape structure shape ecological
+      communities and ecosystem functioning across local to global scales.
+    </p>
+
+    <p>
+      My research integrates field ecology, remote sensing, geospatial
+      analysis, ecological modeling, and species distribution modeling to
+      address fundamental and applied questions in biodiversity conservation,
+      pollination ecology, landscape ecology, and sustainable agricultural
+      systems.
+      <p> 
+      A central focus of my work is understanding how environmental
+      change influences species interactions—particularly plant–pollinator
+      relationships—and the ecosystem services that support food production
+      and human well-being.
+        <p>
+      My current research integrates drone-based remote sensing, computer vision, and artificial intelligence to detect, map, 
+      and quantify flowering resources in forest and grassland ecosystems.
+    </p>
+
+  </div>
+
+  <div class="skills-cols">
+
+    <div class="skill-block">
+      <h4>Ecology & Biodiversity</h4>
+
+      <ul class="skill-list">
+        <li>Pollination ecology</li>
+        <li>Plant–pollinator interactions</li>
+        <li>Ecological networks</li>
+        <li>Biodiversity conservation</li>
+        <li>Habitat connectivity</li>
+        <li>Community ecology</li>
+      </ul>
+    </div>
+
+    <div class="skill-block">
+      <h4>Modelling & Statistics</h4>
+
+      <ul class="skill-list">
+        <li>Species Distribution Models (SDMs)</li>
+        <li>Ecological niche modelling</li>
+        <li>InVEST pollination model</li>
+        <li>Landscape fragmentation analysis</li>
+        <li>Machine learning</li>
+        <li>Deep Learning </li>
+      </ul>
+    </div>
+
+    <div class="skill-block">
+      <h4>Remote Sensing & GIS</h4>
+
+      <ul class="skill-list">
+        <li>Google Earth Engine</li>
+        <li>Landsat & Sentinel-2</li>
+        <li>Vegetation & climate indices</li>
+        <li>Phenology analysis</li>
+        <li>ArcGIS Pro & QGIS</li>
+        <li>UAV Imagery</li>
+      </ul>
+    </div>
+
+    <div class="skill-block">
+      <h4>Programming & Data Science</h4>
+
+      <ul class="skill-list">
+        <li>R</li>
+        <li>Python</li>
+                     </ul>
+    </div>
+
+  </div>
+
+</section>
+
+<!-- RESEARCH SECTIONS -->
+<div id="research">
+
+<style>
+/* ─── DOMAIN ACCORDION ─────────────────────────────── */
+.research-intro-block{
+  padding:3rem 8vw 2rem;
+  background:#fcfcfc;
+  border-bottom:1px solid var(--border);
+}
+.research-intro-block h2{
+  font-family:'Lora',serif;
+  font-size:1.65rem;
+  color:#1b1d1b;
+  margin-bottom:.7rem;
+}
+
+.research-intro-block p{
+  font-size:.93rem;
+  line-height:1.8;
+  color:#232724;
+  max-width:1200px;
+  margin-bottom: 1.2rem;
+}
+.research-stats-row{
+  display:flex;gap:2.5rem;flex-wrap:wrap;margin-top:1.5rem;
+}
+.rs-num{
+  font-family:'Lora',serif;font-size:1.7rem;
+  font-weight:600;color:var(--green-accent);
+}
+.rs-lbl{
+  font-size:.7rem;color:var(--text-muted);
+  text-transform:uppercase;letter-spacing:.08em;margin-top:2px;
+}
+
+.domains-wrap{ padding:2rem 8vw 4rem; }
+
+/* single domain card */
+.dom-card{
+  border:1px solid var(--border);
+  border-radius:10px;overflow:hidden;
+  margin-bottom:1rem;
+  transition:box-shadow .2s;
+}
+.dom-card:hover{ box-shadow:0 2px 18px rgba(0,0,0,.07); }
+
+.dom-trigger{
+  width:100%;background:none;border:none;
+  padding:1.1rem 1.4rem;
+  display:flex;align-items:center;gap:1rem;
+  cursor:pointer;text-align:left;
+  transition:background .15s;
+}
+.dom-trigger:hover{ background:rgba(0,0,0,.02); }
+
+.dom-bar{ width:4px;height:40px;border-radius:2px;flex-shrink:0; }
+.dom-text{ flex:1; }
+.dom-title{
+  font-family:'Lora',serif;
+  font-size:1.05rem;font-weight:600;
+  color:var(--green-dark);margin-bottom:2px;
+}
+.dom-subtitle{ font-size:.75rem;color:var(--text-muted); }
+.dom-right{ display:flex;align-items:center;gap:.75rem; }
+.dom-badge{
+  font-size:.68rem;font-weight:600;
+  padding:3px 9px;border-radius:12px;
+  background:var(--bg-soft);color:var(--text-muted);
+}
+.dom-chev{
+  font-size:.75rem;color:var(--text-muted);
+  transition:transform .25s;flex-shrink:0;
+}
+.dom-trigger.open .dom-chev{ transform:rotate(180deg); }
+
+/* body of accordion */
+.dom-body{
+  display:none;
+  padding:0 1.4rem 1.4rem;
+  background:var(--bg:#ffffff);
+}
+.dom-body.open{ display:block; }
+.dom-intro{
+  font-size:.88rem;line-height:1.75;
+  color:var(--text-secondary);
+  padding:1rem 0 1rem;
+  border-bottom:1px solid var(--border);
+  max-width:700px;
+}
+
+/* sub-section heading */
+.sub-label{
+  font-size:.82rem;font-weight:700;
+  text-transform:uppercase;letter-spacing:.06em;
+  color:#d1d40c;
+  background:linear-gradient(90deg,#999ec9 0%,transparent 100%);
+  border-left:3px solid #1a0a61;
+  padding:.38rem .75rem .38rem .65rem;
+  border-radius:0 5px 5px 0;
+  margin:1.5rem 0 .75rem;
+  display:flex;align-items:center;gap:8px;
+}
+.sub-label::after{
+  content:'';flex:1;height:1px;background:rgb(14, 68, 119);
+}
+/* per-domain sub-label accent colors */
+.d1 .sub-label{color:#242723;background:linear-gradient(90deg,#a7a2f0 0%,transparent 100%);border-left-color:#3f10ad;}
+.d1 .sub-label::after{background:rgba(216, 240, 7, 0.2);}
+.d2 .sub-label{color:#1771ca;background:linear-gradient(90deg,#68f34cb6 0%,transparent 100%);border-left-color:#3f10ad;}
+.d2 .sub-label::after{background:rgba(26,110,181,.2);}
+.d3 .sub-label{color:#e09625;background:linear-gradient(90deg,#f3a964 0%,transparent 100%);border-left-color:#3f10ad;}
+.d3 .sub-label::after{background:rgba(124,58,237,.2);}
+.d4 .sub-label{color:#633806;background:linear-gradient(90deg,#d4f12b 0%,transparent 100%);border-left-color:#3f10ad;}
+.d4 .sub-label::after{background:rgba(217,119,6,.2);}
+
+/* paper cards grid */
+.pg{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(285px,1fr));
+  gap:.75rem;
+}
+
+.pc{
+  background:var(--bg);
+  border:1px solid var(--border);
+  border-radius:8px;overflow:hidden;
+  transition:box-shadow .15s,border-color .15s;
+}
+.pc:hover{ box-shadow:0 2px 12px rgba(0,0,0,.07); }
+
+.pc-head{
+  padding:.85rem 1rem .75rem;
+  cursor:pointer;
+  display:flex;justify-content:space-between;
+  align-items:flex-start;gap:.6rem;
+}
+.pc-left{ flex:1; }
+.pc-yj{
+  display:flex;align-items:center;gap:5px;margin-bottom:.4rem;
+}
+.pc-yr{ font-size:.7rem;color:var(--text-muted);font-weight:500; }
+.pc-jn{
+  font-size:.65rem;padding:2px 6px;border-radius:10px;font-weight:500;
+}
+.pc-ttl{
+  font-size:.84rem;font-weight:500;line-height:1.4;color:var(--text-primary);
+}
+.pc-tog{
+  flex-shrink:0;width:20px;height:20px;
+  border-radius:50%;border:1px solid var(--border);
+  display:flex;align-items:center;justify-content:center;
+  color:var(--text-muted);font-size:.9rem;font-weight:400;
+  transition:all .15s;margin-top:1px;
+}
+.pc.open .pc-tog{ background:var(--green-accent);border-color:var(--green-accent);color:#fff; }
+
+.pc-body{
+  display:none;padding:.5rem 1rem .85rem;
+  border-top:1px solid var(--border);
+}
+.pc.open .pc-body{ display:block; }
+.pc-doi{
+  display:inline-flex;align-items:center;gap:4px;
+  font-size:.77rem;color:var(--green-mid);
+  text-decoration:none;font-weight:500;word-break:break-all;
+}
+.pc-doi:hover{ text-decoration:underline; }
+.pc-note{ font-size:.77rem;color:var(--text-muted); }
+
+/* domain colour themes */
+.d1 .dom-bar{background:#2d9e6b;}
+.d1 .dom-badge{background:#e8f5ee;color:#0a3d2e;}
+.d1 .pc-jn{background:#e8f5ee;color:#0a3d2e;}
+.d1 .pc:hover{border-color:#2d9e6b;}
+
+.d2 .dom-bar{background:#1a6eb5;}
+.d2 .dom-badge{background:#e6f1fb;color:#0c3d6e;}
+.d2 .pc-jn{background:#e6f1fb;color:#0c447c;}
+.d2 .pc:hover{border-color:#1a6eb5;}
+
+.d3 .dom-bar{background:#7c3aed;}
+.d3 .dom-badge{background:#ede9fe;color:#3c1f87;}
+.d3 .pc-jn{background:#ede9fe;color:#3c3489;}
+.d3 .pc:hover{border-color:#7c3aed;}
+
+.d4 .dom-bar{background:#d97706;}
+.d4 .dom-badge{background:#fef3c7;color:#633806;}
+.d4 .pc-jn{background:#fef3c7;color:#633806;}
+.d4 .pc:hover{border-color:#d97706;}
+
+@media(max-width:700px){
+  .domains-wrap{padding:1.5rem 4vw 3rem;}
+  .pg{grid-template-columns:1fr;}
+}
+</style>
+
+<!-- intro -->
+<section class="research-intro-block">
+  <div class="section-header">
+    <div class="section-dot" style="background:#2d9e6b"></div>
+    <div>
+      <h2>Research</h2>
+      <div class="section-meta">4 domains · 62 papers · 2016–2026</div>
+    </div>
+  </div>
+
+  <p>
+    My publications are organized into four major research domains that reflect the evolution and breadth of my scientific work. Together, these domains span remote sensing and landscape science, pollination and agricultural ecology, species distribution modelling and climate change, and biodiversity conservation. Each domain contains related publications grouped into more specific research themes.
+  </p>
+
+  <p class="intro-gap">
+    Click any domain below to explore its sub-topics and associated papers.
+  </p>
+
+</section>
+
+<div class="domains-wrap">
+
+<!-- ════════════════════════════════════════════════
+     DOMAIN 1 · REMOTE SENSING AND LANDSCAPE SCIENCE
+     ════════════════════════════════════════════════ -->
+<div class="dom-card d1" id="s1">
+  <button class="dom-trigger" onclick="togDom(this)">
+    <div class="dom-bar"></div>
+    <div class="dom-text">
+      <div class="dom-title">Remote Sensing and Landscape Science</div>
+      <div class="dom-subtitle">Landsat · Sentinel-2 · NDVI · LST · phenology · fragmentation · Google Earth Engine</div>
+    </div>
+    <div class="dom-right">
+      <span class="dom-badge">21 papers</span>
+      <span class="dom-chev">▼</span>
+    </div>
+  </button>
+  <div class="dom-body">
+    <p class="dom-intro">Satellite imagery lets us monitor Earth's vegetation, land use, and temperature at scales from individual fields to the globe. This body of work develops and applies remote sensing methods — phenology-based crop mapping, NDVI–LST analysis, landscape fragmentation metrics — across ecological and agricultural contexts.</p>
+
+    <!-- 1.1 -->
+    <div class="sub-label" id="s11">1.1 &nbsp;Crop Mapping and Vegetation Phenology</div>
+    <div class="pg">
+
+      <div class="pc">
+        <div class="pc-head" onclick="togCard(this)">
+          <div class="pc-left"><div class="pc-yj"><span class="pc-yr">2026</span><span class="pc-jn">Scientific Reports</span></div>
+          <div class="pc-ttl">Mapping peak flowering phenology of rapeseed (<em>Brassica napus</em>) in North Dakota using Landsat 8 and Sentinel-2</div></div>
+          <div class="pc-tog">+</div>
+        </div>
+        <div class="pc-body"><a class="pc-doi" href="https://doi.org/10.1002/agg2.70320" target="_blank">&#8599; doi:10.1002/agg2.70320</a></div>
+      </div>
+
+      <div class="pc">
+        <div class="pc-head" onclick="togCard(this)">
+          <div class="pc-left"><div class="pc-yj"><span class="pc-yr">2026</span><span class="pc-jn">Agrosystems Geosciences &amp; Environ</span></div>
+          <div class="pc-ttl">Threshold-based classification of rapeseed using multi-spectral vegetation indices from Sentinel-2</div></div>
+          <div class="pc-tog">+</div>
+        </div>
+        <div class="pc-body"><a class="pc-doi" href="https://doi.org/10.1002/agg2.70320" target="_blank">&#8599; doi:10.1002/agg2.70320</a></div>
+      </div>
+
+      <div class="pc">
+        <div class="pc-head" onclick="togCard(this)">
+          <div class="pc-left"><div class="pc-yj"><span class="pc-yr">2025</span><span class="pc-jn">J Sustain Agric Environ</span></div>
+          <div class="pc-ttl">Comparative Performance of Multi-Spectral Vegetation Indices for Phenology-Based Rapeseed Classification</div></div>
+          <div class="pc-tog">+</div>
+        </div>
+        <div class="pc-body"><a class="pc-doi" href="https://doi.org/10.1002/sae2.70087" target="_blank">&#8599; doi:10.1002/sae2.70087</a></div>
+      </div>
+
+      <div class="pc">
+        <div class="pc-head" onclick="togCard(this)">
+          <div class="pc-left"><div class="pc-yj"><span class="pc-yr">2025</span><span class="pc-jn">J Ecology &amp; Environment</span></div>
+          <div class="pc-ttl">A review of remote sensing applications in flower phenology detection</div></div>
+          <div class="pc-tog">+</div>
+        </div>
+        <div class="pc-body"><a class="pc-doi" href="https://doi.org/10.5141/jee.24.118" target="_blank">&#8599; doi:10.5141/jee.24.118</a></div>
+      </div>
+
+      <div class="pc">
+        <div class="pc-head" onclick="togCard(this)">
+          <div class="pc-left"><div class="pc-yj"><span class="pc-yr">2024</span><span class="pc-jn">Korean J Remote Sensing</span></div>
+          <div class="pc-ttl">Comparative analysis of supervised and phenology-based approaches for crop mapping: a case study in South Korea</div></div>
+          <div class="pc-tog">+</div>
+        </div>
+        <div class="pc-body"><a class="pc-doi" href="https://doi.org/10.7780/kjrs.2024.40.2.5" target="_blank">&#8599; doi:10.7780/kjrs.2024.40.2.5</a></div>
+      </div>
+
+      <div class="pc">
+        <div class="pc-head" onclick="togCard(this)">
+          <div class="pc-left"><div class="pc-yj"><span class="pc-yr">2024</span><span class="pc-jn">Korean J Remote Sensing</span></div>
+          <div class="pc-ttl">The Efficiency of Long Short-Term Memory (LSTM) in Phenology-Based Crop Classification</div></div>
+          <div class="pc-tog">+</div>
+        </div>
+        <div class="pc-body"><a class="pc-doi" href="https://doi.org/10.7780/kjrs.2024.40.1.6" target="_blank">&#8599; doi:10.7780/kjrs.2024.40.1.6</a></div>
+      </div>
+
+    </div><!-- /pg 1.1 -->
+
+    <!-- 1.2 -->
+    <div class="sub-label" id="s12">1.2 &nbsp;Vegetation, Climate and Land Surface Temperature</div>
+    <div class="pg">
+
+      <div class="pc">
+        <div class="pc-head" onclick="togCard(this)">
+          <div class="pc-left"><div class="pc-yj"><span class="pc-yr">2025</span><span class="pc-jn">Tropical Ecology</span></div>
+          <div class="pc-ttl">Global variations in the relationship between tree canopy height and land surface temperature</div></div>
+          <div class="pc-tog">+</div>
+        </div>
+        <div class="pc-body"><a class="pc-doi" href="https://doi.org/10.1007/s42965-025-00392-x" target="_blank">&#8599; doi:10.1007/s42965-025-00392-x</a></div>
+      </div>
+
+      <div class="pc">
+        <div class="pc-head" onclick="togCard(this)">
+          <div class="pc-left"><div class="pc-yj"><span class="pc-yr">2025</span><span class="pc-jn">Environments</span></div>
+          <div class="pc-ttl">Global NDVI–LST Correlation: Temporal and Spatial Patterns from 2000 to 2024</div></div>
+          <div class="pc-tog">+</div>
+        </div>
+        <div class="pc-body"><a class="pc-doi" href="https://doi.org/10.3390/environments12020067" target="_blank">&#8599; doi:10.3390/environments12020067</a></div>
+      </div>
+
+      <div class="pc">
+        <div class="pc-head" onclick="togCard(this)">
+          <div class="pc-left"><div class="pc-yj"><span class="pc-yr">2025</span><span class="pc-jn">Land</span></div>
+          <div class="pc-ttl">Global Pattern of Vegetation Homogeneity and Its Impact on Land Surface Temperature</div></div>
+          <div class="pc-tog">+</div>
+        </div>
+        <div class="pc-body"><a class="pc-doi" href="https://doi.org/10.3390/land14020421" target="_blank">&#8599; doi:10.3390/land14020421</a></div>
+      </div>
+
+      <div class="pc">
+        <div class="pc-head" onclick="togCard(this)">
+          <div class="pc-left"><div class="pc-yj"><span class="pc-yr">2025</span><span class="pc-jn">Land</span></div>
+          <div class="pc-ttl">Analyzing Vegetation Heterogeneity Trends in an Urban-Agricultural Landscape in Iran Using Continuous Metrics and NDVI</div></div>
+          <div class="pc-tog">+</div>
+        </div>
+        <div class="pc-body"><a class="pc-doi" href="https://doi.org/10.3390/land14020244" target="_blank">&#8599; doi:10.3390/land14020244</a></div>
+      </div>
+
+      <div class="pc">
+        <div class="pc-head" onclick="togCard(this)">
+          <div class="pc-left"><div class="pc-yj"><span class="pc-yr">2025</span><span class="pc-jn">Forests</span></div>
+          <div class="pc-ttl">How Do Climate and Latitude Shape Global Tree Canopy Structure?</div></div>
+          <div class="pc-tog">+</div>
+        </div>
+        <div class="pc-body"><a class="pc-doi" href="https://doi.org/10.3390/f16030432" target="_blank">&#8599; doi:10.3390/f16030432</a></div>
+      </div>
+
+      <div class="pc">
+        <div class="pc-head" onclick="togCard(this)">
+          <div class="pc-left"><div class="pc-yj"><span class="pc-yr">2025</span><span class="pc-jn">J Landscape Ecology</span></div>
+          <div class="pc-ttl">The Influence of Spatial Extent Shape on LST-NDVI Patterns: A Multi-Scale Perspective</div></div>
+          <div class="pc-tog">+</div>
+        </div>
+        <div class="pc-body"><a class="pc-doi" href="https://doi.org/10.2478/jlecol-2025-0007" target="_blank">&#8599; doi:10.2478/jlecol-2025-0007</a></div>
+      </div>
+
+    </div><!-- /pg 1.2 -->
+
+    <!-- 1.3 -->
+    <div class="sub-label" id="s13">1.3 &nbsp;Landscape Heterogeneity and Fragmentation Analysis</div>
+    <div class="pg">
+
+      <div class="pc">
+        <div class="pc-head" onclick="togCard(this)">
+          <div class="pc-left"><div class="pc-yj"><span class="pc-yr">2024</span><span class="pc-jn">J Landscape Ecology</span></div>
+          <div class="pc-ttl">Assessing Landscape Fragmentation Dynamics with Fourier Transforms</div></div>
+          <div class="pc-tog">+</div>
+        </div>
+        <div class="pc-body"><a class="pc-doi" href="https://doi.org/10.2478/jlecol-2024-0020" target="_blank">&#8599; doi:10.2478/jlecol-2024-0020</a></div>
+      </div>
+
+      <div class="pc">
+        <div class="pc-head" onclick="togCard(this)">
+          <div class="pc-left"><div class="pc-yj"><span class="pc-yr">2022</span><span class="pc-jn">J Indian Soc Remote Sensing</span></div>
+          <div class="pc-ttl">A comparison of discrete and continuous metrics to measuring landscape changes</div></div>
+          <div class="pc-tog">+</div>
+        </div>
+        <div class="pc-body"><a class="pc-doi" href="https://doi.org/10.1007/s12524-022-01526-7" target="_blank">&#8599; doi:10.1007/s12524-022-01526-7</a></div>
+      </div>
+
+      <div class="pc">
+        <div class="pc-head" onclick="togCard(this)">
+          <div class="pc-left"><div class="pc-yj"><span class="pc-yr">2021</span><span class="pc-jn">J Ecology &amp; Environment</span></div>
+          <div class="pc-ttl">Quantifying how urban landscape heterogeneity affects land surface temperature at multiple scales</div></div>
+          <div class="pc-tog">+</div>
+        </div>
+        <div class="pc-body"><a class="pc-doi" href="https://doi.org/10.1186/s41610-021-00203-z" target="_blank">&#8599; doi:10.1186/s41610-021-00203-z</a></div>
+      </div>
+
+      <div class="pc">
+        <div class="pc-head" onclick="togCard(this)">
+          <div class="pc-left"><div class="pc-yj"><span class="pc-yr">2016</span><span class="pc-jn">Environment Journal</span></div>
+          <div class="pc-ttl">Application of Spatial Autocorrelation Techniques to Measure Urban Sprawl, Case Study: Gorgan City</div></div>
+          <div class="pc-tog">+</div>
+        </div>
+        <div class="pc-body"><a class="pc-doi" href="http://www.scopus.com/inward/record.url?eid=2-s2.0-85012292960&partnerID=MN8TOARS" target="_blank">&#8599; Scopus record</a></div>
+      </div>
+
+      <div class="pc">
+        <div class="pc-head" onclick="togCard(this)">
+          <div class="pc-left"><div class="pc-yj"><span class="pc-yr">2016</span><span class="pc-jn">J RS &amp; GIS Nat. Resources</span></div>
+          <div class="pc-ttl">A comparison of continuous and discrete indices in measuring Gorgan forest landscape fragmentation <span style="font-size:.72rem;opacity:.7">(in Persian)</span></div></div>
+          <div class="pc-tog">+</div>
+        </div>
+        <div class="pc-body"><a class="pc-doi" href="https://sanad.iau.ir/en/Article/901985" target="_blank">&#8599; sanad.iau.ir/en/Article/901985</a></div>
+      </div>
+
+      <div class="pc">
+        <div class="pc-head" onclick="togCard(this)">
+          <div class="pc-left"><div class="pc-yj"><span class="pc-yr">2016</span><span class="pc-jn">J RS &amp; GIS Nat. Resources</span></div>
+          <div class="pc-ttl">Comparison of spatial resolution of Landsat and SPOT satellite images in measuring landscape fragmentation <span style="font-size:.72rem;opacity:.7">(in Persian)</span></div></div>
+          <div class="pc-tog">+</div>
+        </div>
+        <div class="pc-body"><a class="pc-doi" href="https://sanad.iau.ir/en/Article/901874" target="_blank">&#8599; sanad.iau.ir/en/Article/901874</a></div>
+      </div>
+
+    </div><!-- /pg 1.3 -->
+
+    <!-- 1.4 -->
+    <div class="sub-label" id="s14">1.4 &nbsp;Data and Global Time Series Analysis</div>
+    <div class="pg">
+
+      <div class="pc">
+        <div class="pc-head" onclick="togCard(this)">
+          <div class="pc-left"><div class="pc-yj"><span class="pc-yr">2025</span><span class="pc-jn">Ecology &amp; Evolution</span></div>
+          <div class="pc-ttl">Global Remote Sensing Research: An Author-Centric Analysis of Contributions and Trends</div></div>
+          <div class="pc-tog">+</div>
+        </div>
+        <div class="pc-body"><a class="pc-doi" href="https://doi.org/10.1002/ece3.71952" target="_blank">&#8599; doi:10.1002/ece3.71952</a></div>
+      </div>
+
+      <div class="pc">
+        <div class="pc-head" onclick="togCard(this)">
+          <div class="pc-left"><div class="pc-yj"><span class="pc-yr">2024</span><span class="pc-jn">Frontiers in Remote Sensing</span></div>
+          <div class="pc-ttl">Evaluating the Applicability of Landsat 8 Data for Global Time Series Analysis</div></div>
+          <div class="pc-tog">+</div>
+        </div>
+        <div class="pc-body"><a class="pc-doi" href="https://doi.org/10.3389/frsen.2024.1492534" target="_blank">&#8599; doi:10.3389/frsen.2024.1492534</a></div>
+      </div>
+
+      <div class="pc">
+        <div class="pc-head" onclick="togCard(this)">
+          <div class="pc-left"><div class="pc-yj"><span class="pc-yr">2024</span><span class="pc-jn">Environmental Resources Research</span></div>
+          <div class="pc-ttl">A Comprehensive Landsat 8 NDVI and NDBI Data Preparation for the Vegetation Trend Analysis in Iran</div></div>
+          <div class="pc-tog">+</div>
+        </div>
+        <div class="pc-body"><a class="pc-doi" href="https://doi.org/10.22069/ijerr.2024.22488.1439" target="_blank">&#8599; doi:10.22069/ijerr.2024.22488.1439</a></div>
+      </div>
+
+    </div><!-- /pg 1.4 -->
+
+  </div><!-- /dom-body d1 -->
+</div><!-- /d1 -->
+
+
+<!-- ════════════════════════════════════════════════
+     DOMAIN 2 · POLLINATION  AND AGRICULTURAL ECOLOGY
+     ════════════════════════════════════════════════ -->
+<div class="dom-card d2" id="s2">
+  <button class="dom-trigger" onclick="togDom(this)">
+    <div class="dom-bar"></div>
+    <div class="dom-text">
+      <div class="dom-title">Pollination  and Agricultural ecology</div>
+      <div class="dom-subtitle">Plant–pollinator networks · landscape modelling · crop–pollinator dynamics · urban agriculture · data trends</div>
+    </div>
+    <div class="dom-right">
+      <span class="dom-badge">21 papers</span>
+      <span class="dom-chev">▼</span>
+    </div>
+  </button>
+  <div class="dom-body">
+    <p class="dom-intro">How do landscape structure, fragmentation, and climate change affect pollinator communities and the crop pollination services they sustain? This domain spans network ecology, spatial service modelling, global food-security analyses, urban systems, and meta-science of the pollination literature.</p>
+
+    <!-- 2.1 -->
+    <div class="sub-label" id="s21">2.1 &nbsp;Plant–Pollinator Network Ecology</div>
+    <div class="pg">
+
+      <div class="pc">
+        <div class="pc-head" onclick="togCard(this)">
+          <div class="pc-left"><div class="pc-yj"><span class="pc-yr">2025</span><span class="pc-jn">Entomological Research</span></div>
+          <div class="pc-ttl">Impact of Taxonomic and Functional Grouping on Specialization in Plant–Pollinator Networks</div></div>
+          <div class="pc-tog">+</div>
+        </div>
+        <div class="pc-body"><a class="pc-doi" href="https://doi.org/10.1111/1748-5967.70036" target="_blank">&#8599; doi:10.1111/1748-5967.70036</a></div>
+      </div>
+
+      <div class="pc">
+        <div class="pc-head" onclick="togCard(this)">
+          <div class="pc-left"><div class="pc-yj"><span class="pc-yr">2024</span><span class="pc-jn">Insects</span></div>
+          <div class="pc-ttl">A New SDM-Based Approach for Assessing Climate Change Impacts on Plant–Pollinator Networks</div></div>
+          <div class="pc-tog">+</div>
+        </div>
+        <div class="pc-body"><a class="pc-doi" href="https://doi.org/10.3390/insects15110842" target="_blank">&#8599; doi:10.3390/insects15110842</a></div>
+      </div>
+
+      <div class="pc">
+        <div class="pc-head" onclick="togCard(this)">
+          <div class="pc-left"><div class="pc-yj"><span class="pc-yr">2024</span><span class="pc-jn">J Ecology &amp; Environment</span></div>
+          <div class="pc-ttl">Assessing the Relationship Between Latitude and Plant–Pollinator Networks Specialization</div></div>
+          <div class="pc-tog">+</div>
+        </div>
+        <div class="pc-body"><a class="pc-doi" href="https://doi.org/10.5141/jee.24.032" target="_blank">&#8599; doi:10.5141/jee.24.032</a></div>
+      </div>
+
+      <div class="pc">
+        <div class="pc-head" onclick="togCard(this)">
+          <div class="pc-left"><div class="pc-yj"><span class="pc-yr">2023</span><span class="pc-jn">Ecological Processes</span></div>
+          <div class="pc-ttl">Plant–Pollinator Metanetworks in Fragmented Landscapes: A Simulation Study</div></div>
+          <div class="pc-tog">+</div>
+        </div>
+        <div class="pc-body"><a class="pc-doi" href="https://doi.org/10.1186/s13717-023-00442-z" target="_blank">&#8599; doi:10.1186/s13717-023-00442-z</a></div>
+      </div>
+
+    </div><!-- /pg 2.1 -->
+
+    <!-- 2.2 -->
+    <div class="sub-label" id="s22">2.2 &nbsp;Pollination Service and Landscape Modeling</div>
+    <div class="pg">
+
+      <div class="pc">
+        <div class="pc-head" onclick="togCard(this)">
+          <div class="pc-left"><div class="pc-yj"><span class="pc-yr">2024</span><span class="pc-jn">Insects</span></div>
+          <div class="pc-ttl">Spatial Modeling of Insect Pollination Services in Fragmented Landscapes</div></div>
+          <div class="pc-tog">+</div>
+        </div>
+        <div class="pc-body"><a class="pc-doi" href="https://doi.org/10.3390/insects15090662" target="_blank">&#8599; doi:10.3390/insects15090662</a></div>
+      </div>
+
+      <div class="pc">
+        <div class="pc-head" onclick="togCard(this)">
+          <div class="pc-left"><div class="pc-yj"><span class="pc-yr">2024</span><span class="pc-jn">Arthropod-Plant Interactions</span></div>
+          <div class="pc-ttl">Modeling Honeybee Flower Visitation Rates in Fragmented Agricultural Landscapes Based on Lévy-Flight Behavior</div></div>
+          <div class="pc-tog">+</div>
+        </div>
+        <div class="pc-body"><a class="pc-doi" href="https://doi.org/10.1007/s11829-024-10085-2" target="_blank">&#8599; doi:10.1007/s11829-024-10085-2</a></div>
+      </div>
+
+      <div class="pc">
+        <div class="pc-head" onclick="togCard(this)">
+          <div class="pc-left"><div class="pc-yj"><span class="pc-yr">2022</span><span class="pc-jn">Agriculture &amp; Food Security</span></div>
+          <div class="pc-ttl">A review of the diversity of bees, the attractiveness of host plants and the effects of landscape variables on bees in urban gardens</div></div>
+          <div class="pc-tog">+</div>
+        </div>
+        <div class="pc-body"><a class="pc-doi" href="https://doi.org/10.1186/s40066-021-00353-2" target="_blank">&#8599; doi:10.1186/s40066-021-00353-2</a></div>
+      </div>
+
+      <div class="pc">
+        <div class="pc-head" onclick="togCard(this)">
+          <div class="pc-left"><div class="pc-yj"><span class="pc-yr">2022</span><span class="pc-jn">Agriculture &amp; Food Security</span></div>
+          <div class="pc-ttl">Amount, distance-dependent and structural effects of forest patches on bees in agricultural landscapes: A review</div></div>
+          <div class="pc-tog">+</div>
+        </div>
+        <div class="pc-body"><a class="pc-doi" href="https://doi.org/10.1186/s40066-022-00360-x" target="_blank">&#8599; doi:10.1186/s40066-022-00360-x</a></div>
+      </div>
+
+      <div class="pc">
+        <div class="pc-head" onclick="togCard(this)">
+          <div class="pc-left"><div class="pc-yj"><span class="pc-yr">2021</span><span class="pc-jn">Ecological Processes</span></div>
+          <div class="pc-ttl">Using the Lonsdorf Model for Estimating Habitat Loss and Fragmentation Effects on Pollination Service</div></div>
+          <div class="pc-tog">+</div>
+        </div>
+        <div class="pc-body"><a class="pc-doi" href="https://doi.org/10.1186/s13717-021-00291-8" target="_blank">&#8599; doi:10.1186/s13717-021-00291-8</a></div>
+      </div>
+
+      <div class="pc">
+        <div class="pc-head" onclick="togCard(this)">
+          <div class="pc-left"><div class="pc-yj"><span class="pc-yr">2021</span><span class="pc-jn">Ecological Processes</span></div>
+          <div class="pc-ttl">Estimating Landscape Structure Effects on Pollination for Management of Agricultural Landscapes</div></div>
+          <div class="pc-tog">+</div>
+        </div>
+        <div class="pc-body"><a class="pc-doi" href="https://doi.org/10.1186/s13717-021-00331-3" target="_blank">&#8599; doi:10.1186/s13717-021-00331-3</a></div>
+      </div>
+
+      <div class="pc">
+        <div class="pc-head" onclick="togCard(this)">
+          <div class="pc-left"><div class="pc-yj"><span class="pc-yr">2021</span><span class="pc-jn">J Ecology &amp; Environment</span></div>
+          <div class="pc-ttl">PollMap: A Software for Crop Pollination Mapping in Agricultural Landscapes</div></div>
+          <div class="pc-tog">+</div>
+        </div>
+        <div class="pc-body"><a class="pc-doi" href="https://doi.org/10.1186/s41610-021-00210-0" target="_blank">&#8599; doi:10.1186/s41610-021-00210-0</a></div>
+      </div>
+
+      <div class="pc">
+        <div class="pc-head" onclick="togCard(this)">
+          <div class="pc-left"><div class="pc-yj"><span class="pc-yr">2021</span><span class="pc-jn">Environmental Resources Research</span></div>
+          <div class="pc-ttl">Using the Lonsdorf and ESTIMAP Models for Large-Scale Pollination Mapping (Iran)</div></div>
+          <div class="pc-tog">+</div>
+        </div>
+        <div class="pc-body"><a class="pc-doi" href="https://ijerr.gau.ac.ir/article_5800_b5d7509949cbd895a8475a128b98217b.pdf" target="_blank">&#8599; Full text (PDF)</a></div>
+      </div>
+
+    </div><!-- /pg 2.2 -->
+
+    <!-- 2.3 -->
+    <div class="sub-label" id="s23">2.3 &nbsp;Crop–Pollinator Spatial Dynamics</div>
+    <div class="pg">
+
+      <div class="pc">
+        <div class="pc-head" onclick="togCard(this)">
+          <div class="pc-left"><div class="pc-yj"><span class="pc-yr">2025</span><span class="pc-jn">Community Ecology</span></div>
+          <div class="pc-ttl">Mapping Co-Occurrence Dynamics Between Crops and Honeybees Under Climate Change in North America</div></div>
+          <div class="pc-tog">+</div>
+        </div>
+        <div class="pc-body"><a class="pc-doi" href="https://doi.org/10.1007/s42974-025-00262-5" target="_blank">&#8599; doi:10.1007/s42974-025-00262-5</a></div>
+      </div>
+
+      <div class="pc">
+        <div class="pc-head" onclick="togCard(this)">
+          <div class="pc-left"><div class="pc-yj"><span class="pc-yr">2025</span><span class="pc-jn">Biology</span></div>
+          <div class="pc-ttl">Exploring Climate-Driven Mismatches Between Pollinator-Dependent Crops and Honeybees in Asia</div></div>
+          <div class="pc-tog">+</div>
+        </div>
+        <div class="pc-body"><a class="pc-doi" href="https://doi.org/10.3390/biology14030234" target="_blank">&#8599; doi:10.3390/biology14030234</a></div>
+      </div>
+
+      <div class="pc">
+        <div class="pc-head" onclick="togCard(this)">
+          <div class="pc-left"><div class="pc-yj"><span class="pc-yr">2025</span><span class="pc-jn">J Sustain Agric Environ</span></div>
+          <div class="pc-ttl">Spatial Overlap Between Bees and Pollinator-Dependent Crops in Europe and North America</div></div>
+          <div class="pc-tog">+</div>
+        </div>
+        <div class="pc-body"><a class="pc-doi" href="https://doi.org/10.1002/sae2.70021" target="_blank">&#8599; doi:10.1002/sae2.70021</a></div>
+      </div>
+
+    </div><!-- /pg 2.3 -->
+
+    <!-- 2.4 -->
+    <div class="sub-label" id="s24">2.4 &nbsp;Urban Agriculture</div>
+    <div class="pg">
+
+      <div class="pc">
+        <div class="pc-head" onclick="togCard(this)">
+          <div class="pc-left"><div class="pc-yj"><span class="pc-yr">2024</span><span class="pc-jn">J Sustain Agric Environ</span></div>
+          <div class="pc-ttl">Identifying Pollinator-Friendly Sites Within Urban Green Spaces for Sustainable Urban Agriculture</div></div>
+          <div class="pc-tog">+</div>
+        </div>
+        <div class="pc-body"><a class="pc-doi" href="https://doi.org/10.1002/sae2.12109" target="_blank">&#8599; doi:10.1002/sae2.12109</a></div>
+      </div>
+
+      <div class="pc">
+        <div class="pc-head" onclick="togCard(this)">
+          <div class="pc-left"><div class="pc-yj"><span class="pc-yr">2024</span><span class="pc-jn">Urban Agriculture &amp; Regional Food Systems</span></div>
+          <div class="pc-ttl">A Global Evaluation of Urban Agriculture Potential for Pollinator-Dependent Crops in Major Cities</div></div>
+          <div class="pc-tog">+</div>
+        </div>
+        <div class="pc-body"><a class="pc-doi" href="https://doi.org/10.1002/uar2.20058" target="_blank">&#8599; doi:10.1002/uar2.20058</a></div>
+      </div>
+
+      <div class="pc">
+        <div class="pc-head" onclick="togCard(this)">
+          <div class="pc-left"><div class="pc-yj"><span class="pc-yr">2023</span><span class="pc-jn">Urban Ecosystems</span></div>
+          <div class="pc-ttl">Estimating Pollination Supply of Urban Green Spaces to Determine Suitable Areas for Urban Agriculture (Tehran)</div></div>
+          <div class="pc-tog">+</div>
+        </div>
+        <div class="pc-body"><a class="pc-doi" href="https://doi.org/10.1007/s11252-022-01289-6" target="_blank">&#8599; doi:10.1007/s11252-022-01289-6</a></div>
+      </div>
+
+    </div><!-- /pg 2.4 -->
+
+    <!-- 2.5 -->
+    <div class="sub-label" id="s25">2.5 &nbsp;Pollinator Data and Research Trends</div>
+    <div class="pg">
+
+      <div class="pc">
+        <div class="pc-head" onclick="togCard(this)">
+          <div class="pc-left"><div class="pc-yj"><span class="pc-yr">2025</span><span class="pc-jn">Insects</span></div>
+          <div class="pc-ttl">Investigating the Spatial Biases and Temporal Trends in Insect Pollinator Occurrence Data on GBIF</div></div>
+          <div class="pc-tog">+</div>
+        </div>
+        <div class="pc-body"><a class="pc-doi" href="https://doi.org/10.3390/insects16080769" target="_blank">&#8599; doi:10.3390/insects16080769</a></div>
+      </div>
+
+      <div class="pc">
+        <div class="pc-head" onclick="togCard(this)">
+          <div class="pc-left"><div class="pc-yj"><span class="pc-yr">2025</span><span class="pc-jn">Ecology &amp; Evolution</span></div>
+          <div class="pc-ttl">Trends in Pollination Scientists' Research: A Comprehensive Analysis in Citations and Research Topics</div></div>
+          <div class="pc-tog">+</div>
+        </div>
+        <div class="pc-body"><a class="pc-doi" href="https://doi.org/10.1002/ece3.71215" target="_blank">&#8599; doi:10.1002/ece3.71215</a></div>
+      </div>
+
+      <div class="pc">
+        <div class="pc-head" onclick="togCard(this)">
+          <div class="pc-left"><div class="pc-yj"><span class="pc-yr">2021</span><span class="pc-jn">J Ecology &amp; Environment</span></div>
+          <div class="pc-ttl">How Effective Are Artificial Nests in Attracting Bees? A Review</div></div>
+          <div class="pc-tog">+</div>
+        </div>
+        <div class="pc-body"><a class="pc-doi" href="https://doi.org/10.1186/s41610-021-00192-z" target="_blank">&#8599; doi:10.1186/s41610-021-00192-z</a></div>
+      </div>
+
+    </div><!-- /pg 2.5 -->
+
+  </div><!-- /dom-body d2 -->
+</div><!-- /d2 -->
+
+
+<!-- ════════════════════════════════════════════════
+     DOMAIN 3 · SPECIES DISTRIBUTION MODELLING AND CLIMATE CHANGE
+     ════════════════════════════════════════════════ -->
+<div class="dom-card d3" id="s3">
+  <button class="dom-trigger" onclick="togDom(this)">
+    <div class="dom-bar"></div>
+    <div class="dom-text">
+      <div class="dom-title">Species Distribution Modelling and Climate Change</div>
+      <div class="dom-subtitle">SDM · range shifts · pollinators · invasion ecology · niche dynamics</div>
+    </div>
+    <div class="dom-right">
+      <span class="dom-badge">8 papers</span>
+      <span class="dom-chev">▼</span>
+    </div>
+  </button>
+  <div class="dom-body">
+    <p class="dom-intro">Species distribution models let us project how habitat suitability will shift under future climate scenarios. Applied to pollinators, crops, invasive hornets, and iconic Iranian mammals, this work quantifies vulnerability and identifies conservation priorities across changing climates.</p>
+
+    <!-- 3.1 -->
+    <div class="sub-label" id="s31">3.1 &nbsp;Range Shifts of Pollinators and Crops</div>
+    <div class="pg">
+
+      <div class="pc">
+        <div class="pc-head" onclick="togCard(this)">
+          <div class="pc-left"><div class="pc-yj"><span class="pc-yr">2024</span><span class="pc-jn">Agricultural Research</span></div>
+          <div class="pc-ttl">A Global Estimation of Potential Climate Change Effects on Pollinator-Dependent Crops</div></div>
+          <div class="pc-tog">+</div>
+        </div>
+        <div class="pc-body"><a class="pc-doi" href="https://doi.org/10.1007/s40003-024-00802-x" target="_blank">&#8599; doi:10.1007/s40003-024-00802-x</a></div>
+      </div>
+
+      <div class="pc">
+        <div class="pc-head" onclick="togCard(this)">
+          <div class="pc-left"><div class="pc-yj"><span class="pc-yr">2024</span><span class="pc-jn">Entomological Research</span></div>
+          <div class="pc-ttl">Estimating Potential Climate Change Effects on Pollinating Insects: A Multi-Taxa Study in South Korea</div></div>
+          <div class="pc-tog">+</div>
+        </div>
+        <div class="pc-body"><a class="pc-doi" href="https://doi.org/10.1111/1748-5967.70010" target="_blank">&#8599; doi:10.1111/1748-5967.70010</a></div>
+      </div>
+
+      <div class="pc">
+        <div class="pc-head" onclick="togCard(this)">
+          <div class="pc-left"><div class="pc-yj"><span class="pc-yr">2024</span><span class="pc-jn">Insects</span></div>
+          <div class="pc-ttl">Global Trends in Climate Suitability of Bees: Ups and Downs in a Warming World</div></div>
+          <div class="pc-tog">+</div>
+        </div>
+        <div class="pc-body"><a class="pc-doi" href="https://doi.org/10.3390/insects15020127" target="_blank">&#8599; doi:10.3390/insects15020127</a></div>
+      </div>
+
+      <div class="pc">
+        <div class="pc-head" onclick="togCard(this)">
+          <div class="pc-left"><div class="pc-yj"><span class="pc-yr">2021</span><span class="pc-jn">J Ecology &amp; Environment</span></div>
+          <div class="pc-ttl">Estimating Potential Range Shift of Wild Bees in Response to Climate Change Scenarios in Northwestern Iran</div></div>
+          <div class="pc-tog">+</div>
+        </div>
+        <div class="pc-body"><a class="pc-doi" href="https://doi.org/10.1186/s41610-021-00189-8" target="_blank">&#8599; doi:10.1186/s41610-021-00189-8</a></div>
+      </div>
+
+      <div class="pc">
+        <div class="pc-head" onclick="togCard(this)">
+          <div class="pc-left"><div class="pc-yj"><span class="pc-yr">2022</span><span class="pc-jn">J Apiculture</span></div>
+          <div class="pc-ttl">Estimating Geographic Range Shifts of <em>Vespa simillima</em> after <em>Vespa velutina</em> Invasion in South Korea</div></div>
+          <div class="pc-tog">+</div>
+        </div>
+        <div class="pc-body"><a class="pc-doi" href="https://doi.org/10.17519/apiculture.2022.11.37.4.383" target="_blank">&#8599; doi:10.17519/apiculture.2022.11.37.4.383</a></div>
+      </div>
+
+    </div><!-- /pg 3.1 -->
+
+    <!-- 3.2 -->
+    <div class="sub-label" id="s32">3.2 &nbsp;Invasion Ecology and Niche Dynamics</div>
+    <div class="pg">
+
+      <div class="pc">
+        <div class="pc-head" onclick="togCard(this)">
+          <div class="pc-left"><div class="pc-yj"><span class="pc-yr">2025</span><span class="pc-jn">J Ecology &amp; Environment</span></div>
+          <div class="pc-ttl">Using Ecological Niche Modeling to Model Invasion Risk of Hornets (Vespidae) in Iran</div></div>
+          <div class="pc-tog">+</div>
+        </div>
+        <div class="pc-body"><a class="pc-doi" href="https://doi.org/10.5141/jee.24.071" target="_blank">&#8599; doi:10.5141/jee.24.071</a></div>
+      </div>
+
+      <div class="pc">
+        <div class="pc-head" onclick="togCard(this)">
+          <div class="pc-left"><div class="pc-yj"><span class="pc-yr">2024</span><span class="pc-jn">Ecology &amp; Evolution</span></div>
+          <div class="pc-ttl">G-Space versus E-Space: Are Hornets (Vespidae) at Equilibrium with Honeybees in Asia?</div></div>
+          <div class="pc-tog">+</div>
+        </div>
+        <div class="pc-body"><a class="pc-doi" href="https://doi.org/10.1002/ece3.11615" target="_blank">&#8599; doi:10.1002/ece3.11615</a></div>
+      </div>
+
+      <div class="pc">
+        <div class="pc-head" onclick="togCard(this)">
+          <div class="pc-left"><div class="pc-yj"><span class="pc-yr">2024</span><span class="pc-jn">BMC Ecology &amp; Evolution</span></div>
+          <div class="pc-ttl">Assessing Climate Niche Similarity Between Persian Fallow Deer (<em>Dama mesopotamica</em>) Areas in Iran</div></div>
+          <div class="pc-tog">+</div>
+        </div>
+        <div class="pc-body"><a class="pc-doi" href="https://doi.org/10.1186/s12862-024-02281-8" target="_blank">&#8599; doi:10.1186/s12862-024-02281-8</a></div>
+      </div>
+
+    </div><!-- /pg 3.2 -->
+
+  </div><!-- /dom-body d3 -->
+</div><!-- /d3 -->
+
+
+<!-- ════════════════════════════════════════════════
+     DOMAIN 4 · BIODIVERSITY, CONSERVATION AND ENVIRONMENTAL SCIENCES
+     ════════════════════════════════════════════════ -->
+<div class="dom-card d4" id="s4">
+  <button class="dom-trigger" onclick="togDom(this)">
+    <div class="dom-bar"></div>
+    <div class="dom-text">
+      <div class="dom-title">Biodiversity, Conservation and Environmental Sciences</div>
+      <div class="dom-subtitle">Iran · wetlands · human pressures · zoning · wildlife corridors · habitat connectivity</div>
+    </div>
+    <div class="dom-right">
+      <span class="dom-badge">12 papers</span>
+      <span class="dom-chev">▼</span>
+    </div>
+  </button>
+  <div class="dom-body">
+    <p class="dom-intro">Iran harbours remarkable biodiversity across its steppes, forests, and wetlands, but faces mounting pressure from land-use change, climate change, and human encroachment. This domain analyses those pressures, evaluates protected-area policy, tracks waterbody dynamics, and identifies functional wildlife corridors.</p>
+
+    <!-- 4 general papers (no sub-header) -->
+    <div class="sub-label" id="s41">4. &nbsp;Protected Areas and Environmental Pressures</div>
+    <div class="pg">
+
+      <div class="pc">
+        <div class="pc-head" onclick="togCard(this)">
+          <div class="pc-left"><div class="pc-yj"><span class="pc-yr">2025</span><span class="pc-jn">J Landscape Ecology</span></div>
+          <div class="pc-ttl">Iran's Dam Waterbodies: A 10-Year Trend Analysis (2013–2023)</div></div>
+          <div class="pc-tog">+</div>
+        </div>
+        <div class="pc-body"><a class="pc-doi" href="https://doi.org/10.2478/jlecol-2025-0006" target="_blank">&#8599; doi:10.2478/jlecol-2025-0006</a></div>
+      </div>
+
+      <div class="pc">
+        <div class="pc-head" onclick="togCard(this)">
+          <div class="pc-left"><div class="pc-yj"><span class="pc-yr">2024</span><span class="pc-jn">Eur J Wildlife Research</span></div>
+          <div class="pc-ttl">Assessing Climate Change Threats to Biodiversity and Protected Areas of Iran</div></div>
+          <div class="pc-tog">+</div>
+        </div>
+        <div class="pc-body"><a class="pc-doi" href="https://doi.org/10.1007/s10344-024-01842-y" target="_blank">&#8599; doi:10.1007/s10344-024-01842-y</a></div>
+      </div>
+
+      <div class="pc">
+        <div class="pc-head" onclick="togCard(this)">
+          <div class="pc-left"><div class="pc-yj"><span class="pc-yr">2023</span><span class="pc-jn">Environ Studies &amp; Sciences</span></div>
+          <div class="pc-ttl">Potential Anthropogenic and Climatic Factors Affecting Iran's International Wetlands</div></div>
+          <div class="pc-tog">+</div>
+        </div>
+        <div class="pc-body"><a class="pc-doi" href="https://doi.org/10.1007/s13412-023-00846-5" target="_blank">&#8599; doi:10.1007/s13412-023-00846-5</a></div>
+      </div>
+
+      <div class="pc">
+        <div class="pc-head" onclick="togCard(this)">
+          <div class="pc-left"><div class="pc-yj"><span class="pc-yr">2022</span><span class="pc-jn">Environ Studies &amp; Sciences</span></div>
+          <div class="pc-ttl">What Are the Main Human Pressures Affecting Iran's Protected Areas?</div></div>
+          <div class="pc-tog">+</div>
+        </div>
+        <div class="pc-body"><a class="pc-doi" href="https://doi.org/10.1007/s13412-022-00785-7" target="_blank">&#8599; doi:10.1007/s13412-022-00785-7</a></div>
+      </div>
+
+      <div class="pc">
+        <div class="pc-head" onclick="togCard(this)">
+          <div class="pc-left"><div class="pc-yj"><span class="pc-yr">2020</span><span class="pc-jn">J Environmental Science &amp; Technology</span></div>
+          <div class="pc-ttl">Suitable Site Priority to Establish Urban Nuisance Industries Using Multi-Criteria Decision Analysis and Mathematical Programming Models <span style="font-size:.72rem;opacity:.7">(in Persian)</span></div></div>
+          <div class="pc-tog">+</div>
+        </div>
+        <div class="pc-body"><a class="pc-doi" href="https://sanad.iau.ir/en/Article/837655" target="_blank">&#8599; sanad.iau.ir/en/Article/837655</a></div>
+      </div>
+
+      <div class="pc">
+        <div class="pc-head" onclick="togCard(this)">
+          <div class="pc-left"><div class="pc-yj"><span class="pc-yr">2020</span><span class="pc-jn">Environmental Researches Journal</span></div>
+          <div class="pc-ttl">Zoning of Oshtrankou Protected Area Using Multi-Criteria Evaluation and K-MEANS Clustering Algorithm <span style="font-size:.72rem;opacity:.7">(in Persian)</span></div></div>
+          <div class="pc-tog">+</div>
+        </div>
+        <div class="pc-body"><a class="pc-doi" href="https://dorl.net/dor/20.1001.1.20089597.1399.11.21.5.4" target="_blank">&#8599; dorl.net/dor/20.1001.1.20089597.1399.11.21.5.4</a></div>
+      </div>
+
+      <div class="pc">
+        <div class="pc-head" onclick="togCard(this)">
+          <div class="pc-left"><div class="pc-yj"><span class="pc-yr">2019</span><span class="pc-jn">Environment &amp; Development Journal</span></div>
+          <div class="pc-ttl">Complexity Theory and Measuring Complexity of Ecosystems in a Landscape <span style="font-size:.72rem;opacity:.7">(in Persian)</span></div></div>
+          <div class="pc-tog">+</div>
+        </div>
+        <div class="pc-body"><span class="pc-note">20.1001.1.20089597.1398.10.19.3.1</span></div>
+      </div>
+
+      <div class="pc">
+        <div class="pc-head" onclick="togCard(this)">
+          <div class="pc-left"><div class="pc-yj"><span class="pc-yr">2018</span><span class="pc-jn">Environment &amp; Development Journal</span></div>
+          <div class="pc-ttl">Percolation Theory and Its Applications in Landscape Ecology <span style="font-size:.72rem;opacity:.7">(in Persian)</span></div></div>
+          <div class="pc-tog">+</div>
+        </div>
+        <div class="pc-body"><span class="pc-note">20.1001.1.20089597.1397.9.17.6.3</span></div>
+      </div>
+
+      <div class="pc">
+        <div class="pc-head" onclick="togCard(this)">
+          <div class="pc-left"><div class="pc-yj"><span class="pc-yr">2017</span><span class="pc-jn">Environment &amp; Development Journal</span></div>
+          <div class="pc-ttl">Identifying, Quantifying and Predicting of Landscape Patterns in Space and Time <span style="font-size:.72rem;opacity:.7">(in Persian)</span></div></div>
+          <div class="pc-tog">+</div>
+        </div>
+        <div class="pc-body"><a class="pc-doi" href="https://dorl.net/dor/20.1001.1.20089597.1395.7.14.5.2" target="_blank">&#8599; dorl.net/dor/20.1001.1.20089597.1395.7.14.5.2</a></div>
+      </div>
+
+    </div><!-- /pg 4 -->
+
+    <!-- 4.1 -->
+    <div class="sub-label" id="s42">4.1 &nbsp;Wildlife Corridors &amp; Habitat Connectivity</div>
+    <div class="pg">
+
+      <div class="pc">
+        <div class="pc-head" onclick="togCard(this)">
+          <div class="pc-left"><div class="pc-yj"><span class="pc-yr">2025</span><span class="pc-jn">J Wildlife &amp; Biodiversity</span></div>
+          <div class="pc-ttl">Investigating Climate-Driven Corridor Networks for Golden Jackal (<em>Canis aureus</em>) in Northern Iran</div></div>
+          <div class="pc-tog">+</div>
+        </div>
+        <div class="pc-body"><a class="pc-doi" href="https://lnkd.in/gzUXqP9f" target="_blank">&#8599; J Wildlife &amp; Biodiversity (2025)</a></div>
+      </div>
+
+      <div class="pc">
+        <div class="pc-head" onclick="togCard(this)">
+          <div class="pc-left"><div class="pc-yj"><span class="pc-yr">2024</span><span class="pc-jn">Ecology &amp; Evolution</span></div>
+          <div class="pc-ttl">Energy-Based Corridor Identification for Mammals Between Protected Areas in Iran</div></div>
+          <div class="pc-tog">+</div>
+        </div>
+        <div class="pc-body"><a class="pc-doi" href="https://doi.org/10.1002/ece3.11551" target="_blank">&#8599; doi:10.1002/ece3.11551</a></div>
+      </div>
+
+      <div class="pc">
+        <div class="pc-head" onclick="togCard(this)">
+          <div class="pc-left"><div class="pc-yj"><span class="pc-yr">2023</span><span class="pc-jn">J Environ Studies &amp; Sciences</span></div>
+          <div class="pc-ttl">Identifying Barriers and Pinch-Points of Large Mammal Corridors in Iran</div></div>
+          <div class="pc-tog">+</div>
+        </div>
+        <div class="pc-body"><a class="pc-doi" href="https://doi.org/10.1007/s13412-023-00823-y" target="_blank">&#8599; doi:10.1007/s13412-023-00823-y</a></div>
+      </div>
+
+    </div><!-- /pg 4.1 -->
+
+  </div><!-- /dom-body d4 -->
+</div><!-- /d4 -->
+
+</div><!-- /domains-wrap -->
+
+<script>
+function togDom(btn){
+  var body = btn.nextElementSibling;
+  var open = body.classList.contains('open');
+  body.classList.toggle('open',!open);
+  btn.classList.toggle('open',!open);
+}
+function togCard(head){
+  var card = head.closest('.pc');
+  var tog  = head.querySelector('.pc-tog');
+  var isOpen = card.classList.toggle('open');
+  tog.textContent = isOpen ? '−' : '+';
+}
+</script>
+
+</div><!-- end #research -->
+<!-- JOURNALS -->
+<section style="padding:3rem 8vw 4rem; border-bottom:1px solid var(--border);" id="journals">
+
+<style>
+/* ── sub-label upgrade: bigger, black ── */
+.sub-label {
+  font-size: .80rem !important;
+  font-weight: 700 !important;
+  color: #090909 !important;
+  letter-spacing: .06em !important;
+  text-transform: uppercase !important;
+  margin: 1.4rem 0 .7rem !important;
+}
+
+/* ── Journal accordion (reuses dom-card system) ── */
+.jdom-card {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: .85rem;
+  transition: box-shadow .2s;
+}
+.jdom-card:hover { box-shadow: 0 2px 16px rgba(0,0,0,.07); }
+
+.jdom-trigger {
+  width: 100%; background: none; border: none;
+  padding: 1rem 1.3rem;
+  display: flex; align-items: center; gap: .9rem;
+  cursor: pointer; text-align: left;
+  transition: background .15s;
+}
+.jdom-trigger:hover { background: rgba(0,0,0,.02); }
+
+.jdom-bar { width: 4px; height: 36px; border-radius: 2px; flex-shrink: 0; }
+.jdom-text { flex: 1; }
+.jdom-title {
+  font-family: 'Lora', serif;
+  font-size: 1rem; font-weight: 600;
+  color: var(--green-dark); margin-bottom: 2px;
+}
+.jdom-sub {
+  font-size: .73rem;
+  color:var(--text-muted);
+}
+.jdom-right { display: flex; align-items: center; gap: .65rem; }
+.jdom-badge {
+  font-size: .66rem; font-weight: 600;
+  padding: 3px 8px; border-radius: 11px;
+  background: var(--bg-soft); color: var(--text-muted);
+}
+.jdom-chev {
+  font-size: .72rem; color: var(--text-muted);
+  transition: transform .25s; flex-shrink: 0;
+}
+.jdom-trigger.open .jdom-chev { transform: rotate(180deg); }
+
+.jdom-body {
+  display: none;
+  padding: .2rem 1.3rem 1.2rem;
+  background: var(--bg);
+}
+.jdom-body.open { display: block; }
+
+/* journal cards inside drawer */
+.jgrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: .65rem;
+  margin-top: .75rem;
+}
+.jcard {
+  display: block;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: .85rem 1rem .85rem 1.1rem;
+  text-decoration: none;
+  position: relative; overflow: hidden;
+  transition: transform .2s, box-shadow .2s, border-color .2s;
+}
+.jcard::before {
+  content: '';
+  position: absolute; top: 0; left: 0;
+  width: 3px; height: 100%;
+}
+.jcard:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(0,0,0,.09);
+}
+.jcard-pub {
+  font-size: .62rem; text-transform: uppercase;
+  letter-spacing: .09em; color: var(--text-muted);
+  margin-bottom: .45rem;
+}
+.jcard-name {
+  font-size: .82rem; font-weight: 500;
+  color: var(--text-primary); line-height: 1.35;
+  margin-bottom: .35rem;
+}
+.jcard-field {
+  font-size: .7rem; color: var(--text-secondary);
+}
+.jcard-arrow {
+  margin-top: .4rem;
+  font-size: .72rem; font-weight: 600; color: var(--green-mid);
+}
+
+/* colour themes per journal domain */
+.jc-rs  .jcard::before { background: #1a6eb5; }
+.jc-rs  .jcard:hover   { border-color: #1a6eb5; }
+
+.jc-pol .jcard::before { background: #2d9e6b; }
+.jc-pol .jcard:hover   { border-color: #2d9e6b; }
+
+.jc-sdm .jcard::before { background: #7c3aed; }
+.jc-sdm .jcard:hover   { border-color: #7c3aed; }
+
+.jc-bio .jcard::before { background: #d97706; }
+.jc-bio .jcard:hover   { border-color: #d97706; }
+
+/* domain colour bars */
+.jb-rs  { background: #1a6eb5; }
+.jb-pol { background: #2d9e6b; }
+.jb-sdm { background: #7c3aed; }
+.jb-bio { background: #d97706; }
+
+.jdom-badge-rs  { background: #e6f1fb; color: #0c3d6e; }
+.jdom-badge-pol { background: #e8f5ee; color: #0a3d2e; }
+.jdom-badge-sdm { background: #ede9fe; color: #3c1f87; }
+.jdom-badge-bio { background: #fef3c7; color: #633806; }
+
+@media (max-width: 700px) { .jgrid { grid-template-columns: 1fr; } }
+</style>
+
+<div class="section-header">
+  <div class="section-dot" style="background:#7e57c2"></div>
+  <div>
+    <h2>Published In</h2>
+    <div class="section-meta">34 journals · ecology · remote sensing · conservation · environmental sciences</div>
+  </div>
+</div>
+<p class="section-intro">My research has appeared in international journals across four broad fields.</p>
+
+<!-- ── 1. Remote Sensing & Landscape ── -->
+<div class="jdom-card jc-rs">
+  <button class="jdom-trigger" onclick="togJDom(this)">
+    <div class="jdom-bar jb-rs"></div>
+    <div class="jdom-text">
+      <div class="jdom-title">Remote Sensing &amp; Landscape Science</div>
+      <div class="jdom-sub">Satellite data · vegetation indices · landscape metrics · GIS</div>
+    </div>
+    <div class="jdom-right">
+      <span class="jdom-badge jdom-badge-rs">11 journals</span>
+      <span class="jdom-chev">▼</span>
+    </div>
+  </button>
+  <div class="jdom-body">
+    <div class="jgrid">
+
+      <a class="jcard" href="https://www.nature.com/srep/" target="_blank">
+        <div class="jcard-pub">Nature Portfolio</div>
+        <div class="jcard-name">Scientific Reports</div>
+        <div class="jcard-field">Multidisciplinary Science</div>
+        <div class="jcard-arrow">Visit Journal ↗</div>
+      </a>
+
+      <a class="jcard" href="https://acsess.onlinelibrary.wiley.com/journal/27692469" target="_blank">
+        <div class="jcard-pub">ASA / Wiley</div>
+        <div class="jcard-name">Agrosystems, Geosciences &amp; Environment</div>
+        <div class="jcard-field">Agriculture &amp; Geosciences</div>
+        <div class="jcard-arrow">Visit Journal ↗</div>
+      </a>
+
+      <a class="jcard" href="https://www.frontiersin.org/journals/remote-sensing" target="_blank">
+        <div class="jcard-pub">Frontiers</div>
+        <div class="jcard-name">Frontiers in Remote Sensing</div>
+        <div class="jcard-field">Remote Sensing</div>
+        <div class="jcard-arrow">Visit Journal ↗</div>
+      </a>
+
+      <a class="jcard" href="https://www.ksrs.or.kr/journal/" target="_blank">
+        <div class="jcard-pub">KSRS</div>
+        <div class="jcard-name">Korean Journal of Remote Sensing</div>
+        <div class="jcard-field">Earth Observation</div>
+        <div class="jcard-arrow">Visit Journal ↗</div>
+      </a>
+
+      <a class="jcard" href="https://www.springer.com/journal/12524" target="_blank">
+        <div class="jcard-pub">Springer</div>
+        <div class="jcard-name">Journal of Indian Society of Remote Sensing</div>
+        <div class="jcard-field">Remote Sensing &amp; GIS</div>
+        <div class="jcard-arrow">Visit Journal ↗</div>
+      </a>
+
+      <a class="jcard" href="https://www.sciendo.com/journal/JLECOL" target="_blank">
+        <div class="jcard-pub">Sciendo</div>
+        <div class="jcard-name">Journal of Landscape Ecology</div>
+        <div class="jcard-field">Landscape Science</div>
+        <div class="jcard-arrow">Visit Journal ↗</div>
+      </a>
+
+      <a class="jcard" href="https://www.mdpi.com/journal/environments" target="_blank">
+        <div class="jcard-pub">MDPI</div>
+        <div class="jcard-name">Environments</div>
+        <div class="jcard-field">Environmental Sciences</div>
+        <div class="jcard-arrow">Visit Journal ↗</div>
+      </a>
+
+      <a class="jcard" href="https://www.mdpi.com/journal/land" target="_blank">
+        <div class="jcard-pub">MDPI</div>
+        <div class="jcard-name">Land</div>
+        <div class="jcard-field">Land Systems &amp; Sustainability</div>
+        <div class="jcard-arrow">Visit Journal ↗</div>
+      </a>
+
+      <a class="jcard" href="https://www.mdpi.com/journal/forests" target="_blank">
+        <div class="jcard-pub">MDPI</div>
+        <div class="jcard-name">Forests</div>
+        <div class="jcard-field">Forest Ecology</div>
+        <div class="jcard-arrow">Visit Journal ↗</div>
+      </a>
+
+      <a class="jcard" href="https://link.springer.com/journal/42965" target="_blank">
+        <div class="jcard-pub">Springer</div>
+        <div class="jcard-name">Tropical Ecology</div>
+        <div class="jcard-field">Tropical Ecosystems</div>
+        <div class="jcard-arrow">Visit Journal ↗</div>
+      </a>
+
+      <a class="jcard" href="https://ijerr.gau.ac.ir" target="_blank">
+        <div class="jcard-pub">Gorgan Univ.</div>
+        <div class="jcard-name">Environmental Resources Research</div>
+        <div class="jcard-field">Environmental Management</div>
+        <div class="jcard-arrow">Visit Journal ↗</div>
+      </a>
+
+    </div>
+  </div>
+</div>
+
+<!-- ── 2. Pollination & Agricultural Ecology ── -->
+<div class="jdom-card jc-pol">
+  <button class="jdom-trigger" onclick="togJDom(this)">
+    <div class="jdom-bar jb-pol"></div>
+    <div class="jdom-text">
+      <div class="jdom-title">Pollination &amp; Agricultural Ecology</div>
+      <div class="jdom-sub">Plant–pollinator interactions · crop ecology · urban agriculture · ecosystem services</div>
+    </div>
+    <div class="jdom-right">
+      <span class="jdom-badge jdom-badge-pol">12 journals</span>
+      <span class="jdom-chev">▼</span>
+    </div>
+  </button>
+  <div class="jdom-body">
+    <div class="jgrid">
+
+      <a class="jcard" href="https://onlinelibrary.wiley.com/journal/20457758" target="_blank">
+        <div class="jcard-pub">Wiley</div>
+        <div class="jcard-name">Ecology and Evolution</div>
+        <div class="jcard-field">Ecology &amp; Evolutionary Biology</div>
+        <div class="jcard-arrow">Visit Journal ↗</div>
+      </a>
+
+      <a class="jcard" href="https://www.mdpi.com/journal/insects" target="_blank">
+        <div class="jcard-pub">MDPI</div>
+        <div class="jcard-name">Insects</div>
+        <div class="jcard-field">Entomology &amp; Pollination</div>
+        <div class="jcard-arrow">Visit Journal ↗</div>
+      </a>
+
+      <a class="jcard" href="https://onlinelibrary.wiley.com/journal/17485967" target="_blank">
+        <div class="jcard-pub">Wiley</div>
+        <div class="jcard-name">Entomological Research</div>
+        <div class="jcard-field">Entomology</div>
+        <div class="jcard-arrow">Visit Journal ↗</div>
+      </a>
+
+      <a class="jcard" href="https://link.springer.com/journal/11829" target="_blank">
+        <div class="jcard-pub">Springer</div>
+        <div class="jcard-name">Arthropod-Plant Interactions</div>
+        <div class="jcard-field">Species Interactions</div>
+        <div class="jcard-arrow">Visit Journal ↗</div>
+      </a>
+
+      <a class="jcard" href="https://link.springer.com/journal/13717" target="_blank">
+        <div class="jcard-pub">Springer</div>
+        <div class="jcard-name">Ecological Processes</div>
+        <div class="jcard-field">Ecological Theory</div>
+        <div class="jcard-arrow">Visit Journal ↗</div>
+      </a>
+
+      <a class="jcard" href="https://onlinelibrary.wiley.com/journal/26884526" target="_blank">
+        <div class="jcard-pub">Wiley</div>
+        <div class="jcard-name">Journal of Sustainable Agriculture and Environment</div>
+        <div class="jcard-field">Sustainable Agriculture</div>
+        <div class="jcard-arrow">Visit Journal ↗</div>
+      </a>
+
+      <a class="jcard" href="https://link.springer.com/journal/40003" target="_blank">
+        <div class="jcard-pub">Springer</div>
+        <div class="jcard-name">Agricultural Research</div>
+        <div class="jcard-field">Agricultural Sciences</div>
+        <div class="jcard-arrow">Visit Journal ↗</div>
+      </a>
+
+      <a class="jcard" href="https://link.springer.com/journal/40066" target="_blank">
+        <div class="jcard-pub">Springer</div>
+        <div class="jcard-name">Agriculture &amp; Food Security</div>
+        <div class="jcard-field">Food Systems</div>
+        <div class="jcard-arrow">Visit Journal ↗</div>
+      </a>
+
+      <a class="jcard" href="https://link.springer.com/journal/42974" target="_blank">
+        <div class="jcard-pub">Springer</div>
+        <div class="jcard-name">Community Ecology</div>
+        <div class="jcard-field">Community Ecology</div>
+        <div class="jcard-arrow">Visit Journal ↗</div>
+      </a>
+
+      <a class="jcard" href="https://www.mdpi.com/journal/biology" target="_blank">
+        <div class="jcard-pub">MDPI</div>
+        <div class="jcard-name">Biology</div>
+        <div class="jcard-field">Biological Sciences</div>
+        <div class="jcard-arrow">Visit Journal ↗</div>
+      </a>
+
+      <a class="jcard" href="https://acsess.onlinelibrary.wiley.com/journal/26913960" target="_blank">
+        <div class="jcard-pub">ASA / Wiley</div>
+        <div class="jcard-name">Urban Agriculture &amp; Regional Food Systems</div>
+        <div class="jcard-field">Urban Agriculture</div>
+        <div class="jcard-arrow">Visit Journal ↗</div>
+      </a>
+
+      <a class="jcard" href="https://link.springer.com/journal/11252" target="_blank">
+        <div class="jcard-pub">Springer</div>
+        <div class="jcard-name">Urban Ecosystems</div>
+        <div class="jcard-field">Urban Ecology</div>
+        <div class="jcard-arrow">Visit Journal ↗</div>
+      </a>
+
+    </div>
+  </div>
+</div>
+
+<!-- ── 3. Species Distribution Modelling & Climate Change ── -->
+<div class="jdom-card jc-sdm">
+  <button class="jdom-trigger" onclick="togJDom(this)">
+    <div class="jdom-bar jb-sdm"></div>
+    <div class="jdom-text">
+      <div class="jdom-title">Species Distribution Modelling &amp; Climate Change</div>
+      <div class="jdom-sub">SDM · niche modelling · range shifts · hornet invasion · apiculture</div>
+    </div>
+    <div class="jdom-right">
+      <span class="jdom-badge jdom-badge-sdm">4 journals</span>
+      <span class="jdom-chev">▼</span>
+    </div>
+  </button>
+  <div class="jdom-body">
+    <div class="jgrid">
+
+      <a class="jcard" href="https://onlinelibrary.wiley.com/journal/20457758" target="_blank">
+        <div class="jcard-pub">Wiley</div>
+        <div class="jcard-name">Ecology and Evolution</div>
+        <div class="jcard-field">Ecology &amp; Evolutionary Biology</div>
+        <div class="jcard-arrow">Visit Journal ↗</div>
+      </a>
+
+      <a class="jcard" href="https://www.jee.or.kr" target="_blank">
+        <div class="jcard-pub">ESK</div>
+        <div class="jcard-name">Journal of Ecology and Environment</div>
+        <div class="jcard-field">Ecology &amp; Environment</div>
+        <div class="jcard-arrow">Visit Journal ↗</div>
+      </a>
+
+      <a class="jcard" href="https://bmcecol.biomedcentral.com" target="_blank">
+        <div class="jcard-pub">BMC / Springer</div>
+        <div class="jcard-name">BMC Ecology and Evolution</div>
+        <div class="jcard-field">Ecology &amp; Evolution</div>
+        <div class="jcard-arrow">Visit Journal ↗</div>
+      </a>
+
+      <a class="jcard" href="https://www.ksae.or.kr/html/sub05_01.html" target="_blank">
+        <div class="jcard-pub">KSAE</div>
+        <div class="jcard-name">Journal of Apiculture</div>
+        <div class="jcard-field">Bee Science</div>
+        <div class="jcard-arrow">Visit Journal ↗</div>
+      </a>
+
+    </div>
+  </div>
+</div>
+
+<!-- ── 4. Biodiversity, Conservation & Environmental Science ── -->
+<div class="jdom-card jc-bio">
+  <button class="jdom-trigger" onclick="togJDom(this)">
+    <div class="jdom-bar jb-bio"></div>
+    <div class="jdom-text">
+      <div class="jdom-title">Biodiversity, Conservation &amp; Environmental Science</div>
+      <div class="jdom-sub">Protected areas · wildlife · wetlands · land-use planning · Iranian ecology</div>
+    </div>
+    <div class="jdom-right">
+      <span class="jdom-badge jdom-badge-bio">7 journals</span>
+      <span class="jdom-chev">▼</span>
+    </div>
+  </button>
+  <div class="jdom-body">
+    <div class="jgrid">
+
+      <a class="jcard" href="https://link.springer.com/journal/10344" target="_blank">
+        <div class="jcard-pub">Springer</div>
+        <div class="jcard-name">European Journal of Wildlife Research</div>
+        <div class="jcard-field">Wildlife Ecology</div>
+        <div class="jcard-arrow">Visit Journal ↗</div>
+      </a>
+
+      <a class="jcard" href="https://link.springer.com/journal/13412" target="_blank">
+        <div class="jcard-pub">Springer</div>
+        <div class="jcard-name">Environmental Studies and Sciences</div>
+        <div class="jcard-field">Environmental Science</div>
+        <div class="jcard-arrow">Visit Journal ↗</div>
+      </a>
+
+      <a class="jcard" href="#" target="_blank">
+        <div class="jcard-pub">JWB</div>
+        <div class="jcard-name">Journal of Wildlife and Biodiversity</div>
+        <div class="jcard-field">Wildlife &amp; Biodiversity</div>
+        <div class="jcard-arrow">Visit Journal ↗</div>
+      </a>
+
+      <a class="jcard" href="https://sanad.iau.ir" target="_blank">
+        <div class="jcard-pub">IAU</div>
+        <div class="jcard-name">Journal of Environmental Science and Technology</div>
+        <div class="jcard-field">Environmental Technology</div>
+        <div class="jcard-arrow">Visit Journal ↗</div>
+      </a>
+
+      <a class="jcard" href="#" target="_blank">
+        <div class="jcard-pub">Iran</div>
+        <div class="jcard-name">Environmental Researches</div>
+        <div class="jcard-field">Environmental Research</div>
+        <div class="jcard-arrow">Visit Journal ↗</div>
+      </a>
+
+      <a class="jcard" href="#" target="_blank">
+        <div class="jcard-pub">Iran</div>
+        <div class="jcard-name">Environment and Development Journal</div>
+        <div class="jcard-field">Environment &amp; Development</div>
+        <div class="jcard-arrow">Visit Journal ↗</div>
+      </a>
+
+      <a class="jcard" href="https://sanad.iau.ir" target="_blank">
+        <div class="jcard-pub">IAU</div>
+        <div class="jcard-name">Journal of RS and GIS for Natural Resources</div>
+        <div class="jcard-field">Remote Sensing &amp; GIS</div>
+        <div class="jcard-arrow">Visit Journal ↗</div>
+      </a>
+
+    </div>
+  </div>
+</div>
+
+<script>
+function togJDom(btn){
+  var body = btn.nextElementSibling;
+  var isOpen = body.classList.contains('open');
+  body.classList.toggle('open', !isOpen);
+  btn.classList.toggle('open', !isOpen);
+}
+</script>
+
+</section>
+
+
+
+<!-- AWARDS -->
+<section id="awards" style="padding:3rem 8vw 3.5rem; background:#fffdf5; border-bottom:1px solid var(--border);">
+
+<style>
+.awards-header{display:flex;align-items:flex-start;gap:1rem;margin-bottom:1.25rem;}
+.awards-header h2{font-family:'Lora',serif;font-size:1.65rem;color:var(--green-dark);margin-bottom:.35rem;}
+.awards-meta{font-size:.8rem;color:var(--text-muted);letter-spacing:.03em;}
+.award-card{
+  display:flex;gap:1.75rem;align-items:flex-start;
+  background:#fff;border:1px solid var(--border);border-radius:12px;
+  padding:1.75rem 2rem;max-width:860px;
+  position:relative;overflow:hidden;
+  box-shadow:0 2px 16px rgba(0,0,0,.05);
+}
+.award-card::before{
+  content:'';position:absolute;left:0;top:0;bottom:0;width:4px;
+  background:linear-gradient(180deg,#d4a017,#f0c040);
+}
+.award-icon{font-size:2.4rem;flex-shrink:0;line-height:1;display:flex;align-items:flex-start;padding-top:2px;}
+.award-body{flex:1;}
+.award-badge{
+  display:inline-flex;align-items:center;gap:5px;
+  font-size:.68rem;font-weight:700;text-transform:uppercase;
+  letter-spacing:.1em;color:#8a6200;
+  background:#fff8e1;border:1px solid #f0c040;
+  border-radius:20px;padding:3px 10px;margin-bottom:.75rem;
+}
+.award-title{font-family:'Lora',serif;font-size:1.15rem;font-weight:600;color:#111;line-height:1.4;margin-bottom:.5rem;}
+.award-journal{font-size:.83rem;color:var(--green-mid);font-weight:500;margin-bottom:.5rem;}
+.award-desc{font-size:.85rem;line-height:1.72;color:var(--text-secondary);margin-bottom:1rem;}
+.award-links{display:flex;gap:.75rem;flex-wrap:wrap;}
+.award-link-primary{
+  display:inline-flex;align-items:center;gap:5px;
+  padding:.48rem 1.1rem;background:var(--green-accent);color:#fff;
+  border-radius:5px;font-size:.8rem;font-weight:500;
+  text-decoration:none;transition:background .2s;
+}
+.award-link-primary:hover{background:#25875b;}
+.award-link-sec{
+  display:inline-flex;align-items:center;gap:5px;
+  padding:.48rem 1.1rem;border:1px solid var(--border);
+  color:var(--text-secondary);border-radius:5px;font-size:.8rem;
+  text-decoration:none;transition:all .2s;
+}
+.award-link-sec:hover{border-color:var(--green-accent);color:var(--green-mid);}
+</style>
+
+  <div class="awards-header">
+    <div class="section-dot" style="background:#c9860a;margin-top:5px;"></div>
+    <div>
+      <h2>Awards &amp; Recognition</h2>
+      <div class="awards-meta">1 award · 2026</div>
+    </div>
+  </div>
+
+  <div class="award-card">
+    <div class="award-icon">🏆</div>
+    <div class="award-body">
+      <div class="award-badge">★ Best Paper Award · 2026</div>
+      <div class="award-title">Global Trends in Climate Suitability of Bees: Ups and Downs in a Warming World</div>
+      <div class="award-journal">Insects · MDPI · Impact Factor 2.9 · CiteScore 5.3 · PubMed Indexed</div>
+      <p class="award-desc">
+        Selected as the winner of the <strong>Insects Best Paper Award</strong> by the journal's editorial committee.
+        The paper presents a global SDM-based assessment of how climate change is shifting habitat suitability
+        for bee species worldwide, revealing both regional gains and losses across major pollination zones.
+        Signed by Prof. Dr. Brian T. Forschler, Editor-in-Chief. Basel, June 2026.
+      </p>
+      <div class="award-links">
+        <a class="award-link-primary" href="https://www.mdpi.com/journal/insects/awards/3629" target="_blank">&#8599; View Award</a>
+        <a class="award-link-sec" href="https://doi.org/10.3390/insects15020127" target="_blank">↗ Read Paper (doi:10.3390/insects15020127)</a>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- TEACHING -->
+<section id="teaching" style="padding:3rem 8vw 3.5rem;background:#f7f9f7;border-bottom:1px solid var(--border);">
+
+<style>
+.teach-header{display:flex;align-items:flex-start;gap:1rem;margin-bottom:1.5rem;}
+.teach-header h2{font-family:'Lora',serif;font-size:1.65rem;color:var(--green-dark);margin-bottom:.35rem;}
+.teach-meta{font-size:.8rem;color:var(--text-muted);letter-spacing:.03em;}
+.teach-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1rem;max-width:860px;}
+.teach-card{
+  background:#fff;border:1px solid var(--border);border-radius:10px;
+  padding:1.35rem 1.5rem;position:relative;overflow:hidden;
+  transition:box-shadow .2s,border-color .2s;
+}
+.teach-card:hover{box-shadow:0 4px 18px rgba(0,0,0,.07);border-color:var(--green-accent);}
+.teach-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--green-accent);}
+.teach-year{font-size:.68rem;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--green-mid);margin-bottom:.5rem;}
+.teach-course{font-size:.98rem;font-weight:600;color:#111;margin-bottom:.4rem;line-height:1.35;}
+.teach-univ{font-size:.8rem;color:var(--text-secondary);margin-bottom:.3rem;}
+.teach-details{font-size:.75rem;color:var(--text-muted);}
+</style>
+
+  <div class="teach-header">
+    <div class="section-dot" style="background:#1a6eb5;margin-top:5px;"></div>
+    <div>
+      <h2>Teaching</h2>
+      <div class="teach-meta">2 courses · Gyeongkuk National University, South Korea</div>
+    </div>
+  </div>
+
+  <div class="teach-grid">
+    <div class="teach-card">
+      <div class="teach-year">2025</div>
+      <div class="teach-course">Ecology</div>
+      <div class="teach-univ">Gyeongkuk National University · South Korea</div>
+      <div class="teach-details">Undergraduate course · Lecture &amp; Laboratory</div>
+    </div>
+    <div class="teach-card">
+      <div class="teach-year">2026</div>
+      <div class="teach-course">Species Distribution Modelling</div>
+      <div class="teach-univ">Gyeongkuk National University · South Korea</div>
+      <div class="teach-details">Graduate course · SDM methods, MaxEnt, ecological niche theory</div>
+    </div>
+  </div>
+
+</section>
+
+<!-- EDUCATION -->
+<section class="edu-section" id="education">
+  <h2>Education & positions</h2>
+  <div class="edu-timeline">
+    <div class="edu-item">
+      <div class="edu-dot-wrap"><div class="edu-dot"></div></div>
+      <div>
+        <div class="edu-title">Postdoctoral Researcher</div>
+        <div class="edu-place">Gyeongkuk National University, South Korea · Lab of Prof. Chuleui Jung</div>
+        <div class="edu-dates">June 2022 – present &nbsp;·&nbsp; Pollination ecology, remote sensing, invasion ecology</div>
+      </div>
+    </div>
+    <div class="edu-item">
+      <div class="edu-dot-wrap"><div class="edu-dot"></div></div>
+      <div>
+        <div class="edu-title">PhD — Environmental Sciences</div>
+        <div class="edu-place">Shahid Beheshti University, Tehran, Iran</div>
+        <div class="edu-dates">2017–2021 &nbsp;·&nbsp; GPA 18/20 &nbsp;·&nbsp;</div>
+      </div>
+    </div>
+    <div class="edu-item">
+      <div class="edu-dot-wrap"><div class="edu-dot"></div></div>
+      <div>
+        <div class="edu-title">MSc — Environmental Sciences</div>
+        <div class="edu-place">Gorgan University of Agricultural Sciences and Natural Resources, Iran</div>
+        <div class="edu-dates">2013–2015 &nbsp;·&nbsp; GPA 18.29/20</div>
+      </div>
+    </div>
+    <div class="edu-item">
+      <div class="edu-dot-wrap"><div class="edu-dot"></div></div>
+      <div>
+        <div class="edu-title">BSc — Environmental Sciences</div>
+        <div class="edu-place">Khatam Al Anbia Behbahan University of Technology, Iran</div>
+        <div class="edu-dates">2009–2013 &nbsp;·&nbsp; GPA 17.2/20</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-section" id="contact">
+  <h2>Get in touch</h2>
+  <p class="contact-sub">I am open to faculty positions, collaborative research, and speaking invitations in ecology, pollination biology, remote sensing, and environmental science.</p>
+  <div class="contact-grid">
+    <div class="contact-item">
+      <div class="contact-item-label">Email</div>
+      <div class="contact-item-val"><a href="mailto:ehsanrahimi666@gmail.com">ehsanrahimi666@gmail.com</a></div>
+    </div>
+    <div class="contact-item">
+      <div class="contact-item-label">Location</div>
+      <div class="contact-item-val">Gyeongkuk National University, South Korea</div>
+    </div>
+    <div class="contact-item">
+      <div class="contact-item-label">Google Scholar</div>
+      <div class="contact-item-val"><a href="https://scholar.google.com/citations?user=vUdulZUAAAAJ&hl=en" target="_blank">View full publication list</a></div>
+    </div>
+    <div class="contact-item">
+      <div class="contact-item-label">ORCID</div>
+      <div class="contact-item-val"><a href="https://orcid.org/0000-0002-8401-472X" target="_blank">0000-0002-8401-472X</a></div>
+    </div>
+    <div class="contact-item">
+      <div class="contact-item-label">LinkedIn</div>
+      <div class="contact-item-val"><a href="https://www.linkedin.com/in/ehsan-rahimi-288a10149/" target="_blank">ehsan-rahimi-288a10149</a></div>
+    </div>
+    <div class="contact-item">
+      <div class="contact-item-label">References</div>
+      <div class="contact-item-val" style="font-size:0.8rem; color:rgba(255,255,255,0.6)">Prof. Pinliang Dong (UNT) &amp; Prof. Chuleui Jung (ANU)</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2025 Ehsan Rahimi · Postdoctoral Researcher, Gyeongkuk National University</p>
+  <p>Built to share research openly · <a href="mailto:ehsanrahimi666@gmail.com" style="color:rgba(255,255,255,0.4)">Contact</a></p>
+</footer>
+
+<script>
+  const menuBtn = document.getElementById('menuBtn');
+  const closeBtn = document.getElementById('closeBtn');
+  const drawer = document.getElementById('drawer');
+  const overlay = document.getElementById('drawerOverlay');
+
+  function openDrawer() {
+    drawer.classList.add('open');
+    overlay.classList.add('open');
+    menuBtn.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeDrawer() {
+    drawer.classList.remove('open');
+    overlay.classList.remove('open');
+    menuBtn.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  menuBtn.addEventListener('click', openDrawer);
+  closeBtn.addEventListener('click', closeDrawer);
+  overlay.addEventListener('click', closeDrawer);
+
+  drawer.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', () => closeDrawer());
+  });
+
+  function toggleCard(header) {
+    const card = header.closest('.paper-card');
+    const toggle = header.querySelector('.paper-toggle');
+    const isOpen = card.classList.toggle('expanded');
+    toggle.textContent = isOpen ? '−' : '+';
+  }
+
+  const heroBg = document.querySelector('.hero-bg');
+  const heroEl = document.querySelector('.hero');
+  window.addEventListener('scroll', function() {
+    const s = window.scrollY;
+    if (s < heroEl.offsetHeight) heroBg.style.transform = 'translateY(' + (s * 0.32) + 'px)';
+  }, { passive: true });
+
+  const testImg = new Image();
+  testImg.onerror = function() {
+    heroBg.style.backgroundImage = "url('https://images.unsplash.com/photo-1504208434309-cb69f4fe52b0?w=1800&q=85')";
+  };
+  testImg.src = 'https://images.unsplash.com/photo-1568526381923-caf3fd520382?w=100&q=10';
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.style.opacity = '1';
+        e.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.08 });
+
+  document.querySelectorAll('.paper-card, .edu-item').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(16px)';
+    el.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
+    observer.observe(el);
+  });
+</script>
+</body>
+</html>
