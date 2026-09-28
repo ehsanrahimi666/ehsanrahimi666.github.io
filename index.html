@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ehsan Rahimi | Pollination ecology and landscape science</title>
+<meta name="description" content="Ehsan Rahimi is a postdoctoral researcher at Gyeongkuk National University, South Korea, working on pollination ecology, landscape ecology, remote sensing and species distribution modelling. 65 peer-reviewed papers; 784 citations on Google Scholar.">
+<meta name="author" content="Ehsan Rahimi">
+<meta property="og:type" content="profile">
+<meta property="og:title" content="Ehsan Rahimi | Pollination ecology and landscape science">
+<meta property="og:description" content="Postdoctoral researcher at Gyeongkuk National University. 65 papers on pollination ecology, landscape ecology, remote sensing and species distribution modelling.">
+<meta property="profile:first_name" content="Ehsan">
+<meta property="profile:last_name" content="Rahimi">
+<meta name="theme-color" content="#FAFBF7" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0F1613" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect x='1' y='1' width='17' height='18' rx='2' fill='%232B6A8E'/%3E%3Crect x='20' y='1' width='11' height='12' rx='2' fill='%23C8920F'/%3E%3Crect x='20' y='15' width='11' height='16' rx='2' fill='%233C7A3F'/%3E%3Crect x='1' y='21' width='17' height='10' rx='2' fill='%237E4A87'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400;0,500;0,700;1,400&family=Alegreya+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap">
+<script type="application/ld+json">{
+ "@context": "https://schema.org",
+ "@type": "Person",
+ "name": "Ehsan Rahimi",
+ "honorificPrefix": "Dr.",
+ "jobTitle": "Postdoctoral Researcher",
+ "affiliation": {
+  "@type": "CollegeOrUniversity",
+  "name": "Gyeongkuk National University",
+  "address": "Andong, South Korea"
+ },
+ "alumniOf": [
+  {
+   "@type": "CollegeOrUniversity",
+   "name": "Shahid Beheshti University"
+  },
+  {
+   "@type": "CollegeOrUniversity",
+   "name": "Gorgan University of Agricultural Sciences and Natural Resources"
+  },
+  {
+   "@type": "CollegeOrUniversity",
+   "name": "Khatam Al Anbia Behbahan University of Technology"
+  }
+ ],
+ "email": "mailto:ehsanrahimi666@gmail.com",
+ "identifier": {
+  "@type": "PropertyValue",
+  "propertyID": "ORCID",
+  "value": "0000-0002-8401-472X"
+ },
+ "sameAs": [
+  "https://orcid.org/0000-0002-8401-472X",
+  "https://scholar.google.com/citations?user=vUdulZUAAAAJ&hl=en",
+  "https://www.linkedin.com/in/ehsan-rahimi-288a10149/"
+ ],
+ "knowsAbout": [
+  "Pollination ecology",
+  "Landscape ecology",
+  "Remote sensing",
+  "Species distribution modelling",
+  "Biodiversity conservation",
+  "Deep learning"
+ ],
+ "award": [
+  "Insects Best Paper Award 2026"
+ ]
+}</script>
+<style>
+/* ------------------------------------------------------------------ tokens */
+:root {
+  color-scheme: light dark;
+  --paper: #FAFBF7;
+  --surface: #FFFFFF;
+  --ink: #1E2A24;
+  --canopy: #173B2B;
+  --muted: #56625A;
+  --rule: #DDE3DB;
+  --soft: #EEF2EC;
+  --link: #1D5B78;
+  --pollen: #E0A41B;
+  --focus: #C98C0A;
+  --rows: rgba(255, 255, 255, .24);
+  /* research areas, drawn from land-cover map classes */
+  --rs: #2B6A8E;  --rs-ink: #245A78;
+  --pol: #C8920F; --pol-ink: #86600A;
+  --sdm: #3C7A3F; --sdm-ink: #2F6532;
+  --bio: #7E4A87; --bio-ink: #6A3C73;
+  --serif: "Alegreya", Georgia, "Times New Roman", serif;
+  --sans: "Alegreya Sans", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --bar-h: 60px;
+  --wrap: 1120px;
+  --gutter: clamp(16px, 4vw, 32px);
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: #0F1613;
+    --surface: #151E1A;
+    --ink: #E4EAE5;
+    --canopy: #CFE6D6;
+    --muted: #A2AEA6;
+    --rule: #2A3831;
+    --soft: #1B2621;
+    --link: #8FC6E0;
+    --pollen: #E8B84A;
+    --focus: #E8B84A;
+    --rows: rgba(0, 0, 0, .26);
+    --rs: #4F8DB0;  --rs-ink: #93C4DF;
+    --pol: #CFA23A; --pol-ink: #E6C06A;
+    --sdm: #5E9C60; --sdm-ink: #9ACB9B;
+    --bio: #9C6FA6; --bio-ink: #D0A9D8;
+  }
+}
+.d-rs  { --d: var(--rs);  --d-ink: var(--rs-ink); }
+.d-pol { --d: var(--pol); --d-ink: var(--pol-ink); }
+.d-sdm { --d: var(--sdm); --d-ink: var(--sdm-ink); }
+.d-bio { --d: var(--bio); --d-ink: var(--bio-ink); }
+
+/* ------------------------------------------------------------------ base */
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+@media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 1.125rem;
+  line-height: 1.55;
+  font-variant-numeric: lining-nums;
+  overflow-x: hidden;
+}
+h1, h2, h3, h4 { font-family: var(--serif); font-weight: 500; color: var(--canopy); margin: 0; line-height: 1.2; }
+h2 { font-size: 2.25rem; letter-spacing: -.005em; }
+h3 { font-size: 1.5rem; }
+p { margin: 0; }
+a { color: var(--link); text-underline-offset: .18em; text-decoration-thickness: 1px; }
+a:hover { text-decoration-thickness: 2px; }
+:focus-visible { outline: 2px solid var(--focus); outline-offset: 3px; border-radius: 3px; }
+.wrap { max-width: var(--wrap); margin: 0 auto; padding: 0 var(--gutter); }
+.vh { position: absolute !important; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap; }
+.defs { position: absolute; width: 0; height: 0; overflow: hidden; }
+.row-line { fill: var(--rows); }
+.skip { position: absolute; left: 12px; top: -48px; z-index: 50; background: var(--canopy); color: var(--paper); padding: 8px 14px; border-radius: 6px; }
+.skip:focus { top: 10px; }
+section[id], .pub { scroll-margin-top: calc(var(--bar-h) + 20px); }
+.muted { color: var(--muted); }
+
+/* ------------------------------------------------------------------ top bar */
+.bar {
+  position: sticky; top: 0; z-index: 20;
+  height: var(--bar-h);
+  background: var(--paper);
+  background: color-mix(in srgb, var(--paper) 90%, transparent);
+  -webkit-backdrop-filter: saturate(1.2) blur(8px);
+  backdrop-filter: saturate(1.2) blur(8px);
+  border-bottom: 1px solid var(--rule);
+}
+.bar-inner { height: 100%; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+.bar-name { font-family: var(--serif); font-size: 1.3rem; font-weight: 500; color: var(--canopy); text-decoration: none; }
+#site-nav { display: flex; gap: 22px; }
+#site-nav a { color: var(--ink); text-decoration: none; font-size: 1rem; padding: 6px 0; }
+#site-nav a:hover { text-decoration: underline; }
+.menu { display: none; font: inherit; font-size: 1rem; color: var(--ink); background: none; border: 1px solid var(--rule); border-radius: 6px; padding: 5px 12px; cursor: pointer; }
+@media (max-width: 860px) {
+  .menu { display: inline-block; }
+  #site-nav {
+    display: none;
+    position: absolute; top: var(--bar-h); left: 0; right: 0;
+    flex-direction: column; gap: 0;
+    background: var(--paper);
+    border-bottom: 1px solid var(--rule);
+    padding: 6px var(--gutter) 14px;
+  }
+  #site-nav.open { display: flex; }
+  #site-nav a { padding: 11px 0; border-bottom: 1px solid var(--rule); }
+  #site-nav a:last-child { border-bottom: 0; }
+  html:not(.js) #site-nav { display: flex; position: static; flex-direction: row; flex-wrap: wrap; gap: 4px 16px; padding: 0; border: 0; background: none; }
+  html:not(.js) .menu { display: none; }
+  html:not(.js) .bar { height: auto; padding: 10px 0; }
+}
+
+/* ------------------------------------------------------------------ hero */
+.hero { padding: clamp(40px, 7vw, 88px) 0 clamp(48px, 7vw, 96px); }
+.hero-grid { display: grid; grid-template-columns: minmax(0, 1.02fr) minmax(0, 1fr); gap: clamp(32px, 5vw, 64px); align-items: center; }
+.portrait { display: block; width: 112px; height: 112px; object-fit: cover; border-radius: 10px; margin-bottom: 24px; }
+.hero h1 { font-size: clamp(3rem, 6.4vw, 4.5rem); line-height: 1; letter-spacing: -.02em; }
+.role { font-family: var(--serif); font-style: italic; font-size: clamp(1.3rem, 2.2vw, 1.55rem); color: var(--muted); margin-top: 12px; }
+.lede { font-family: var(--serif); font-size: 1.3125rem; line-height: 1.5; margin-top: 28px; max-width: 34em; }
+.affil { margin-top: 20px; color: var(--muted); }
+.record { margin-top: 6px; }
+.actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 18px; margin-top: 30px; }
+.btn { display: inline-block; background: var(--canopy); color: var(--paper); text-decoration: none; font-weight: 500; padding: 10px 18px; border-radius: 6px; }
+.btn:hover { background: var(--ink); }
+.actions a:not(.btn) { color: var(--ink); }
+
+.hero-map { margin: 0; }
+.treemap { display: block; width: 100%; height: auto; border-radius: 8px; background: var(--paper); }
+.treemap .parcel > rect:first-of-type { fill: var(--d); transition: fill-opacity .15s; }
+.treemap .rows { pointer-events: none; }
+.treemap .parcel { cursor: pointer; }
+.treemap .parcel:hover > rect:first-of-type,
+.treemap .parcel.is-active > rect:first-of-type { fill-opacity: 1; stroke: var(--ink); stroke-width: 1.5; }
+.award-dot { fill: var(--pollen); stroke: var(--paper); stroke-width: 2; pointer-events: none; }
+.hero-map figcaption { margin-top: 14px; font-size: .9375rem; color: var(--muted); }
+.tm-caption { min-height: 3em; }
+.legend { list-style: none; margin: 10px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px 18px; }
+.legend li { display: inline-flex; align-items: center; gap: 7px; }
+.dot { display: inline-block; width: 11px; height: 11px; border-radius: 2px; background: var(--d); flex: none; font-style: normal; }
+.legend .legend-award .dot { background: var(--pollen); border-radius: 50%; }
+
+/* ------------------------------------------------------------------ sections */
+.section { padding: clamp(56px, 7vw, 88px) 0; border-top: 1px solid var(--rule); }
+.section-lede { margin-top: 12px; color: var(--muted); max-width: 44em; }
+.prose p { font-family: var(--serif); font-size: 1.1875rem; line-height: 1.65; max-width: 36em; }
+.prose p + p { margin-top: 1em; }
+
+.about-grid { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); gap: clamp(32px, 6vw, 72px); }
+.about-grid h2 { margin-bottom: 24px; }
+.methods h3 { font-size: 1.3125rem; margin: 8px 0 14px; }
+.methods dl { margin: 0; }
+.methods dt { font-weight: 700; color: var(--canopy); margin-top: 16px; }
+.methods dt:first-child { margin-top: 0; }
+.methods dd { margin: 2px 0 0; color: var(--muted); }
+
+/* research areas */
+.areas { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 48px 56px; margin-top: 40px; }
+.area { border-top: 3px solid var(--d); padding-top: 18px; display: flex; flex-direction: column; }
+.area-head { display: flex; align-items: center; gap: 14px; }
+.swatch { width: 44px; height: 30px; flex: none; }
+.swatch rect:first-child { fill: var(--d); }
+.area h3 { font-size: 1.4rem; }
+.area > p { margin-top: 14px; }
+.themes { list-style: none; margin: 18px 0 0; padding: 0; }
+.themes li { display: flex; align-items: baseline; gap: 10px; padding: 5px 0; }
+.themes li::after { content: ""; order: 1; flex: 1; border-bottom: 1px dotted var(--rule); transform: translateY(-4px); }
+.themes a { color: var(--ink); text-decoration-color: var(--rule); }
+.themes a:hover { text-decoration-color: var(--ink); }
+.themes .count { order: 2; color: var(--muted); font-size: 1rem; font-variant-numeric: tabular-nums; }
+.area-all { margin-top: 16px; align-self: flex-start; color: var(--d-ink); font-weight: 500; }
+
+/* ------------------------------------------------------------------ publications */
+.pubs-head { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 32px 48px; align-items: end; }
+.cites-fig { margin: 0; width: 300px; }
+.cites-chart { display: block; width: 100%; height: auto; overflow: visible; }
+.cites-chart .col { fill: var(--canopy); }
+.cites-chart .col.partial { fill-opacity: .5; }
+.cites-chart text { font-family: var(--sans); font-size: 13px; fill: var(--muted); text-anchor: middle; }
+.cites-chart .val { fill: var(--ink); }
+.cites-fig figcaption { font-size: .875rem; color: var(--muted); margin-top: 8px; line-height: 1.4; }
+
+.controls { margin-top: 40px; display: grid; gap: 14px; }
+.search-box input {
+  width: 100%; font: inherit; font-size: 1.0625rem; color: var(--ink);
+  background: var(--surface); border: 1px solid var(--rule); border-radius: 6px; padding: 11px 14px;
+}
+.search-box input::placeholder { color: var(--muted); opacity: 1; }
+.control-row { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px 24px; align-items: center; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip {
+  font: inherit; font-size: .96875rem; color: var(--ink); cursor: pointer;
+  display: inline-flex; align-items: center; gap: 7px;
+  background: var(--surface); border: 1px solid var(--rule); border-radius: 999px; padding: 5px 13px;
+}
+.chip span { color: var(--muted); font-variant-numeric: tabular-nums; }
+.chip:hover { border-color: var(--muted); }
+.chip[aria-pressed="true"] { background: var(--canopy); border-color: var(--canopy); color: var(--paper); }
+.chip[class*="d-"][aria-pressed="true"] { background: var(--d-ink); border-color: var(--d-ink); }
+.chip[aria-pressed="true"] span { color: inherit; opacity: .8; }
+.chip[aria-pressed="true"] .dot { background: var(--paper); }
+.order { display: inline-flex; border: 1px solid var(--rule); border-radius: 6px; overflow: hidden; background: var(--surface); }
+.order button { font: inherit; font-size: .96875rem; color: var(--muted); background: none; border: 0; padding: 6px 13px; cursor: pointer; }
+.order button + button { border-left: 1px solid var(--rule); }
+.order button[aria-pressed="true"] { color: var(--ink); background: var(--soft); box-shadow: inset 0 -2px 0 var(--canopy); }
+html:not(.js) .controls { display: none; }
+
+.status { margin-top: 18px; color: var(--muted); font-size: 1rem; min-height: 1.55em; }
+.status button { font: inherit; color: var(--link); background: none; border: 0; padding: 0; margin-left: 8px; text-decoration: underline; cursor: pointer; }
+
+.pub-list { margin-top: 8px; }
+.group-head {
+  position: sticky; top: var(--bar-h); z-index: 2;
+  display: flex; align-items: baseline; gap: 14px;
+  font-size: 1.625rem; padding: 14px 0 8px; margin-top: 18px;
+  background: var(--paper); border-bottom: 1px solid var(--rule);
+}
+.group-head.domain { gap: 12px; align-items: center; }
+.group-head .dot { width: 14px; height: 14px; }
+.group-count { font-family: var(--sans); font-size: .9375rem; color: var(--muted); font-weight: 400; }
+.theme-head { font-family: var(--sans); font-size: 1rem; font-weight: 700; color: var(--d-ink); margin: 22px 0 0; }
+.pubs { list-style: none; margin: 0; padding: 0; }
+.pub {
+  display: grid; grid-template-columns: 4px minmax(0, 1fr) auto; column-gap: 18px;
+  padding: 15px 0; border-bottom: 1px solid var(--rule);
+}
+.pub::before { content: ""; background: var(--d); border-radius: 2px; }
+.pub-title { font-family: var(--serif); font-size: 1.1875rem; font-weight: 500; line-height: 1.35; color: var(--ink); text-decoration-color: color-mix(in srgb, var(--ink) 28%, transparent); }
+.pub-title:hover { text-decoration-color: var(--ink); }
+.pub-cite { font-size: 1rem; margin-top: 4px; }
+.pub-cite b { font-weight: 700; }
+.pub-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 3px 16px; margin-top: 5px; font-size: .9375rem; color: var(--muted); }
+.pub-meta .theme { color: var(--d-ink); }
+.pub-link { color: var(--link); overflow-wrap: anywhere; }
+.ident { overflow-wrap: anywhere; }
+.flag { font-size: .8125rem; line-height: 1.5; border: 1px solid var(--rule); border-radius: 4px; padding: 0 6px; color: var(--muted); }
+.flag.award { border-color: var(--pollen); background: color-mix(in srgb, var(--pollen) 16%, transparent); color: var(--ink); }
+.cites { text-align: right; font-size: .875rem; color: var(--muted); white-space: nowrap; padding-top: 2px; }
+.cites .n { display: block; font-family: var(--serif); font-size: 1.375rem; line-height: 1.1; color: var(--ink); font-variant-numeric: tabular-nums; }
+.pub.flash { animation: flash 1.8s ease-out; }
+@keyframes flash { from { background: color-mix(in srgb, var(--pollen) 30%, transparent); } to { background: transparent; } }
+.empty { padding: 28px 0; color: var(--muted); }
+
+.journals-block { margin-top: 64px; }
+.journals-block h3 { font-size: 1.5rem; }
+.journals-block > p { margin-top: 8px; color: var(--muted); }
+.journals { list-style: none; margin: 20px 0 0; padding: 0; columns: 3 280px; column-gap: 40px; }
+.journals li { display: flex; justify-content: space-between; gap: 12px; break-inside: avoid; padding: 6px 0; border-bottom: 1px dotted var(--rule); }
+.journals a { color: var(--ink); text-decoration-color: var(--rule); }
+.journals a:hover { text-decoration-color: var(--ink); }
+.journals .count { color: var(--muted); font-variant-numeric: tabular-nums; }
+
+/* ------------------------------------------------------------------ awards, teaching */
+.two-col { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 48px clamp(32px, 6vw, 72px); }
+.award { display: grid; grid-template-columns: 44px minmax(0, 1fr); gap: 18px; margin-top: 28px; }
+.award .swatch rect:first-child { fill: var(--pollen); }
+.award h3 { font-size: 1.375rem; }
+.award p { margin-top: 10px; }
+.award-links { display: flex; flex-wrap: wrap; gap: 8px 20px; }
+.teaching { list-style: none; margin: 28px 0 0; padding: 0; }
+.teaching li { padding: 14px 0; border-top: 1px solid var(--rule); }
+.teaching li:first-child { border-top: 0; padding-top: 0; }
+.teaching h3 { font-size: 1.3125rem; }
+.teaching p { margin-top: 4px; color: var(--muted); }
+
+/* ------------------------------------------------------------------ education */
+.timeline { list-style: none; margin: 32px 0 0; padding: 0; }
+.timeline li { display: grid; grid-template-columns: 150px minmax(0, 1fr); gap: 8px 32px; padding: 18px 0; border-top: 1px solid var(--rule); }
+.timeline li:first-child { border-top: 0; }
+.when { color: var(--muted); font-variant-numeric: tabular-nums; padding-top: 3px; }
+.timeline h3 { font-size: 1.3125rem; }
+.timeline p { margin-top: 4px; color: var(--muted); }
+
+/* ------------------------------------------------------------------ contact, footer */
+.contact-list { margin: 32px 0 0; }
+.contact-list div { display: grid; grid-template-columns: 150px minmax(0, 1fr); gap: 4px 32px; padding: 14px 0; border-top: 1px solid var(--rule); }
+.contact-list dt { font-weight: 700; color: var(--canopy); }
+.contact-list dd { margin: 0; }
+footer { border-top: 1px solid var(--rule); padding: 32px 0 48px; font-size: .9375rem; color: var(--muted); }
+footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 32px; }
+
+/* ------------------------------------------------------------------ responsive */
+@media (max-width: 900px) {
+  .hero-grid, .about-grid { grid-template-columns: minmax(0, 1fr); }
+  .pubs-head { grid-template-columns: minmax(0, 1fr); }
+  .cites-fig { width: min(320px, 100%); }
+}
+@media (max-width: 760px) {
+  .areas, .two-col { grid-template-columns: minmax(0, 1fr); }
+  h2 { font-size: 1.875rem; }
+}
+@media (max-width: 600px) {
+  body { font-size: 1.0625rem; }
+  .pub { grid-template-columns: 4px minmax(0, 1fr); column-gap: 14px; }
+  .pub::before { grid-row: 1 / span 2; }
+  .pub .cites { grid-column: 2; text-align: left; margin-top: 6px; padding: 0; }
+  .pub .cites .n { display: inline; font-family: var(--sans); font-size: inherit; color: var(--ink); }
+  .timeline li, .contact-list div { grid-template-columns: minmax(0, 1fr); }
+  .control-row { flex-direction: column; align-items: stretch; }
+  .order { align-self: flex-start; }
+  .group-head { font-size: 1.375rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .pub.flash { animation: none; outline: 2px solid var(--pollen); }
+  .treemap .parcel > rect:first-of-type { transition: none; }
+}
+@media print {
+  :root { --paper: #fff; --ink: #000; --muted: #333; --canopy: #000; --link: #000; }
+  .bar, .skip, .hero-map, .actions, .controls, .status, .journals-block, .cites-fig, .area-all { display: none !important; }
+  body { font-size: 10.5pt; }
+  .section { padding: 14pt 0; }
+  .group-head { position: static; }
+  .pub { break-inside: avoid; padding: 6pt 0; }
+  a { color: inherit; text-decoration: none; }
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<svg class="defs" aria-hidden="true" focusable="false">
+  <defs>
+    <pattern id="rows-v" width="5" height="5" patternUnits="userSpaceOnUse"><rect class="row-line" width="1.3" height="5"/></pattern>
+    <pattern id="rows-h" width="5" height="5" patternUnits="userSpaceOnUse"><rect class="row-line" width="5" height="1.3"/></pattern>
+  </defs>
+</svg>
+
+<header class="bar">
+  <div class="wrap bar-inner">
+    <a class="bar-name" href="#top">Ehsan Rahimi</a>
+    <button class="menu" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+    <nav id="site-nav" aria-label="Sections">
+      <a href="#about">About</a>
+      <a href="#research">Research</a>
+      <a href="#publications">Publications</a>
+      <a href="#recognition">Awards and teaching</a>
+      <a href="#education">Education</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <section class="hero" id="top" aria-labelledby="name">
+    <div class="wrap hero-grid">
+      <div class="hero-text">
+        
+        <h1 id="name">Ehsan Rahimi</h1>
+        <p class="role">Pollination ecology and landscape science</p>
+        <p class="lede">I study how climate and landscape change shape biodiversity, plant–pollinator interactions and the ecosystem services they support, using remote sensing, species distribution models and geospatial analysis.</p>
+        <p class="affil">Postdoctoral researcher, Gyeongkuk National University, Andong, South Korea</p>
+        <p class="record">65 peer-reviewed papers in 33 journals since 2016. On Google Scholar: 784 citations, h-index 15, i10-index 23.</p>
+        <div class="actions">
+          <a class="btn" href="#publications">Publications</a>
+          <a href="https://scholar.google.com/citations?user=vUdulZUAAAAJ&amp;hl=en" rel="noopener">Google Scholar</a>
+          <a href="https://orcid.org/0000-0002-8401-472X" rel="noopener">ORCID</a>
+          <a href="https://www.linkedin.com/in/ehsan-rahimi-288a10149/" rel="noopener">LinkedIn</a>
+          <a href="mailto:ehsanrahimi666@gmail.com">Email</a>
+        </div>
+      </div>
+      <figure class="hero-map">
+        <svg id="treemap" class="treemap" viewBox="0 0 640 460" role="img" aria-labelledby="treemap-title treemap-desc" preserveAspectRatio="xMidYMid meet"><title id="treemap-title">Publications as field parcels</title><desc id="treemap-desc">Treemap of 65 papers grouped by research area; each rectangle is one paper and its area grows with the paper&#x27;s Google Scholar citations.</desc><g class="parcel d-pol" data-id="p2022-review-diversity-bees-attractiveness-host" data-label="2022, Agriculture &amp; Food Security: A review of diversity of bees, the attractiveness of host plants and the effects of landscape variables on bees in urban gardens (63 citations)"><rect x="2.1" y="2.1" width="128.7" height="157.9" fill-opacity="0.83"/><rect class="rows" x="2.1" y="2.1" width="128.7" height="157.9" fill="url(#rows-v)"/></g><g class="parcel d-pol" data-id="p2021-how-effective-are-artificial-nests" data-label="2021, Journal of Ecology and Environment: How effective are artificial nests in attracting bees? A review (58 citations)"><rect x="132.0" y="2.1" width="118.7" height="157.9" fill-opacity="0.97"/><rect class="rows" x="132.0" y="2.1" width="118.7" height="157.9" fill="url(#rows-v)"/></g><g class="parcel d-pol" data-id="p2021-estimating-landscape-structure-effects-pollination" data-label="2021, Ecological Processes: Estimating landscape structure effects on pollination for management of agricultural landscapes (36 citations)"><rect x="2.1" y="161.2" width="127.1" height="93.0" fill-opacity="0.99"/><rect class="rows" x="2.1" y="161.2" width="127.1" height="93.0" fill="url(#rows-h)"/></g><g class="parcel d-pol" data-id="p2022-amount-distance-dependent-structural-effects" data-label="2022, Agriculture &amp; Food Security: Amount, distance-dependent and structural effects of forest patches on bees in agricultural landscapes (34 citations)"><rect x="130.4" y="161.2" width="120.3" height="93.0" fill-opacity="0.98"/><rect class="rows" x="130.4" y="161.2" width="120.3" height="93.0" fill="url(#rows-h)"/></g><g class="parcel d-pol" data-id="p2021-using-lonsdorf-model-estimating-habitat" data-label="2021, Ecological Processes: Using the Lonsdorf model for estimating habitat loss and fragmentation effects on pollination service (28 citations)"><rect x="2.1" y="255.4" width="75.3" height="123.5" fill-opacity="0.99"/><rect class="rows" x="2.1" y="255.4" width="75.3" height="123.5" fill="url(#rows-v)"/></g><g class="parcel d-pol" data-id="p2021-pollmap-software-crop-pollination-mapping" data-label="2021, Journal of Ecology and Environment: PollMap: a software for crop pollination mapping in agricultural landscapes (17 citations)"><rect x="2.1" y="380.1" width="75.3" height="77.8" fill-opacity="0.9"/><rect class="rows" x="2.1" y="380.1" width="75.3" height="77.8" fill="url(#rows-v)"/></g><g class="parcel d-pol" data-id="p2025-exploring-climate-driven-mismatches-between" data-label="2025, Biology: Exploring Climate-Driven Mismatches Between Pollinator-Dependent Crops and Honeybees in Asia (12 citations)"><rect x="78.6" y="255.4" width="59.4" height="72.2" fill-opacity="1.0"/><rect class="rows" x="78.6" y="255.4" width="59.4" height="72.2" fill="url(#rows-v)"/></g><g class="parcel d-pol" data-id="p2023-plant-pollinator-metanetworks-fragmented-landscapes" data-label="2023, Ecological Processes: Plant–pollinator metanetworks in fragmented landscapes: a simulation study (12 citations)"><rect x="139.2" y="255.4" width="59.4" height="72.2" fill-opacity="0.97"/><rect class="rows" x="139.2" y="255.4" width="59.4" height="72.2" fill="url(#rows-v)"/></g><g class="parcel d-pol" data-id="p2024-new-sdm-based-approach-assessing" data-label="2024, Insects: A New SDM-Based Approach for Assessing Climate Change Effects on Plant–Pollinator Networks (10 citations)"><rect x="199.9" y="255.4" width="50.8" height="72.2" fill-opacity="0.9"/><rect class="rows" x="199.9" y="255.4" width="50.8" height="72.2" fill="url(#rows-v)"/></g><g class="parcel d-pol" data-id="p2025-investigating-spatial-biases-temporal-trends" data-label="2025, Insects: Investigating the Spatial Biases and Temporal Trends in Insect Pollinator Occurrence Data on GBIF (9 citations)"><rect x="78.6" y="328.8" width="47.6" height="70.5" fill-opacity="0.94"/><rect class="rows" x="78.6" y="328.8" width="47.6" height="70.5" fill="url(#rows-v)"/></g><g class="parcel d-pol" data-id="p2021-using-lonsdorf-estimap-models-large" data-label="2021, Environmental Resources Research: Using the Lonsdorf and ESTIMAP models for large-scale pollination mapping (Case study: Iran) (7 citations)"><rect x="78.6" y="400.5" width="47.6" height="57.4" fill-opacity="0.88"/><rect class="rows" x="78.6" y="400.5" width="47.6" height="57.4" fill="url(#rows-v)"/></g><g class="parcel d-pol" data-id="p2025-trends-pollination-scientists-research-comprehensive" data-label="2025, Ecology and Evolution: Trends in Pollination Scientists&#x27; Research: A Comprehensive Analysis in Citations and Research Topics (6 citations)"><rect x="127.4" y="328.8" width="46.2" height="52.4" fill-opacity="0.87"/><rect class="rows" x="127.4" y="328.8" width="46.2" height="52.4" fill="url(#rows-v)"/></g><g class="parcel d-pol" data-id="p2024-global-evaluation-urban-agriculture-potential" data-label="2024, Urban Agriculture &amp; Regional Food Systems: A global evaluation of urban agriculture potential for pollinator-dependent crops in major cities (5 citations)"><rect x="174.8" y="328.8" width="40.3" height="52.4" fill-opacity="0.82"/><rect class="rows" x="174.8" y="328.8" width="40.3" height="52.4" fill="url(#rows-v)"/></g><g class="parcel d-pol" data-id="p2025-mapping-co-occurrence-dynamics-between" data-label="2025, Community Ecology: Mapping co-occurrence dynamics between crops and honeybees under climate change in North America (4 citations)"><rect x="216.3" y="328.8" width="34.4" height="52.4" fill-opacity="0.91"/><rect class="rows" x="216.3" y="328.8" width="34.4" height="52.4" fill="url(#rows-v)"/></g><g class="parcel d-pol" data-id="p2023-estimating-pollination-supply-urban-green" data-label="2023, Urban Ecosystems: Estimating the pollination supply of urban green spaces to determine suitable areas for urban agriculture in the city of Tehran (4 citations)"><rect x="127.4" y="382.5" width="44.4" height="40.6" fill-opacity="0.95"/><rect class="rows" x="127.4" y="382.5" width="44.4" height="40.6" fill="url(#rows-h)"/></g><g class="parcel d-pol" data-id="p2024-spatial-modeling-insect-pollination-services" data-label="2024, Insects: Spatial Modeling of Insect Pollination Services in Fragmented Landscapes (3 citations)"><rect x="127.4" y="424.3" width="44.4" height="33.6" fill-opacity="0.83"/><rect class="rows" x="127.4" y="424.3" width="44.4" height="33.6" fill="url(#rows-h)"/></g><g class="parcel d-pol" data-id="p2024-spatial-overlap-between-bees-pollinator" data-label="2024, Journal of Sustainable Agriculture and Environment: Spatial Overlap Between Bees and Pollinator-Dependent Crops in Europe and North America (3 citations)"><rect x="173.0" y="382.5" width="36.1" height="41.4" fill-opacity="0.86"/><rect class="rows" x="173.0" y="382.5" width="36.1" height="41.4" fill="url(#rows-v)"/></g><g class="parcel d-pol" data-id="p2024-assessing-relationship-between-latitude-plant" data-label="2024, Journal of Ecology and Environment: Assessing the relationship between latitude and plant-pollinator network specialization (2 citations)"><rect x="173.0" y="425.0" width="36.1" height="32.9" fill-opacity="0.97"/><rect class="rows" x="173.0" y="425.0" width="36.1" height="32.9" fill="url(#rows-h)"/></g><g class="parcel d-pol" data-id="p2024-identifying-pollinator-friendly-sites-within" data-label="2024, Journal of Sustainable Agriculture and Environment: Identifying pollinator-friendly sites within urban green spaces for sustainable urban agriculture (2 citations)"><rect x="210.4" y="382.5" width="40.3" height="29.5" fill-opacity="0.87"/><rect class="rows" x="210.4" y="382.5" width="40.3" height="29.5" fill="url(#rows-h)"/></g><g class="parcel d-pol" data-id="p2024-modeling-honeybee-flower-visitation-rates" data-label="2024, Arthropod-Plant Interactions: Modeling honeybee flower visitation rates in the fragmented agricultural landscapes based on Lévy-flight behavior (2 citations)"><rect x="210.4" y="413.1" width="40.3" height="29.5" fill-opacity="0.8"/><rect class="rows" x="210.4" y="413.1" width="40.3" height="29.5" fill="url(#rows-h)"/></g><g class="parcel d-pol" data-id="p2025-impact-taxonomic-functional-grouping-specialization" data-label="2025, Entomological Research: Impact of Taxonomic and Functional Grouping on Specialization in Plant–Pollinator Networks (0 citations)"><rect x="210.4" y="443.8" width="40.3" height="14.1" fill-opacity="0.94"/><rect class="rows" x="210.4" y="443.8" width="40.3" height="14.1" fill="url(#rows-h)"/></g><g class="parcel d-rs" data-id="p2025-global-ndvi-lst-correlation-temporal" data-label="2025, Environments: Global NDVI-LST Correlation: Temporal and Spatial Patterns from 2000 to 2024 (79 citations)"><rect x="254.9" y="2.1" width="176.5" height="143.6" fill-opacity="0.81"/><rect class="rows" x="254.9" y="2.1" width="176.5" height="143.6" fill="url(#rows-h)"/></g><g class="parcel d-rs" data-id="p2021-quantifying-how-urban-landscape-heterogeneity" data-label="2021, Journal of Ecology and Environment: Quantifying how urban landscape heterogeneity affects land surface temperature at multiple scales (59 citations)"><rect x="254.9" y="146.9" width="176.5" height="107.8" fill-opacity="0.85"/><rect class="rows" x="254.9" y="146.9" width="176.5" height="107.8" fill="url(#rows-h)"/></g><g class="parcel d-rs" data-id="p2024-evaluating-applicability-landsat-8-data" data-label="2024, Frontiers in Remote Sensing: Evaluating the applicability of Landsat 8 data for global time series analysis (21 citations)"><rect x="432.6" y="2.1" width="78.0" height="91.1" fill-opacity="0.92"/><rect class="rows" x="432.6" y="2.1" width="78.0" height="91.1" fill="url(#rows-v)"/></g><g class="parcel d-rs" data-id="p2025-review-remote-sensing-applications-flower" data-label="2025, Journal of Ecology and Environment: A review of remote sensing applications in flower phenology detection (17 citations)"><rect x="511.8" y="2.1" width="64.2" height="91.1" fill-opacity="0.81"/><rect class="rows" x="511.8" y="2.1" width="64.2" height="91.1" fill="url(#rows-v)"/></g><g class="parcel d-rs" data-id="p2022-comparison-discrete-continuous-metrics-measuring" data-label="2022, Journal of the Indian Society of Remote Sensing: A Comparison of Discrete and Continuous Metrics for Measuring Landscape Changes (16 citations)"><rect x="577.1" y="2.1" width="60.8" height="91.1" fill-opacity="0.97"/><rect class="rows" x="577.1" y="2.1" width="60.8" height="91.1" fill="url(#rows-v)"/></g><g class="parcel d-rs" data-id="p2024-efficiency-long-short-term-memory" data-label="2024, Korean Journal of Remote Sensing: The efficiency of long short-term memory (LSTM) in phenology-based crop classification (14 citations)"><rect x="432.6" y="94.4" width="57.8" height="84.9" fill-opacity="0.82"/><rect class="rows" x="432.6" y="94.4" width="57.8" height="84.9" fill="url(#rows-v)"/></g><g class="parcel d-rs" data-id="p2025-analyzing-vegetation-heterogeneity-trends-urban" data-label="2025, Land: Analyzing Vegetation Heterogeneity Trends in an Urban-Agricultural Landscape in Iran Using Continuous Metrics and NDVI (12 citations)"><rect x="432.6" y="180.5" width="57.8" height="74.2" fill-opacity="0.96"/><rect class="rows" x="432.6" y="180.5" width="57.8" height="74.2" fill="url(#rows-v)"/></g><g class="parcel d-rs" data-id="p2025-global-variations-relationship-between-tree" data-label="2025, Tropical Ecology: Global variations in the relationship between tree canopy height and land surface temperature (6 citations)"><rect x="491.6" y="94.4" width="52.4" height="46.2" fill-opacity="0.81"/><rect class="rows" x="491.6" y="94.4" width="52.4" height="46.2" fill="url(#rows-h)"/></g><g class="parcel d-rs" data-id="p2016-comparison-continuous-discrete-indices-measuring" data-label="2016, Journal of RS and GIS for Natural Resources: A comparison of continuous and discrete indices in measuring Gorgan forest landscape fragmentation (6 citations)"><rect x="545.2" y="94.4" width="52.4" height="46.2" fill-opacity="0.88"/><rect class="rows" x="545.2" y="94.4" width="52.4" height="46.2" fill="url(#rows-h)"/></g><g class="parcel d-rs" data-id="p2025-global-pattern-vegetation-homogeneity-its" data-label="2025, Land: Global Pattern of Vegetation Homogeneity and Its Impact on Land Surface Temperature (4 citations)"><rect x="598.9" y="94.4" width="39.0" height="46.2" fill-opacity="0.87"/><rect class="rows" x="598.9" y="94.4" width="39.0" height="46.2" fill="url(#rows-v)"/></g><g class="parcel d-rs" data-id="p2025-comparative-performance-multi-spectral-vegetation" data-label="2025, Journal of Sustainable Agriculture and Environment: Comparative Performance of Multi-Spectral Vegetation Indices for Phenology-Based Rapeseed Classification (3 citations)"><rect x="491.6" y="141.7" width="40.5" height="36.8" fill-opacity="0.97"/><rect class="rows" x="491.6" y="141.7" width="40.5" height="36.8" fill="url(#rows-h)"/></g><g class="parcel d-rs" data-id="p2025-global-remote-sensing-research-author" data-label="2025, Ecology and Evolution: Global Remote Sensing Research: An Author-Centric Analysis of Contributions and Trends (3 citations)"><rect x="491.6" y="179.8" width="40.5" height="36.8" fill-opacity="0.96"/><rect class="rows" x="491.6" y="179.8" width="40.5" height="36.8" fill="url(#rows-h)"/></g><g class="parcel d-rs" data-id="p2025-how-do-climate-latitude-shape" data-label="2025, Forests: How Do Climate and Latitude Shape Global Tree Canopy Structure? (3 citations)"><rect x="491.6" y="217.8" width="40.5" height="36.8" fill-opacity="0.87"/><rect class="rows" x="491.6" y="217.8" width="40.5" height="36.8" fill="url(#rows-h)"/></g><g class="parcel d-rs" data-id="p2025-influence-spatial-extent-shape-lst" data-label="2025, Journal of Landscape Ecology: The Influence of Spatial Extent Shape on LST-NDVI Patterns: A Multi-Scale Perspective (3 citations)"><rect x="533.3" y="141.7" width="34.1" height="43.8" fill-opacity="0.8"/><rect class="rows" x="533.3" y="141.7" width="34.1" height="43.8" fill="url(#rows-v)"/></g><g class="parcel d-rs" data-id="p2024-assessing-landscape-fragmentation-dynamics-fourier" data-label="2024, Journal of Landscape Ecology: Assessing Landscape Fragmentation Dynamics with Fourier Transforms (3 citations)"><rect x="568.6" y="141.7" width="34.1" height="43.8" fill-opacity="0.91"/><rect class="rows" x="568.6" y="141.7" width="34.1" height="43.8" fill="url(#rows-v)"/></g><g class="parcel d-rs" data-id="p2018-percolation-theory-its-applications-landscape" data-label="2018, Environmental Researches: Percolation theory and its applications in landscape ecology (3 citations)"><rect x="603.8" y="141.7" width="34.1" height="43.8" fill-opacity="0.87"/><rect class="rows" x="603.8" y="141.7" width="34.1" height="43.8" fill="url(#rows-v)"/></g><g class="parcel d-rs" data-id="p2016-comparison-spatial-resolution-landsat-spot" data-label="2016, Journal of RS and GIS for Natural Resources: Comparison of spatial resolution of Landsat and SPOT satellite images in measuring landscape fragmentation (3 citations)"><rect x="533.3" y="186.8" width="40.2" height="37.2" fill-opacity="0.9"/><rect class="rows" x="533.3" y="186.8" width="40.2" height="37.2" fill="url(#rows-h)"/></g><g class="parcel d-rs" data-id="p2024-comparative-analysis-supervised-phenology-based" data-label="2024, Korean Journal of Remote Sensing: Comparative analysis of supervised and phenology-based approaches for crop mapping: A case study in South Korea (2 citations)"><rect x="533.3" y="225.2" width="40.2" height="29.5" fill-opacity="0.89"/><rect class="rows" x="533.3" y="225.2" width="40.2" height="29.5" fill="url(#rows-h)"/></g><g class="parcel d-rs" data-id="p2026-threshold-based-classification-rapeseed-using" data-label="2026, Agrosystems, Geosciences &amp; Environment: Threshold-based classification of rapeseed using multi-spectral vegetation indices from Sentinel-2 (1 citation)"><rect x="574.7" y="186.8" width="31.0" height="28.4" fill-opacity="0.94"/><rect class="rows" x="574.7" y="186.8" width="31.0" height="28.4" fill="url(#rows-h)"/></g><g class="parcel d-rs" data-id="p2016-application-spatial-autocorrelation-techniques-measure" data-label="2016, Journal of Environmental Studies: Application of spatial autocorrelation techniques to measure urban sprawl, case study: Gorgan City (1 citation)"><rect x="606.9" y="186.8" width="31.0" height="28.4" fill-opacity="0.96"/><rect class="rows" x="606.9" y="186.8" width="31.0" height="28.4" fill="url(#rows-h)"/></g><g class="parcel d-rs" data-id="p2026-mapping-peak-flowering-phenology-rapeseed" data-label="2026, Scientific Reports: Mapping peak flowering phenology of rapeseed (Brassica napus) in North Dakota using Landsat 8 and Sentinel-2 (0 citations)"><rect x="574.7" y="216.4" width="31.0" height="18.5" fill-opacity="0.88"/><rect class="rows" x="574.7" y="216.4" width="31.0" height="18.5" fill="url(#rows-h)"/></g><g class="parcel d-rs" data-id="p2024-comprehensive-landsat-8-ndvi-ndbi" data-label="2024, Environmental Resources Research: A comprehensive Landsat 8 NDVI and NDBI data preparation for the vegetation trend analysis in Iran (0 citations)"><rect x="574.7" y="236.1" width="31.0" height="18.5" fill-opacity="0.99"/><rect class="rows" x="574.7" y="236.1" width="31.0" height="18.5" fill="url(#rows-h)"/></g><g class="parcel d-rs" data-id="p2019-complexity-theory-measuring-complexity-ecosystems" data-label="2019, Environmental Researches: Complexity theory and measuring complexity of ecosystems in a landscape (0 citations)"><rect x="606.9" y="216.4" width="31.0" height="18.5" fill-opacity="0.87"/><rect class="rows" x="606.9" y="216.4" width="31.0" height="18.5" fill="url(#rows-h)"/></g><g class="parcel d-rs" data-id="p2017-identifying-quantifying-predicting-landscape-patterns" data-label="2017, Environmental Researches: Identifying, quantifying and predicting of landscape patterns in space and time (0 citations)"><rect x="606.9" y="236.1" width="31.0" height="18.5" fill-opacity="0.96"/><rect class="rows" x="606.9" y="236.1" width="31.0" height="18.5" fill="url(#rows-h)"/></g><g class="parcel d-sdm" data-id="p2024-global-trends-climate-suitability-bees" data-label="2024, Insects: Global Trends in Climate Suitability of Bees: Ups and Downs in a Warming World (51 citations)"><rect x="254.9" y="258.9" width="153.0" height="107.1" fill-opacity="0.86"/><rect class="rows" x="254.9" y="258.9" width="153.0" height="107.1" fill="url(#rows-h)"/><circle class="award-dot" cx="331.4" cy="312.4" r="5"/></g><g class="parcel d-sdm" data-id="p2021-estimating-potential-range-shift-some" data-label="2021, Journal of Ecology and Environment: Estimating potential range shift of some wild bees in response to climate change scenarios in northwestern regions of Iran (43 citations)"><rect x="254.9" y="367.2" width="153.0" height="90.7" fill-opacity="0.92"/><rect class="rows" x="254.9" y="367.2" width="153.0" height="90.7" fill="url(#rows-h)"/></g><g class="parcel d-sdm" data-id="p2025-global-estimation-potential-climate-change" data-label="2025, Agricultural Research: A Global Estimation of Potential Climate Change Effects on Pollinator-Dependent Crops (15 citations)"><rect x="409.0" y="258.9" width="77.5" height="66.9" fill-opacity="0.82"/><rect class="rows" x="409.0" y="258.9" width="77.5" height="66.9" fill="url(#rows-h)"/></g><g class="parcel d-sdm" data-id="p2024-assessing-climate-niche-similarity-between" data-label="2024, BMC Ecology and Evolution: Assessing climate niche similarity between Persian fallow deer (Dama mesopotamica) areas in Iran (7 citations)"><rect x="409.0" y="326.9" width="40.4" height="66.9" fill-opacity="0.8"/><rect class="rows" x="409.0" y="326.9" width="40.4" height="66.9" fill="url(#rows-v)"/></g><g class="parcel d-sdm" data-id="p2022-estimating-geographic-range-shifts-vespa" data-label="2022, Journal of Apiculture: Estimating Geographic Range Shifts of Vespa simillima after Vespa velutina (Hymenoptera: Vespidae) Invasion in South Korea (6 citations)"><rect x="450.7" y="326.9" width="35.8" height="66.9" fill-opacity="0.89"/><rect class="rows" x="450.7" y="326.9" width="35.8" height="66.9" fill="url(#rows-v)"/></g><g class="parcel d-sdm" data-id="p2024-g-space-versus-e-space" data-label="2024, Ecology and Evolution: G-space versus E-space: Are hornets (Hymenoptera: Vespidae) at equilibrium with honeybees in Asia? (2 citations)"><rect x="409.0" y="395.0" width="33.2" height="35.4" fill-opacity="0.98"/><rect class="rows" x="409.0" y="395.0" width="33.2" height="35.4" fill="url(#rows-v)"/></g><g class="parcel d-sdm" data-id="p2025-using-ecological-niche-modeling-model" data-label="2025, Journal of Ecology and Environment: Using ecological niche modeling to model invasion risk of hornets (Hymenoptera: Vespidae) in Iran (1 citation)"><rect x="409.0" y="431.6" width="33.2" height="26.3" fill-opacity="0.92"/><rect class="rows" x="409.0" y="431.6" width="33.2" height="26.3" fill="url(#rows-h)"/></g><g class="parcel d-sdm" data-id="p2024-estimating-potential-climate-change-effects" data-label="2024, Entomological Research: Estimating potential climate change effects on pollinating insects: A multi-taxa study in the Republic of Korea (1 citation)"><rect x="443.5" y="395.0" width="25.3" height="34.4" fill-opacity="0.88"/><rect class="rows" x="443.5" y="395.0" width="25.3" height="34.4" fill="url(#rows-v)"/></g><g class="parcel d-sdm" data-id="p2026-climate-change-may-expand-geographic" data-label="2026, Insects: Climate Change May Expand Geographic Distribution of Asian Butterflies Despite Climatic Niche Contraction (0 citations)"><rect x="470.0" y="395.0" width="16.5" height="34.4" fill-opacity="0.96"/><rect class="rows" x="470.0" y="395.0" width="16.5" height="34.4" fill="url(#rows-v)"/></g><g class="parcel d-sdm" data-id="p2026-how-can-we-incorporate-species" data-label="2026, Community Ecology: How can we incorporate species interactions into SDM-based climate change modelling? (0 citations)"><rect x="443.5" y="430.6" width="20.9" height="27.3" fill-opacity="0.93"/><rect class="rows" x="443.5" y="430.6" width="20.9" height="27.3" fill="url(#rows-v)"/></g><g class="parcel d-sdm" data-id="p2026-what-are-key-bioclimatic-variables" data-label="2026, Community Ecology: What are the key bioclimatic variables shaping bees’ distribution globally? (0 citations)"><rect x="465.6" y="430.6" width="20.9" height="27.3" fill-opacity="0.88"/><rect class="rows" x="465.6" y="430.6" width="20.9" height="27.3" fill="url(#rows-v)"/></g><g class="parcel d-bio" data-id="p2023-identifying-barriers-pinch-points-large" data-label="2023, Journal of Environmental Studies and Sciences: Identifying barriers and pinch-points of large mammal corridors in Iran (21 citations)"><rect x="490.7" y="258.9" width="74.6" height="93.6" fill-opacity="0.95"/><rect class="rows" x="490.7" y="258.9" width="74.6" height="93.6" fill="url(#rows-v)"/></g><g class="parcel d-bio" data-id="p2022-what-are-main-human-pressures" data-label="2022, Journal of Environmental Studies and Sciences: What are the main human pressures affecting Iran’s protected areas? (20 citations)"><rect x="566.6" y="258.9" width="71.3" height="93.6" fill-opacity="0.93"/><rect class="rows" x="566.6" y="258.9" width="71.3" height="93.6" fill="url(#rows-v)"/></g><g class="parcel d-bio" data-id="p2023-potential-anthropogenic-climatic-factors-affecting" data-label="2023, Journal of Environmental Studies and Sciences: Potential anthropogenic and climatic factors affecting Iran’s international wetlands (15 citations)"><rect x="490.7" y="353.7" width="87.8" height="58.5" fill-opacity="0.96"/><rect class="rows" x="490.7" y="353.7" width="87.8" height="58.5" fill="url(#rows-h)"/></g><g class="parcel d-bio" data-id="p2024-assessing-climate-change-threats-biodiversity" data-label="2024, European Journal of Wildlife Research: Assessing climate change threats to biodiversity and protected areas of Iran (11 citations)"><rect x="490.7" y="413.4" width="87.8" height="44.5" fill-opacity="0.87"/><rect class="rows" x="490.7" y="413.4" width="87.8" height="44.5" fill="url(#rows-h)"/></g><g class="parcel d-bio" data-id="p2024-energy-based-corridor-identification-mammals" data-label="2024, Ecology and Evolution: Energy-based corridor identification for mammals between protected areas in Iran (4 citations)"><rect x="579.7" y="353.7" width="58.2" height="30.4" fill-opacity="0.97"/><rect class="rows" x="579.7" y="353.7" width="58.2" height="30.4" fill="url(#rows-h)"/></g><g class="parcel d-bio" data-id="p2025-iran-s-dam-waterbodies-10" data-label="2025, Journal of Landscape Ecology: Iran’s Dam Waterbodies: A 10-Year Trend Analysis (2013–2023) (3 citations)"><rect x="579.7" y="385.3" width="28.5" height="51.5" fill-opacity="0.97"/><rect class="rows" x="579.7" y="385.3" width="28.5" height="51.5" fill="url(#rows-v)"/></g><g class="parcel d-bio" data-id="p2020-zoning-oshtrankou-protected-area-using" data-label="2020, Environmental Researches: Zoning of Oshtrankou Protected Area using multi-criteria evaluation and K-means clustering algorithm (3 citations)"><rect x="609.4" y="385.3" width="28.5" height="51.5" fill-opacity="0.99"/><rect class="rows" x="609.4" y="385.3" width="28.5" height="51.5" fill="url(#rows-v)"/></g><g class="parcel d-bio" data-id="p2025-investigating-climate-driven-corridor-networks" data-label="2025, Journal of Wildlife and Biodiversity: Investigating climate-driven corridor networks for Golden Jackal (Canis aureus) in the Northern Parts of Iran (0 citations)"><rect x="579.7" y="438.0" width="28.5" height="19.9" fill-opacity="0.95"/><rect class="rows" x="579.7" y="438.0" width="28.5" height="19.9" fill="url(#rows-h)"/></g><g class="parcel d-bio" data-id="p2020-suitable-site-priority-establish-urban" data-label="2020, Journal of Environmental Science and Technology: Suitable site priority to establish urban nuisance industries using multi-criteria decision analysis and mathematical programming models (0 citations)"><rect x="609.4" y="438.0" width="28.5" height="19.9" fill-opacity="0.82"/><rect class="rows" x="609.4" y="438.0" width="28.5" height="19.9" fill="url(#rows-h)"/></g></svg>
+        <figcaption>
+          <p class="tm-caption" id="tm-caption">Each parcel is one paper, sized by its citations and coloured by research area. Select a parcel to find the paper in the list.</p>
+          <ul class="legend"><li class="d-rs"><i class="dot" aria-hidden="true"></i>Remote sensing and landscape</li><li class="d-pol"><i class="dot" aria-hidden="true"></i>Pollination and agriculture</li><li class="d-sdm"><i class="dot" aria-hidden="true"></i>Distribution modelling and climate</li><li class="d-bio"><i class="dot" aria-hidden="true"></i>Biodiversity and conservation</li><li class="legend-award"><i class="dot" aria-hidden="true"></i>Best paper award</li></ul>
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="section" id="about" aria-labelledby="about-h">
+    <div class="wrap about-grid">
+      <div>
+        <h2 id="about-h">About</h2>
+        <div class="prose">
+          <p>I am an environmental scientist and postdoctoral researcher at Gyeongkuk National University in Andong, South Korea, working in the lab of Prof. Chuleui Jung. I study how climate, land use and landscape structure shape biodiversity, species interactions and ecosystem functioning, from single fields to the whole globe.</p>
+          <p>Much of my work concerns plant–pollinator interactions and the pollination services that support food production and human well-being. I combine field ecology, satellite remote sensing, geospatial analysis and species distribution modelling to address questions in pollination ecology, landscape ecology, biodiversity conservation and sustainable agriculture.</p>
+          <p>My current research uses drone-based remote sensing, computer vision and deep learning to detect, map and quantify flowering resources in forest and grassland ecosystems.</p>
+        </div>
+      </div>
+      <div class="methods">
+        <h3>Methods and tools</h3>
+        <dl>
+          <dt>Ecology and biodiversity</dt>
+          <dd>Pollination ecology, plant–pollinator interactions and networks, community ecology, habitat connectivity, biodiversity conservation</dd>
+          <dt>Modelling and statistics</dt>
+          <dd>Species distribution and ecological niche models, InVEST and Lonsdorf pollination models, landscape fragmentation analysis, machine learning and deep learning</dd>
+          <dt>Remote sensing and GIS</dt>
+          <dd>Google Earth Engine, Landsat and Sentinel-2, vegetation and climate indices, phenology analysis, UAV imagery, ArcGIS Pro, QGIS</dd>
+          <dt>Programming</dt>
+          <dd>R and Python</dd>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="research" aria-labelledby="research-h">
+    <div class="wrap">
+      <h2 id="research-h">Research areas</h2>
+      <p class="section-lede">My work falls into four connected areas. Select a theme to list its papers.</p>
+      <div class="areas"><article class="area d-rs"><div class="area-head"><svg class="swatch" viewBox="0 0 48 32" aria-hidden="true"><rect width="48" height="32" rx="2"/><rect class="rows" width="48" height="32" rx="2" fill="url(#rows-h)"/></svg><h3>Remote sensing and landscape science</h3></div><p>Satellite imagery for monitoring vegetation, crops and land surface temperature from single fields to the whole globe: phenology-based crop mapping, NDVI–LST relationships, global time-series data, and the theory and metrics of landscape pattern and fragmentation.</p><ul class="themes"><li><a href="#publications" data-theme="rs-crop">Crop mapping and vegetation phenology</a><span class="count">6</span></li><li><a href="#publications" data-theme="rs-lst">Vegetation, climate and land surface temperature</a><span class="count">6</span></li><li><a href="#publications" data-theme="rs-frag">Landscape pattern, heterogeneity and fragmentation</a><span class="count">9</span></li><li><a href="#publications" data-theme="rs-data">Data and global time-series analysis</a><span class="count">3</span></li></ul><a class="area-all" href="#publications" data-domain="rs">Show all 24 papers in this area</a></article><article class="area d-pol"><div class="area-head"><svg class="swatch" viewBox="0 0 48 32" aria-hidden="true"><rect width="48" height="32" rx="2"/><rect class="rows" width="48" height="32" rx="2" fill="url(#rows-h)"/></svg><h3>Pollination and agricultural ecology</h3></div><p>How landscape structure, fragmentation and climate change affect pollinator communities and the crop pollination services they provide: plant–pollinator networks, spatial service models (including the PollMap software), crop–pollinator overlap, urban agriculture and trends in pollinator data.</p><ul class="themes"><li><a href="#publications" data-theme="pol-net">Plant–pollinator networks</a><span class="count">4</span></li><li><a href="#publications" data-theme="pol-svc">Pollination services and landscape modelling</a><span class="count">8</span></li><li><a href="#publications" data-theme="pol-crop">Crop–pollinator spatial dynamics</a><span class="count">3</span></li><li><a href="#publications" data-theme="pol-urban">Urban agriculture</a><span class="count">3</span></li><li><a href="#publications" data-theme="pol-data">Pollinator data and research trends</a><span class="count">3</span></li></ul><a class="area-all" href="#publications" data-domain="pol">Show all 21 papers in this area</a></article><article class="area d-sdm"><div class="area-head"><svg class="swatch" viewBox="0 0 48 32" aria-hidden="true"><rect width="48" height="32" rx="2"/><rect class="rows" width="48" height="32" rx="2" fill="url(#rows-h)"/></svg><h3>Species distribution modelling and climate change</h3></div><p>Species distribution models that project how habitat suitability shifts under future climates, applied to bees, butterflies, pollinator-dependent crops, invasive hornets and Persian fallow deer, together with work on predictor choice and on adding species interactions to these models.</p><ul class="themes"><li><a href="#publications" data-theme="sdm-range">Range shifts of pollinators and crops</a><span class="count">6</span></li><li><a href="#publications" data-theme="sdm-inv">Invasion ecology and niche dynamics</a><span class="count">3</span></li><li><a href="#publications" data-theme="sdm-meth">Predictors and species interactions in SDMs</a><span class="count">2</span></li></ul><a class="area-all" href="#publications" data-domain="sdm">Show all 11 papers in this area</a></article><article class="area d-bio"><div class="area-head"><svg class="swatch" viewBox="0 0 48 32" aria-hidden="true"><rect width="48" height="32" rx="2"/><rect class="rows" width="48" height="32" rx="2" fill="url(#rows-h)"/></svg><h3>Biodiversity and conservation</h3></div><p>Human and climatic pressures on Iran&#x27;s protected areas, wetlands and reservoirs, protected-area zoning and land-use planning, and the corridors that keep wildlife populations connected.</p><ul class="themes"><li><a href="#publications" data-theme="bio-pa">Protected areas, environmental pressures and planning</a><span class="count">6</span></li><li><a href="#publications" data-theme="bio-corr">Wildlife corridors and habitat connectivity</a><span class="count">3</span></li></ul><a class="area-all" href="#publications" data-domain="bio">Show all 9 papers in this area</a></article></div>
+    </div>
+  </section>
+
+  <section class="section" id="publications" aria-labelledby="pubs-h">
+    <div class="wrap">
+      <div class="pubs-head">
+        <div>
+          <h2 id="pubs-h">Publications</h2>
+          <p class="section-lede">65 peer-reviewed journal articles, each linked to its published version. Citation counts are from Google Scholar.</p>
+        </div>
+        <figure class="cites-fig">
+          <svg class="cites-chart" viewBox="0 0 264 134" role="img" aria-label="Citations per year, 2021: 8, 2022: 33, 2023: 67, 2024: 160, 2025: 255, 2026: 247"><rect class="col" x="0" y="109.1" width="34" height="2.9" rx="2"/><text class="val" x="17.0" y="103.1">8</text><text class="yr" x="17.0" y="128">2021</text><rect class="col" x="46" y="100.1" width="34" height="11.9" rx="2"/><text class="val" x="63.0" y="94.1">33</text><text class="yr" x="63.0" y="128">2022</text><rect class="col" x="92" y="87.8" width="34" height="24.2" rx="2"/><text class="val" x="109.0" y="81.8">67</text><text class="yr" x="109.0" y="128">2023</text><rect class="col" x="138" y="54.3" width="34" height="57.7" rx="2"/><text class="val" x="155.0" y="48.3">160</text><text class="yr" x="155.0" y="128">2024</text><rect class="col" x="184" y="20.0" width="34" height="92.0" rx="2"/><text class="val" x="201.0" y="14.0">255</text><text class="yr" x="201.0" y="128">2025</text><rect class="col partial" x="230" y="22.9" width="34" height="89.1" rx="2"/><rect class="rows" x="230" y="22.9" width="34" height="89.1" rx="2" fill="url(#rows-v)"/><text class="val" x="247.0" y="16.9">247</text><text class="yr" x="247.0" y="128">2026</text></svg>
+          <figcaption>Citations per year on Google Scholar, retrieved 29 September 2026. The last bar covers part of the year.</figcaption>
+        </figure>
+      </div>
+
+      <div class="controls">
+        <div class="search-box" role="search">
+          <label class="vh" for="pub-search">Search publications</label>
+          <input id="pub-search" type="search" placeholder="Search by title, co-author, journal or year" autocomplete="off" spellcheck="false">
+        </div>
+        <div class="control-row">
+          <div class="chips" role="group" aria-label="Filter by research area"><button type="button" class="chip" data-domain="all" aria-pressed="true">All <span>65</span></button><button type="button" class="chip d-rs" data-domain="rs" aria-pressed="false"><i class="dot" aria-hidden="true"></i>Remote sensing <span>24</span></button><button type="button" class="chip d-pol" data-domain="pol" aria-pressed="false"><i class="dot" aria-hidden="true"></i>Pollination <span>21</span></button><button type="button" class="chip d-sdm" data-domain="sdm" aria-pressed="false"><i class="dot" aria-hidden="true"></i>Species distributions <span>11</span></button><button type="button" class="chip d-bio" data-domain="bio" aria-pressed="false"><i class="dot" aria-hidden="true"></i>Conservation <span>9</span></button></div>
+          <div class="order" role="group" aria-label="Order papers">
+            <button type="button" data-order="year" aria-pressed="true">Newest first</button>
+            <button type="button" data-order="cites" aria-pressed="false">Most cited</button>
+            <button type="button" data-order="area" aria-pressed="false">By area</button>
+          </div>
+        </div>
+      </div>
+      <p class="status" id="pub-status" aria-live="polite"></p>
+      <div class="pub-list" id="pub-list"><section class="pub-group"><h3 class="group-head"><span>2026</span><span class="group-count">5 papers</span></h3><ol class="pubs"><li class="pub d-rs" id="p2026-threshold-based-classification-rapeseed-using" data-year="2026" data-domain="rs" data-theme="rs-crop" data-cites="1" data-journal="Agrosystems, Geosciences &amp; Environment" data-search="Threshold-based classification of rapeseed using multi-spectral vegetation indices from Sentinel-2 E. Rahimi C. Jung Agrosystems, Geosciences &amp; Environment Crop mapping and vegetation phenology 2026 10.1002/agg2.70320"><div class="pub-body"><a class="pub-title" href="https://doi.org/10.1002/agg2.70320" rel="noopener">Threshold-based classification of rapeseed using multi-spectral vegetation indices from Sentinel-2</a><p class="pub-cite"><b>E. Rahimi</b>, C. Jung. <i>Agrosystems, Geosciences &amp; Environment</i> 9(1), e70320 (2026).</p><p class="pub-meta"><span class="theme">Crop mapping and vegetation phenology</span><a class="pub-link" href="https://doi.org/10.1002/agg2.70320" rel="noopener">doi:10.1002/agg2.70320</a></p></div><span class="cites"><span class="n">1</span> citation</span></li><li class="pub d-sdm" id="p2026-climate-change-may-expand-geographic" data-year="2026" data-domain="sdm" data-theme="sdm-range" data-cites="0" data-journal="Insects" data-search="Climate Change May Expand Geographic Distribution of Asian Butterflies Despite Climatic Niche Contraction E. Rahimi C. Jung Insects Range shifts of pollinators and crops 2026 10.3390/insects17070683"><div class="pub-body"><a class="pub-title" href="https://doi.org/10.3390/insects17070683" rel="noopener">Climate Change May Expand Geographic Distribution of Asian Butterflies Despite Climatic Niche Contraction</a><p class="pub-cite"><b>E. Rahimi</b>, C. Jung. <i>Insects</i> 17(7), 683 (2026).</p><p class="pub-meta"><span class="theme">Range shifts of pollinators and crops</span><a class="pub-link" href="https://doi.org/10.3390/insects17070683" rel="noopener">doi:10.3390/insects17070683</a></p></div></li><li class="pub d-sdm" id="p2026-how-can-we-incorporate-species" data-year="2026" data-domain="sdm" data-theme="sdm-meth" data-cites="0" data-journal="Community Ecology" data-search="How can we incorporate species interactions into SDM-based climate change modelling? E. Rahimi C. Jung Community Ecology Predictors and species interactions in SDMs 2026 10.1007/s42974-026-00330-4"><div class="pub-body"><a class="pub-title" href="https://doi.org/10.1007/s42974-026-00330-4" rel="noopener">How can we incorporate species interactions into SDM-based climate change modelling?</a><p class="pub-cite"><b>E. Rahimi</b>, C. Jung. <i>Community Ecology</i>, online first (2026).</p><p class="pub-meta"><span class="theme">Predictors and species interactions in SDMs</span><a class="pub-link" href="https://doi.org/10.1007/s42974-026-00330-4" rel="noopener">doi:10.1007/s42974-026-00330-4</a></p></div></li><li class="pub d-rs" id="p2026-mapping-peak-flowering-phenology-rapeseed" data-year="2026" data-domain="rs" data-theme="rs-crop" data-cites="0" data-journal="Scientific Reports" data-search="Mapping peak flowering phenology of rapeseed (Brassica napus) in North Dakota using Landsat 8 and Sentinel-2 E. Rahimi C. Jung Scientific Reports Crop mapping and vegetation phenology 2026 10.1038/s41598-026-55022-w"><div class="pub-body"><a class="pub-title" href="https://doi.org/10.1038/s41598-026-55022-w" rel="noopener">Mapping peak flowering phenology of rapeseed (<em>Brassica napus</em>) in North Dakota using Landsat 8 and Sentinel-2</a><p class="pub-cite"><b>E. Rahimi</b>, C. Jung. <i>Scientific Reports</i> 16(1), 25002 (2026).</p><p class="pub-meta"><span class="theme">Crop mapping and vegetation phenology</span><a class="pub-link" href="https://doi.org/10.1038/s41598-026-55022-w" rel="noopener">doi:10.1038/s41598-026-55022-w</a></p></div></li><li class="pub d-sdm" id="p2026-what-are-key-bioclimatic-variables" data-year="2026" data-domain="sdm" data-theme="sdm-meth" data-cites="0" data-journal="Community Ecology" data-search="What are the key bioclimatic variables shaping bees’ distribution globally? E. Rahimi Community Ecology Predictors and species interactions in SDMs 2026 10.1007/s42974-026-00343-z"><div class="pub-body"><a class="pub-title" href="https://doi.org/10.1007/s42974-026-00343-z" rel="noopener">What are the key bioclimatic variables shaping bees’ distribution globally?</a><p class="pub-cite"><b>E. Rahimi</b>. <i>Community Ecology</i>, online first (2026).</p><p class="pub-meta"><span class="theme">Predictors and species interactions in SDMs</span><a class="pub-link" href="https://doi.org/10.1007/s42974-026-00343-z" rel="noopener">doi:10.1007/s42974-026-00343-z</a></p></div></li></ol></section><section class="pub-group"><h3 class="group-head"><span>2025</span><span class="group-count">18 papers</span></h3><ol class="pubs"><li class="pub d-rs" id="p2025-global-ndvi-lst-correlation-temporal" data-year="2025" data-domain="rs" data-theme="rs-lst" data-cites="79" data-journal="Environments" data-search="Global NDVI-LST Correlation: Temporal and Spatial Patterns from 2000 to 2024 E. Rahimi P. Dong C. Jung Environments Vegetation, climate and land surface temperature 2025 10.3390/environments12020067"><div class="pub-body"><a class="pub-title" href="https://doi.org/10.3390/environments12020067" rel="noopener">Global NDVI-LST Correlation: Temporal and Spatial Patterns from 2000 to 2024</a><p class="pub-cite"><b>E. Rahimi</b>, P. Dong, C. Jung. <i>Environments</i> 12(2), 67 (2025).</p><p class="pub-meta"><span class="theme">Vegetation, climate and land surface temperature</span><a class="pub-link" href="https://doi.org/10.3390/environments12020067" rel="noopener">doi:10.3390/environments12020067</a></p></div><span class="cites"><span class="n">79</span> citations</span></li><li class="pub d-rs" id="p2025-review-remote-sensing-applications-flower" data-year="2025" data-domain="rs" data-theme="rs-crop" data-cites="17" data-journal="Journal of Ecology and Environment" data-search="A review of remote sensing applications in flower phenology detection E. Rahimi C. Jung Journal of Ecology and Environment Crop mapping and vegetation phenology 2025 10.5141/jee.24.118"><div class="pub-body"><a class="pub-title" href="https://doi.org/10.5141/jee.24.118" rel="noopener">A review of remote sensing applications in flower phenology detection</a><p class="pub-cite"><b>E. Rahimi</b>, C. Jung. <i>Journal of Ecology and Environment</i> 49, 5 (2025).</p><p class="pub-meta"><span class="theme">Crop mapping and vegetation phenology</span><a class="pub-link" href="https://doi.org/10.5141/jee.24.118" rel="noopener">doi:10.5141/jee.24.118</a></p></div><span class="cites"><span class="n">17</span> citations</span></li><li class="pub d-sdm" id="p2025-global-estimation-potential-climate-change" data-year="2025" data-domain="sdm" data-theme="sdm-range" data-cites="15" data-journal="Agricultural Research" data-search="A Global Estimation of Potential Climate Change Effects on Pollinator-Dependent Crops E. Rahimi C. Jung Agricultural Research Range shifts of pollinators and crops 2025 10.1007/s40003-024-00802-x"><div class="pub-body"><a class="pub-title" href="https://doi.org/10.1007/s40003-024-00802-x" rel="noopener">A Global Estimation of Potential Climate Change Effects on Pollinator-Dependent Crops</a><p class="pub-cite"><b>E. Rahimi</b>, C. Jung. <i>Agricultural Research</i> 14(4), 812–822 (2025).</p><p class="pub-meta"><span class="theme">Range shifts of pollinators and crops</span><a class="pub-link" href="https://doi.org/10.1007/s40003-024-00802-x" rel="noopener">doi:10.1007/s40003-024-00802-x</a></p></div><span class="cites"><span class="n">15</span> citations</span></li><li class="pub d-rs" id="p2025-analyzing-vegetation-heterogeneity-trends-urban" data-year="2025" data-domain="rs" data-theme="rs-lst" data-cites="12" data-journal="Land" data-search="Analyzing Vegetation Heterogeneity Trends in an Urban-Agricultural Landscape in Iran Using Continuous Metrics and NDVI E. Rahimi C. Jung Land Vegetation, climate and land surface temperature 2025 10.3390/land14020244"><div class="pub-body"><a class="pub-title" href="https://doi.org/10.3390/land14020244" rel="noopener">Analyzing Vegetation Heterogeneity Trends in an Urban-Agricultural Landscape in Iran Using Continuous Metrics and NDVI</a><p class="pub-cite"><b>E. Rahimi</b>, C. Jung. <i>Land</i> 14(2), 244 (2025).</p><p class="pub-meta"><span class="theme">Vegetation, climate and land surface temperature</span><a class="pub-link" href="https://doi.org/10.3390/land14020244" rel="noopener">doi:10.3390/land14020244</a></p></div><span class="cites"><span class="n">12</span> citations</span></li><li class="pub d-pol" id="p2025-exploring-climate-driven-mismatches-between" data-year="2025" data-domain="pol" data-theme="pol-crop" data-cites="12" data-journal="Biology" data-search="Exploring Climate-Driven Mismatches Between Pollinator-Dependent Crops and Honeybees in Asia E. Rahimi C. Jung Biology Crop–pollinator spatial dynamics 2025 10.3390/biology14030234"><div class="pub-body"><a class="pub-title" href="https://doi.org/10.3390/biology14030234" rel="noopener">Exploring Climate-Driven Mismatches Between Pollinator-Dependent Crops and Honeybees in Asia</a><p class="pub-cite"><b>E. Rahimi</b>, C. Jung. <i>Biology</i> 14(3), 234 (2025).</p><p class="pub-meta"><span class="theme">Crop–pollinator spatial dynamics</span><a class="pub-link" href="https://doi.org/10.3390/biology14030234" rel="noopener">doi:10.3390/biology14030234</a></p></div><span class="cites"><span class="n">12</span> citations</span></li><li class="pub d-pol" id="p2025-investigating-spatial-biases-temporal-trends" data-year="2025" data-domain="pol" data-theme="pol-data" data-cites="9" data-journal="Insects" data-search="Investigating the Spatial Biases and Temporal Trends in Insect Pollinator Occurrence Data on GBIF E. Rahimi C. Jung Insects Pollinator data and research trends 2025 10.3390/insects16080769"><div class="pub-body"><a class="pub-title" href="https://doi.org/10.3390/insects16080769" rel="noopener">Investigating the Spatial Biases and Temporal Trends in Insect Pollinator Occurrence Data on GBIF</a><p class="pub-cite"><b>E. Rahimi</b>, C. Jung. <i>Insects</i> 16(8), 769 (2025).</p><p class="pub-meta"><span class="theme">Pollinator data and research trends</span><a class="pub-link" href="https://doi.org/10.3390/insects16080769" rel="noopener">doi:10.3390/insects16080769</a></p></div><span class="cites"><span class="n">9</span> citations</span></li><li class="pub d-rs" id="p2025-global-variations-relationship-between-tree" data-year="2025" data-domain="rs" data-theme="rs-lst" data-cites="6" data-journal="Tropical Ecology" data-search="Global variations in the relationship between tree canopy height and land surface temperature E. Rahimi P. Dong C. Jung Tropical Ecology Vegetation, climate and land surface temperature 2025 10.1007/s42965-025-00392-x"><div class="pub-body"><a class="pub-title" href="https://doi.org/10.1007/s42965-025-00392-x" rel="noopener">Global variations in the relationship between tree canopy height and land surface temperature</a><p class="pub-cite"><b>E. Rahimi</b>, P. Dong, C. Jung. <i>Tropical Ecology</i> 66(3), 496–506 (2025).</p><p class="pub-meta"><span class="theme">Vegetation, climate and land surface temperature</span><a class="pub-link" href="https://doi.org/10.1007/s42965-025-00392-x" rel="noopener">doi:10.1007/s42965-025-00392-x</a></p></div><span class="cites"><span class="n">6</span> citations</span></li><li class="pub d-pol" id="p2025-trends-pollination-scientists-research-comprehensive" data-year="2025" data-domain="pol" data-theme="pol-data" data-cites="6" data-journal="Ecology and Evolution" data-search="Trends in Pollination Scientists&#x27; Research: A Comprehensive Analysis in Citations and Research Topics E. Rahimi C. Jung Ecology and Evolution Pollinator data and research trends 2025 10.1002/ece3.71215"><div class="pub-body"><a class="pub-title" href="https://doi.org/10.1002/ece3.71215" rel="noopener">Trends in Pollination Scientists&#x27; Research: A Comprehensive Analysis in Citations and Research Topics</a><p class="pub-cite"><b>E. Rahimi</b>, C. Jung. <i>Ecology and Evolution</i> 15(5), e71215 (2025).</p><p class="pub-meta"><span class="theme">Pollinator data and research trends</span><a class="pub-link" href="https://doi.org/10.1002/ece3.71215" rel="noopener">doi:10.1002/ece3.71215</a></p></div><span class="cites"><span class="n">6</span> citations</span></li><li class="pub d-rs" id="p2025-global-pattern-vegetation-homogeneity-its" data-year="2025" data-domain="rs" data-theme="rs-lst" data-cites="4" data-journal="Land" data-search="Global Pattern of Vegetation Homogeneity and Its Impact on Land Surface Temperature E. Rahimi P. Dong C. Jung Land Vegetation, climate and land surface temperature 2025 10.3390/land14020421"><div class="pub-body"><a class="pub-title" href="https://doi.org/10.3390/land14020421" rel="noopener">Global Pattern of Vegetation Homogeneity and Its Impact on Land Surface Temperature</a><p class="pub-cite"><b>E. Rahimi</b>, P. Dong, C. Jung. <i>Land</i> 14(2), 421 (2025).</p><p class="pub-meta"><span class="theme">Vegetation, climate and land surface temperature</span><a class="pub-link" href="https://doi.org/10.3390/land14020421" rel="noopener">doi:10.3390/land14020421</a></p></div><span class="cites"><span class="n">4</span> citations</span></li><li class="pub d-pol" id="p2025-mapping-co-occurrence-dynamics-between" data-year="2025" data-domain="pol" data-theme="pol-crop" data-cites="4" data-journal="Community Ecology" data-search="Mapping co-occurrence dynamics between crops and honeybees under climate change in North America E. Rahimi C. Jung Community Ecology Crop–pollinator spatial dynamics 2025 10.1007/s42974-025-00262-5"><div class="pub-body"><a class="pub-title" href="https://doi.org/10.1007/s42974-025-00262-5" rel="noopener">Mapping co-occurrence dynamics between crops and honeybees under climate change in North America</a><p class="pub-cite"><b>E. Rahimi</b>, C. Jung. <i>Community Ecology</i> 26(3), 489–499 (2025).</p><p class="pub-meta"><span class="theme">Crop–pollinator spatial dynamics</span><a class="pub-link" href="https://doi.org/10.1007/s42974-025-00262-5" rel="noopener">doi:10.1007/s42974-025-00262-5</a></p></div><span class="cites"><span class="n">4</span> citations</span></li><li class="pub d-rs" id="p2025-comparative-performance-multi-spectral-vegetation" data-year="2025" data-domain="rs" data-theme="rs-crop" data-cites="3" data-journal="Journal of Sustainable Agriculture and Environment" data-search="Comparative Performance of Multi-Spectral Vegetation Indices for Phenology-Based Rapeseed Classification E. Rahimi C. Jung Journal of Sustainable Agriculture and Environment Crop mapping and vegetation phenology 2025 10.1002/sae2.70087"><div class="pub-body"><a class="pub-title" href="https://doi.org/10.1002/sae2.70087" rel="noopener">Comparative Performance of Multi-Spectral Vegetation Indices for Phenology-Based Rapeseed Classification</a><p class="pub-cite"><b>E. Rahimi</b>, C. Jung. <i>Journal of Sustainable Agriculture and Environment</i> 4(3), e70087 (2025).</p><p class="pub-meta"><span class="theme">Crop mapping and vegetation phenology</span><a class="pub-link" href="https://doi.org/10.1002/sae2.70087" rel="noopener">doi:10.1002/sae2.70087</a></p></div><span class="cites"><span class="n">3</span> citations</span></li><li class="pub d-rs" id="p2025-global-remote-sensing-research-author" data-year="2025" data-domain="rs" data-theme="rs-data" data-cites="3" data-journal="Ecology and Evolution" data-search="Global Remote Sensing Research: An Author-Centric Analysis of Contributions and Trends E. Rahimi C. Jung Ecology and Evolution Data and global time-series analysis 2025 10.1002/ece3.71952"><div class="pub-body"><a class="pub-title" href="https://doi.org/10.1002/ece3.71952" rel="noopener">Global Remote Sensing Research: An Author-Centric Analysis of Contributions and Trends</a><p class="pub-cite"><b>E. Rahimi</b>, C. Jung. <i>Ecology and Evolution</i> 15(8), e71952 (2025).</p><p class="pub-meta"><span class="theme">Data and global time-series analysis</span><a class="pub-link" href="https://doi.org/10.1002/ece3.71952" rel="noopener">doi:10.1002/ece3.71952</a></p></div><span class="cites"><span class="n">3</span> citations</span></li><li class="pub d-rs" id="p2025-how-do-climate-latitude-shape" data-year="2025" data-domain="rs" data-theme="rs-lst" data-cites="3" data-journal="Forests" data-search="How Do Climate and Latitude Shape Global Tree Canopy Structure? E. Rahimi P. Dong C. Jung Forests Vegetation, climate and land surface temperature 2025 10.3390/f16030432"><div class="pub-body"><a class="pub-title" href="https://doi.org/10.3390/f16030432" rel="noopener">How Do Climate and Latitude Shape Global Tree Canopy Structure?</a><p class="pub-cite"><b>E. Rahimi</b>, P. Dong, C. Jung. <i>Forests</i> 16(3), 432 (2025).</p><p class="pub-meta"><span class="theme">Vegetation, climate and land surface temperature</span><a class="pub-link" href="https://doi.org/10.3390/f16030432" rel="noopener">doi:10.3390/f16030432</a></p></div><span class="cites"><span class="n">3</span> citations</span></li><li class="pub d-bio" id="p2025-iran-s-dam-waterbodies-10" data-year="2025" data-domain="bio" data-theme="bio-pa" data-cites="3" data-journal="Journal of Landscape Ecology" data-search="Iran’s Dam Waterbodies: A 10-Year Trend Analysis (2013–2023) E. Rahimi P. Dong F. Ahmadzadeh Journal of Landscape Ecology Protected areas, environmental pressures and planning 2025 10.2478/jlecol-2025-0006"><div class="pub-body"><a class="pub-title" href="https://doi.org/10.2478/jlecol-2025-0006" rel="noopener">Iran’s Dam Waterbodies: A 10-Year Trend Analysis (2013–2023)</a><p class="pub-cite"><b>E. Rahimi</b>, P. Dong, F. Ahmadzadeh. <i>Journal of Landscape Ecology</i> 18(1), 101–113 (2025).</p><p class="pub-meta"><span class="theme">Protected areas, environmental pressures and planning</span><a class="pub-link" href="https://doi.org/10.2478/jlecol-2025-0006" rel="noopener">doi:10.2478/jlecol-2025-0006</a></p></div><span class="cites"><span class="n">3</span> citations</span></li><li class="pub d-rs" id="p2025-influence-spatial-extent-shape-lst" data-year="2025" data-domain="rs" data-theme="rs-lst" data-cites="3" data-journal="Journal of Landscape Ecology" data-search="The Influence of Spatial Extent Shape on LST-NDVI Patterns: A Multi-Scale Perspective E. Rahimi P. Dong Journal of Landscape Ecology Vegetation, climate and land surface temperature 2025 10.2478/jlecol-2025-0007"><div class="pub-body"><a class="pub-title" href="https://doi.org/10.2478/jlecol-2025-0007" rel="noopener">The Influence of Spatial Extent Shape on LST-NDVI Patterns: A Multi-Scale Perspective</a><p class="pub-cite"><b>E. Rahimi</b>, P. Dong. <i>Journal of Landscape Ecology</i> 18(1), 114–126 (2025).</p><p class="pub-meta"><span class="theme">Vegetation, climate and land surface temperature</span><a class="pub-link" href="https://doi.org/10.2478/jlecol-2025-0007" rel="noopener">doi:10.2478/jlecol-2025-0007</a></p></div><span class="cites"><span class="n">3</span> citations</span></li><li class="pub d-sdm" id="p2025-using-ecological-niche-modeling-model" data-year="2025" data-domain="sdm" data-theme="sdm-inv" data-cites="1" data-journal="Journal of Ecology and Environment" data-search="Using ecological niche modeling to model invasion risk of hornets (Hymenoptera: Vespidae) in Iran E. Rahimi C. Jung Journal of Ecology and Environment Invasion ecology and niche dynamics 2025 10.5141/jee.24.071"><div class="pub-body"><a class="pub-title" href="https://doi.org/10.5141/jee.24.071" rel="noopener">Using ecological niche modeling to model invasion risk of hornets (Hymenoptera: Vespidae) in Iran</a><p class="pub-cite"><b>E. Rahimi</b>, C. Jung. <i>Journal of Ecology and Environment</i> 49, 1 (2025).</p><p class="pub-meta"><span class="theme">Invasion ecology and niche dynamics</span><a class="pub-link" href="https://doi.org/10.5141/jee.24.071" rel="noopener">doi:10.5141/jee.24.071</a></p></div><span class="cites"><span class="n">1</span> citation</span></li><li class="pub d-pol" id="p2025-impact-taxonomic-functional-grouping-specialization" data-year="2025" data-domain="pol" data-theme="pol-net" data-cites="0" data-journal="Entomological Research" data-search="Impact of Taxonomic and Functional Grouping on Specialization in Plant–Pollinator Networks E. Rahimi C. Jung Entomological Research Plant–pollinator networks 2025 10.1111/1748-5967.70036"><div class="pub-body"><a class="pub-title" href="https://doi.org/10.1111/1748-5967.70036" rel="noopener">Impact of Taxonomic and Functional Grouping on Specialization in Plant–Pollinator Networks</a><p class="pub-cite"><b>E. Rahimi</b>, C. Jung. <i>Entomological Research</i> 55(5), e70036 (2025).</p><p class="pub-meta"><span class="theme">Plant–pollinator networks</span><a class="pub-link" href="https://doi.org/10.1111/1748-5967.70036" rel="noopener">doi:10.1111/1748-5967.70036</a></p></div></li><li class="pub d-bio" id="p2025-investigating-climate-driven-corridor-networks" data-year="2025" data-domain="bio" data-theme="bio-corr" data-cites="0" data-journal="Journal of Wildlife and Biodiversity" data-search="Investigating climate-driven corridor networks for Golden Jackal (Canis aureus) in the Northern Parts of Iran E. Rahimi F. Ahmadzadeh Journal of Wildlife and Biodiversity Wildlife corridors and habitat connectivity 2025 10.5281/zenodo.17388012"><div class="pub-body"><a class="pub-title" href="https://doi.org/10.5281/zenodo.17388012" rel="noopener">Investigating climate-driven corridor networks for Golden Jackal (<em>Canis aureus</em>) in the Northern Parts of Iran</a><p class="pub-cite"><b>E. Rahimi</b>, F. Ahmadzadeh. <i>Journal of Wildlife and Biodiversity</i> 9(3), 470–485 (2025).</p><p class="pub-meta"><span class="theme">Wildlife corridors and habitat connectivity</span><a class="pub-link" href="https://doi.org/10.5281/zenodo.17388012" rel="noopener">doi:10.5281/zenodo.17388012</a></p></div></li></ol></section><section class="pub-group"><h3 class="group-head"><span>2024</span><span class="group-count">18 papers</span></h3><ol class="pubs"><li class="pub d-sdm" id="p2024-global-trends-climate-suitability-bees" data-year="2024" data-domain="sdm" data-theme="sdm-range" data-cites="51" data-journal="Insects" data-search="Global Trends in Climate Suitability of Bees: Ups and Downs in a Warming World E. Rahimi C. Jung Insects Range shifts of pollinators and crops 2024 10.3390/insects15020127"><div class="pub-body"><a class="pub-title" href="https://doi.org/10.3390/insects15020127" rel="noopener">Global Trends in Climate Suitability of Bees: Ups and Downs in a Warming World</a><p class="pub-cite"><b>E. Rahimi</b>, C. Jung. <i>Insects</i> 15(2), 127 (2024).</p><p class="pub-meta"><span class="theme">Range shifts of pollinators and crops</span><a class="pub-link" href="https://doi.org/10.3390/insects15020127" rel="noopener">doi:10.3390/insects15020127</a><span class="flag award">Insects Best Paper Award 2026</span></p></div><span class="cites"><span class="n">51</span> citations</span></li><li class="pub d-rs" id="p2024-evaluating-applicability-landsat-8-data" data-year="2024" data-domain="rs" data-theme="rs-data" data-cites="21" data-journal="Frontiers in Remote Sensing" data-search="Evaluating the applicability of Landsat 8 data for global time series analysis E. Rahimi C. Jung Frontiers in Remote Sensing Data and global time-series analysis 2024 10.3389/frsen.2024.1492534"><div class="pub-body"><a class="pub-title" href="https://doi.org/10.3389/frsen.2024.1492534" rel="noopener">Evaluating the applicability of Landsat 8 data for global time series analysis</a><p class="pub-cite"><b>E. Rahimi</b>, C. Jung. <i>Frontiers in Remote Sensing</i> 5, 1492534 (2024).</p><p class="pub-meta"><span class="theme">Data and global time-series analysis</span><a class="pub-link" href="https://doi.org/10.3389/frsen.2024.1492534" rel="noopener">doi:10.3389/frsen.2024.1492534</a></p></div><span class="cites"><span class="n">21</span> citations</span></li><li class="pub d-rs" id="p2024-efficiency-long-short-term-memory" data-year="2024" data-domain="rs" data-theme="rs-crop" data-cites="14" data-journal="Korean Journal of Remote Sensing" data-search="The efficiency of long short-term memory (LSTM) in phenology-based crop classification E. Rahimi C. Jung Korean Journal of Remote Sensing Crop mapping and vegetation phenology 2024 10.7780/kjrs.2024.40.1.6"><div class="pub-body"><a class="pub-title" href="https://doi.org/10.7780/kjrs.2024.40.1.6" rel="noopener">The efficiency of long short-term memory (LSTM) in phenology-based crop classification</a><p class="pub-cite"><b>E. Rahimi</b>, C. Jung. <i>Korean Journal of Remote Sensing</i> 40(1), 57–69 (2024).</p><p class="pub-meta"><span class="theme">Crop mapping and vegetation phenology</span><a class="pub-link" href="https://doi.org/10.7780/kjrs.2024.40.1.6" rel="noopener">doi:10.7780/kjrs.2024.40.1.6</a></p></div><span class="cites"><span class="n">14</span> citations</span></li><li class="pub d-bio" id="p2024-assessing-climate-change-threats-biodiversity" data-year="2024" data-domain="bio" data-theme="bio-pa" data-cites="11" data-journal="European Journal of Wildlife Research" data-search="Assessing climate change threats to biodiversity and protected areas of Iran E. Rahimi P. Dong F. Ahmadzadeh C. Jung European Journal of Wildlife Research Protected areas, environmental pressures and planning 2024 10.1007/s10344-024-01842-y"><div class="pub-body"><a class="pub-title" href="https://doi.org/10.1007/s10344-024-01842-y" rel="noopener">Assessing climate change threats to biodiversity and protected areas of Iran</a><p class="pub-cite"><b>E. Rahimi</b>, P. Dong, F. Ahmadzadeh, C. Jung. <i>European Journal of Wildlife Research</i> 70(5), 89 (2024).</p><p class="pub-meta"><span class="theme">Protected areas, environmental pressures and planning</span><a class="pub-link" href="https://doi.org/10.1007/s10344-024-01842-y" rel="noopener">doi:10.1007/s10344-024-01842-y</a></p></div><span class="cites"><span class="n">11</span> citations</span></li><li class="pub d-pol" id="p2024-new-sdm-based-approach-assessing" data-year="2024" data-domain="pol" data-theme="pol-net" data-cites="10" data-journal="Insects" data-search="A New SDM-Based Approach for Assessing Climate Change Effects on Plant–Pollinator Networks E. Rahimi C. Jung Insects Plant–pollinator networks 2024 10.3390/insects15110842"><div class="pub-body"><a class="pub-title" href="https://doi.org/10.3390/insects15110842" rel="noopener">A New SDM-Based Approach for Assessing Climate Change Effects on Plant–Pollinator Networks</a><p class="pub-cite"><b>E. Rahimi</b>, C. Jung. <i>Insects</i> 15(11), 842 (2024).</p><p class="pub-meta"><span class="theme">Plant–pollinator networks</span><a class="pub-link" href="https://doi.org/10.3390/insects15110842" rel="noopener">doi:10.3390/insects15110842</a></p></div><span class="cites"><span class="n">10</span> citations</span></li><li class="pub d-sdm" id="p2024-assessing-climate-niche-similarity-between" data-year="2024" data-domain="sdm" data-theme="sdm-inv" data-cites="7" data-journal="BMC Ecology and Evolution" data-search="Assessing climate niche similarity between Persian fallow deer (Dama mesopotamica) areas in Iran E. Rahimi P. Dong F. Ahmadzadeh BMC Ecology and Evolution Invasion ecology and niche dynamics 2024 10.1186/s12862-024-02281-8"><div class="pub-body"><a class="pub-title" href="https://doi.org/10.1186/s12862-024-02281-8" rel="noopener">Assessing climate niche similarity between Persian fallow deer (<em>Dama mesopotamica</em>) areas in Iran</a><p class="pub-cite"><b>E. Rahimi</b>, P. Dong, F. Ahmadzadeh. <i>BMC Ecology and Evolution</i> 24(1), 93 (2024).</p><p class="pub-meta"><span class="theme">Invasion ecology and niche dynamics</span><a class="pub-link" href="https://doi.org/10.1186/s12862-024-02281-8" rel="noopener">doi:10.1186/s12862-024-02281-8</a></p></div><span class="cites"><span class="n">7</span> citations</span></li><li class="pub d-pol" id="p2024-global-evaluation-urban-agriculture-potential" data-year="2024" data-domain="pol" data-theme="pol-urban" data-cites="5" data-journal="Urban Agriculture &amp; Regional Food Systems" data-search="A global evaluation of urban agriculture potential for pollinator-dependent crops in major cities E. Rahimi C. Jung Urban Agriculture &amp; Regional Food Systems Urban agriculture 2024 10.1002/uar2.20058"><div class="pub-body"><a class="pub-title" href="https://doi.org/10.1002/uar2.20058" rel="noopener">A global evaluation of urban agriculture potential for pollinator-dependent crops in major cities</a><p class="pub-cite"><b>E. Rahimi</b>, C. Jung. <i>Urban Agriculture &amp; Regional Food Systems</i> 9(1), e20058 (2024).</p><p class="pub-meta"><span class="theme">Urban agriculture</span><a class="pub-link" href="https://doi.org/10.1002/uar2.20058" rel="noopener">doi:10.1002/uar2.20058</a></p></div><span class="cites"><span class="n">5</span> citations</span></li><li class="pub d-bio" id="p2024-energy-based-corridor-identification-mammals" data-year="2024" data-domain="bio" data-theme="bio-corr" data-cites="4" data-journal="Ecology and Evolution" data-search="Energy-based corridor identification for mammals between protected areas in Iran E. Rahimi P. Dong F. Ahmadzadeh Ecology and Evolution Wildlife corridors and habitat connectivity 2024 10.1002/ece3.11551"><div class="pub-body"><a class="pub-title" href="https://doi.org/10.1002/ece3.11551" rel="noopener">Energy-based corridor identification for mammals between protected areas in Iran</a><p class="pub-cite"><b>E. Rahimi</b>, P. Dong, F. Ahmadzadeh. <i>Ecology and Evolution</i> 14(6), e11551 (2024).</p><p class="pub-meta"><span class="theme">Wildlife corridors and habitat connectivity</span><a class="pub-link" href="https://doi.org/10.1002/ece3.11551" rel="noopener">doi:10.1002/ece3.11551</a></p></div><span class="cites"><span class="n">4</span> citations</span></li><li class="pub d-rs" id="p2024-assessing-landscape-fragmentation-dynamics-fourier" data-year="2024" data-domain="rs" data-theme="rs-frag" data-cites="3" data-journal="Journal of Landscape Ecology" data-search="Assessing Landscape Fragmentation Dynamics with Fourier Transforms E. Rahimi P. Dong Journal of Landscape Ecology Landscape pattern, heterogeneity and fragmentation 2024 10.2478/jlecol-2024-0020"><div class="pub-body"><a class="pub-title" href="https://doi.org/10.2478/jlecol-2024-0020" rel="noopener">Assessing Landscape Fragmentation Dynamics with Fourier Transforms</a><p class="pub-cite"><b>E. Rahimi</b>, P. Dong. <i>Journal of Landscape Ecology</i> 17(3), 97–112 (2024).</p><p class="pub-meta"><span class="theme">Landscape pattern, heterogeneity and fragmentation</span><a class="pub-link" href="https://doi.org/10.2478/jlecol-2024-0020" rel="noopener">doi:10.2478/jlecol-2024-0020</a></p></div><span class="cites"><span class="n">3</span> citations</span></li><li class="pub d-pol" id="p2024-spatial-modeling-insect-pollination-services" data-year="2024" data-domain="pol" data-theme="pol-svc" data-cites="3" data-journal="Insects" data-search="Spatial Modeling of Insect Pollination Services in Fragmented Landscapes E. Rahimi C. Jung Insects Pollination services and landscape modelling 2024 10.3390/insects15090662"><div class="pub-body"><a class="pub-title" href="https://doi.org/10.3390/insects15090662" rel="noopener">Spatial Modeling of Insect Pollination Services in Fragmented Landscapes</a><p class="pub-cite"><b>E. Rahimi</b>, C. Jung. <i>Insects</i> 15(9), 662 (2024).</p><p class="pub-meta"><span class="theme">Pollination services and landscape modelling</span><a class="pub-link" href="https://doi.org/10.3390/insects15090662" rel="noopener">doi:10.3390/insects15090662</a></p></div><span class="cites"><span class="n">3</span> citations</span></li><li class="pub d-pol" id="p2024-spatial-overlap-between-bees-pollinator" data-year="2024" data-domain="pol" data-theme="pol-crop" data-cites="3" data-journal="Journal of Sustainable Agriculture and Environment" data-search="Spatial Overlap Between Bees and Pollinator-Dependent Crops in Europe and North America E. Rahimi C. Jung Journal of Sustainable Agriculture and Environment Crop–pollinator spatial dynamics 2024 10.1002/sae2.70021"><div class="pub-body"><a class="pub-title" href="https://doi.org/10.1002/sae2.70021" rel="noopener">Spatial Overlap Between Bees and Pollinator-Dependent Crops in Europe and North America</a><p class="pub-cite"><b>E. Rahimi</b>, C. Jung. <i>Journal of Sustainable Agriculture and Environment</i> 3(4), e270021 (2024).</p><p class="pub-meta"><span class="theme">Crop–pollinator spatial dynamics</span><a class="pub-link" href="https://doi.org/10.1002/sae2.70021" rel="noopener">doi:10.1002/sae2.70021</a></p></div><span class="cites"><span class="n">3</span> citations</span></li><li class="pub d-pol" id="p2024-assessing-relationship-between-latitude-plant" data-year="2024" data-domain="pol" data-theme="pol-net" data-cites="2" data-journal="Journal of Ecology and Environment" data-search="Assessing the relationship between latitude and plant-pollinator network specialization E. Rahimi C. Jung Journal of Ecology and Environment Plant–pollinator networks 2024 10.5141/jee.24.032"><div class="pub-body"><a class="pub-title" href="https://doi.org/10.5141/jee.24.032" rel="noopener">Assessing the relationship between latitude and plant-pollinator network specialization</a><p class="pub-cite"><b>E. Rahimi</b>, C. Jung. <i>Journal of Ecology and Environment</i> 48, 26 (2024).</p><p class="pub-meta"><span class="theme">Plant–pollinator networks</span><a class="pub-link" href="https://doi.org/10.5141/jee.24.032" rel="noopener">doi:10.5141/jee.24.032</a></p></div><span class="cites"><span class="n">2</span> citations</span></li><li class="pub d-rs" id="p2024-comparative-analysis-supervised-phenology-based" data-year="2024" data-domain="rs" data-theme="rs-crop" data-cites="2" data-journal="Korean Journal of Remote Sensing" data-search="Comparative analysis of supervised and phenology-based approaches for crop mapping: A case study in South Korea E. Rahimi C. Jung Korean Journal of Remote Sensing Crop mapping and vegetation phenology 2024 10.7780/kjrs.2024.40.2.5"><div class="pub-body"><a class="pub-title" href="https://doi.org/10.7780/kjrs.2024.40.2.5" rel="noopener">Comparative analysis of supervised and phenology-based approaches for crop mapping: A case study in South Korea</a><p class="pub-cite"><b>E. Rahimi</b>, C. Jung. <i>Korean Journal of Remote Sensing</i> 40(2), 179–190 (2024).</p><p class="pub-meta"><span class="theme">Crop mapping and vegetation phenology</span><a class="pub-link" href="https://doi.org/10.7780/kjrs.2024.40.2.5" rel="noopener">doi:10.7780/kjrs.2024.40.2.5</a></p></div><span class="cites"><span class="n">2</span> citations</span></li><li class="pub d-sdm" id="p2024-g-space-versus-e-space" data-year="2024" data-domain="sdm" data-theme="sdm-inv" data-cites="2" data-journal="Ecology and Evolution" data-search="G-space versus E-space: Are hornets (Hymenoptera: Vespidae) at equilibrium with honeybees in Asia? E. Rahimi C. Jung Ecology and Evolution Invasion ecology and niche dynamics 2024 10.1002/ece3.11615"><div class="pub-body"><a class="pub-title" href="https://doi.org/10.1002/ece3.11615" rel="noopener">G-space versus E-space: Are hornets (Hymenoptera: Vespidae) at equilibrium with honeybees in Asia?</a><p class="pub-cite"><b>E. Rahimi</b>, C. Jung. <i>Ecology and Evolution</i> 14(7), e11615 (2024).</p><p class="pub-meta"><span class="theme">Invasion ecology and niche dynamics</span><a class="pub-link" href="https://doi.org/10.1002/ece3.11615" rel="noopener">doi:10.1002/ece3.11615</a></p></div><span class="cites"><span class="n">2</span> citations</span></li><li class="pub d-pol" id="p2024-identifying-pollinator-friendly-sites-within" data-year="2024" data-domain="pol" data-theme="pol-urban" data-cites="2" data-journal="Journal of Sustainable Agriculture and Environment" data-search="Identifying pollinator-friendly sites within urban green spaces for sustainable urban agriculture E. Rahimi C. Jung Journal of Sustainable Agriculture and Environment Urban agriculture 2024 10.1002/sae2.12109"><div class="pub-body"><a class="pub-title" href="https://doi.org/10.1002/sae2.12109" rel="noopener">Identifying pollinator-friendly sites within urban green spaces for sustainable urban agriculture</a><p class="pub-cite"><b>E. Rahimi</b>, C. Jung. <i>Journal of Sustainable Agriculture and Environment</i> 3(3), e12109 (2024).</p><p class="pub-meta"><span class="theme">Urban agriculture</span><a class="pub-link" href="https://doi.org/10.1002/sae2.12109" rel="noopener">doi:10.1002/sae2.12109</a></p></div><span class="cites"><span class="n">2</span> citations</span></li><li class="pub d-pol" id="p2024-modeling-honeybee-flower-visitation-rates" data-year="2024" data-domain="pol" data-theme="pol-svc" data-cites="2" data-journal="Arthropod-Plant Interactions" data-search="Modeling honeybee flower visitation rates in the fragmented agricultural landscapes based on Lévy-flight behavior E. Rahimi C. Jung Arthropod-Plant Interactions Pollination services and landscape modelling 2024 10.1007/s11829-024-10085-2"><div class="pub-body"><a class="pub-title" href="https://doi.org/10.1007/s11829-024-10085-2" rel="noopener">Modeling honeybee flower visitation rates in the fragmented agricultural landscapes based on Lévy-flight behavior</a><p class="pub-cite"><b>E. Rahimi</b>, C. Jung. <i>Arthropod-Plant Interactions</i> 18(5), 1033–1052 (2024).</p><p class="pub-meta"><span class="theme">Pollination services and landscape modelling</span><a class="pub-link" href="https://doi.org/10.1007/s11829-024-10085-2" rel="noopener">doi:10.1007/s11829-024-10085-2</a></p></div><span class="cites"><span class="n">2</span> citations</span></li><li class="pub d-sdm" id="p2024-estimating-potential-climate-change-effects" data-year="2024" data-domain="sdm" data-theme="sdm-range" data-cites="1" data-journal="Entomological Research" data-search="Estimating potential climate change effects on pollinating insects: A multi-taxa study in the Republic of Korea E. Rahimi C. Jung Entomological Research Range shifts of pollinators and crops 2024 10.1111/1748-5967.70010"><div class="pub-body"><a class="pub-title" href="https://doi.org/10.1111/1748-5967.70010" rel="noopener">Estimating potential climate change effects on pollinating insects: A multi-taxa study in the Republic of Korea</a><p class="pub-cite"><b>E. Rahimi</b>, C. Jung. <i>Entomological Research</i> 54(12), e70010 (2024).</p><p class="pub-meta"><span class="theme">Range shifts of pollinators and crops</span><a class="pub-link" href="https://doi.org/10.1111/1748-5967.70010" rel="noopener">doi:10.1111/1748-5967.70010</a></p></div><span class="cites"><span class="n">1</span> citation</span></li><li class="pub d-rs" id="p2024-comprehensive-landsat-8-ndvi-ndbi" data-year="2024" data-domain="rs" data-theme="rs-data" data-cites="0" data-journal="Environmental Resources Research" data-search="A comprehensive Landsat 8 NDVI and NDBI data preparation for the vegetation trend analysis in Iran E. Rahimi C. Jung Environmental Resources Research Data and global time-series analysis 2024 10.22069/ijerr.2024.22488.1439"><div class="pub-body"><a class="pub-title" href="https://doi.org/10.22069/ijerr.2024.22488.1439" rel="noopener">A comprehensive Landsat 8 NDVI and NDBI data preparation for the vegetation trend analysis in Iran</a><p class="pub-cite"><b>E. Rahimi</b>, C. Jung. <i>Environmental Resources Research</i> 12(2), 333–344 (2024).</p><p class="pub-meta"><span class="theme">Data and global time-series analysis</span><a class="pub-link" href="https://doi.org/10.22069/ijerr.2024.22488.1439" rel="noopener">doi:10.22069/ijerr.2024.22488.1439</a></p></div></li></ol></section><section class="pub-group"><h3 class="group-head"><span>2023</span><span class="group-count">4 papers</span></h3><ol class="pubs"><li class="pub d-bio" id="p2023-identifying-barriers-pinch-points-large" data-year="2023" data-domain="bio" data-theme="bio-corr" data-cites="21" data-journal="Journal of Environmental Studies and Sciences" data-search="Identifying barriers and pinch-points of large mammal corridors in Iran E. Rahimi P. Dong Journal of Environmental Studies and Sciences Wildlife corridors and habitat connectivity 2023 10.1007/s13412-023-00823-y"><div class="pub-body"><a class="pub-title" href="https://doi.org/10.1007/s13412-023-00823-y" rel="noopener">Identifying barriers and pinch-points of large mammal corridors in Iran</a><p class="pub-cite"><b>E. Rahimi</b>, P. Dong. <i>Journal of Environmental Studies and Sciences</i> 13(2), 285–297 (2023).</p><p class="pub-meta"><span class="theme">Wildlife corridors and habitat connectivity</span><a class="pub-link" href="https://doi.org/10.1007/s13412-023-00823-y" rel="noopener">doi:10.1007/s13412-023-00823-y</a></p></div><span class="cites"><span class="n">21</span> citations</span></li><li class="pub d-bio" id="p2023-potential-anthropogenic-climatic-factors-affecting" data-year="2023" data-domain="bio" data-theme="bio-pa" data-cites="15" data-journal="Journal of Environmental Studies and Sciences" data-search="Potential anthropogenic and climatic factors affecting Iran’s international wetlands E. Rahimi M. Jahandideh P. Dong F. Ahmadzadeh Journal of Environmental Studies and Sciences Protected areas, environmental pressures and planning 2023 10.1007/s13412-023-00846-5"><div class="pub-body"><a class="pub-title" href="https://doi.org/10.1007/s13412-023-00846-5" rel="noopener">Potential anthropogenic and climatic factors affecting Iran’s international wetlands</a><p class="pub-cite"><b>E. Rahimi</b>, M. Jahandideh, P. Dong, F. Ahmadzadeh. <i>Journal of Environmental Studies and Sciences</i> 13(4), 557–574 (2023).</p><p class="pub-meta"><span class="theme">Protected areas, environmental pressures and planning</span><a class="pub-link" href="https://doi.org/10.1007/s13412-023-00846-5" rel="noopener">doi:10.1007/s13412-023-00846-5</a></p></div><span class="cites"><span class="n">15</span> citations</span></li><li class="pub d-pol" id="p2023-plant-pollinator-metanetworks-fragmented-landscapes" data-year="2023" data-domain="pol" data-theme="pol-net" data-cites="12" data-journal="Ecological Processes" data-search="Plant–pollinator metanetworks in fragmented landscapes: a simulation study E. Rahimi C. Jung Ecological Processes Plant–pollinator networks 2023 10.1186/s13717-023-00442-z"><div class="pub-body"><a class="pub-title" href="https://doi.org/10.1186/s13717-023-00442-z" rel="noopener">Plant–pollinator metanetworks in fragmented landscapes: a simulation study</a><p class="pub-cite"><b>E. Rahimi</b>, C. Jung. <i>Ecological Processes</i> 12(1), 29 (2023).</p><p class="pub-meta"><span class="theme">Plant–pollinator networks</span><a class="pub-link" href="https://doi.org/10.1186/s13717-023-00442-z" rel="noopener">doi:10.1186/s13717-023-00442-z</a></p></div><span class="cites"><span class="n">12</span> citations</span></li><li class="pub d-pol" id="p2023-estimating-pollination-supply-urban-green" data-year="2023" data-domain="pol" data-theme="pol-urban" data-cites="4" data-journal="Urban Ecosystems" data-search="Estimating the pollination supply of urban green spaces to determine suitable areas for urban agriculture in the city of Tehran E. Rahimi S. Barghjelveh P. Dong Urban Ecosystems Urban agriculture 2023 10.1007/s11252-022-01289-6"><div class="pub-body"><a class="pub-title" href="https://doi.org/10.1007/s11252-022-01289-6" rel="noopener">Estimating the pollination supply of urban green spaces to determine suitable areas for urban agriculture in the city of Tehran</a><p class="pub-cite"><b>E. Rahimi</b>, S. Barghjelveh, P. Dong. <i>Urban Ecosystems</i> 26(1), 19–30 (2023).</p><p class="pub-meta"><span class="theme">Urban agriculture</span><a class="pub-link" href="https://doi.org/10.1007/s11252-022-01289-6" rel="noopener">doi:10.1007/s11252-022-01289-6</a></p></div><span class="cites"><span class="n">4</span> citations</span></li></ol></section><section class="pub-group"><h3 class="group-head"><span>2022</span><span class="group-count">5 papers</span></h3><ol class="pubs"><li class="pub d-pol" id="p2022-review-diversity-bees-attractiveness-host" data-year="2022" data-domain="pol" data-theme="pol-svc" data-cites="63" data-journal="Agriculture &amp; Food Security" data-search="A review of diversity of bees, the attractiveness of host plants and the effects of landscape variables on bees in urban gardens E. Rahimi S. Barghjelveh P. Dong Agriculture &amp; Food Security Pollination services and landscape modelling 2022 10.1186/s40066-021-00353-2"><div class="pub-body"><a class="pub-title" href="https://doi.org/10.1186/s40066-021-00353-2" rel="noopener">A review of diversity of bees, the attractiveness of host plants and the effects of landscape variables on bees in urban gardens</a><p class="pub-cite"><b>E. Rahimi</b>, S. Barghjelveh, P. Dong. <i>Agriculture &amp; Food Security</i> 11(1), 6 (2022).</p><p class="pub-meta"><span class="theme">Pollination services and landscape modelling</span><a class="pub-link" href="https://doi.org/10.1186/s40066-021-00353-2" rel="noopener">doi:10.1186/s40066-021-00353-2</a></p></div><span class="cites"><span class="n">63</span> citations</span></li><li class="pub d-pol" id="p2022-amount-distance-dependent-structural-effects" data-year="2022" data-domain="pol" data-theme="pol-svc" data-cites="34" data-journal="Agriculture &amp; Food Security" data-search="Amount, distance-dependent and structural effects of forest patches on bees in agricultural landscapes E. Rahimi S. Barghjelveh P. Dong Agriculture &amp; Food Security Pollination services and landscape modelling 2022 10.1186/s40066-022-00360-x"><div class="pub-body"><a class="pub-title" href="https://doi.org/10.1186/s40066-022-00360-x" rel="noopener">Amount, distance-dependent and structural effects of forest patches on bees in agricultural landscapes</a><p class="pub-cite"><b>E. Rahimi</b>, S. Barghjelveh, P. Dong. <i>Agriculture &amp; Food Security</i> 11(1), 10 (2022).</p><p class="pub-meta"><span class="theme">Pollination services and landscape modelling</span><a class="pub-link" href="https://doi.org/10.1186/s40066-022-00360-x" rel="noopener">doi:10.1186/s40066-022-00360-x</a></p></div><span class="cites"><span class="n">34</span> citations</span></li><li class="pub d-bio" id="p2022-what-are-main-human-pressures" data-year="2022" data-domain="bio" data-theme="bio-pa" data-cites="20" data-journal="Journal of Environmental Studies and Sciences" data-search="What are the main human pressures affecting Iran’s protected areas? E. Rahimi P. Dong Journal of Environmental Studies and Sciences Protected areas, environmental pressures and planning 2022 10.1007/s13412-022-00785-7"><div class="pub-body"><a class="pub-title" href="https://doi.org/10.1007/s13412-022-00785-7" rel="noopener">What are the main human pressures affecting Iran’s protected areas?</a><p class="pub-cite"><b>E. Rahimi</b>, P. Dong. <i>Journal of Environmental Studies and Sciences</i> 12(4), 682–691 (2022).</p><p class="pub-meta"><span class="theme">Protected areas, environmental pressures and planning</span><a class="pub-link" href="https://doi.org/10.1007/s13412-022-00785-7" rel="noopener">doi:10.1007/s13412-022-00785-7</a></p></div><span class="cites"><span class="n">20</span> citations</span></li><li class="pub d-rs" id="p2022-comparison-discrete-continuous-metrics-measuring" data-year="2022" data-domain="rs" data-theme="rs-frag" data-cites="16" data-journal="Journal of the Indian Society of Remote Sensing" data-search="A Comparison of Discrete and Continuous Metrics for Measuring Landscape Changes E. Rahimi S. Barghjelveh P. Dong Journal of the Indian Society of Remote Sensing Landscape pattern, heterogeneity and fragmentation 2022 10.1007/s12524-022-01526-7"><div class="pub-body"><a class="pub-title" href="https://doi.org/10.1007/s12524-022-01526-7" rel="noopener">A Comparison of Discrete and Continuous Metrics for Measuring Landscape Changes</a><p class="pub-cite"><b>E. Rahimi</b>, S. Barghjelveh, P. Dong. <i>Journal of the Indian Society of Remote Sensing</i> 50(7), 1257–1273 (2022).</p><p class="pub-meta"><span class="theme">Landscape pattern, heterogeneity and fragmentation</span><a class="pub-link" href="https://doi.org/10.1007/s12524-022-01526-7" rel="noopener">doi:10.1007/s12524-022-01526-7</a></p></div><span class="cites"><span class="n">16</span> citations</span></li><li class="pub d-sdm" id="p2022-estimating-geographic-range-shifts-vespa" data-year="2022" data-domain="sdm" data-theme="sdm-range" data-cites="6" data-journal="Journal of Apiculture" data-search="Estimating Geographic Range Shifts of Vespa simillima after Vespa velutina (Hymenoptera: Vespidae) Invasion in South Korea E. Rahimi S. Bak C. Jung Journal of Apiculture Range shifts of pollinators and crops 2022 10.17519/apiculture.2022.11.37.4.383"><div class="pub-body"><a class="pub-title" href="https://doi.org/10.17519/apiculture.2022.11.37.4.383" rel="noopener">Estimating Geographic Range Shifts of <em>Vespa simillima</em> after <em>Vespa velutina</em> (Hymenoptera: Vespidae) Invasion in South Korea</a><p class="pub-cite"><b>E. Rahimi</b>, S. Bak, C. Jung. <i>Journal of Apiculture</i> 37(4), 383–387 (2022).</p><p class="pub-meta"><span class="theme">Range shifts of pollinators and crops</span><a class="pub-link" href="https://doi.org/10.17519/apiculture.2022.11.37.4.383" rel="noopener">doi:10.17519/apiculture.2022.11.37.4.383</a></p></div><span class="cites"><span class="n">6</span> citations</span></li></ol></section><section class="pub-group"><h3 class="group-head"><span>2021</span><span class="group-count">7 papers</span></h3><ol class="pubs"><li class="pub d-rs" id="p2021-quantifying-how-urban-landscape-heterogeneity" data-year="2021" data-domain="rs" data-theme="rs-frag" data-cites="59" data-journal="Journal of Ecology and Environment" data-search="Quantifying how urban landscape heterogeneity affects land surface temperature at multiple scales E. Rahimi S. Barghjelveh P. Dong Journal of Ecology and Environment Landscape pattern, heterogeneity and fragmentation 2021 10.1186/s41610-021-00203-z"><div class="pub-body"><a class="pub-title" href="https://doi.org/10.1186/s41610-021-00203-z" rel="noopener">Quantifying how urban landscape heterogeneity affects land surface temperature at multiple scales</a><p class="pub-cite"><b>E. Rahimi</b>, S. Barghjelveh, P. Dong. <i>Journal of Ecology and Environment</i> 45(1), 22 (2021).</p><p class="pub-meta"><span class="theme">Landscape pattern, heterogeneity and fragmentation</span><a class="pub-link" href="https://doi.org/10.1186/s41610-021-00203-z" rel="noopener">doi:10.1186/s41610-021-00203-z</a></p></div><span class="cites"><span class="n">59</span> citations</span></li><li class="pub d-pol" id="p2021-how-effective-are-artificial-nests" data-year="2021" data-domain="pol" data-theme="pol-data" data-cites="58" data-journal="Journal of Ecology and Environment" data-search="How effective are artificial nests in attracting bees? A review E. Rahimi S. Barghjelveh P. Dong Journal of Ecology and Environment Pollinator data and research trends 2021 10.1186/s41610-021-00192-z"><div class="pub-body"><a class="pub-title" href="https://doi.org/10.1186/s41610-021-00192-z" rel="noopener">How effective are artificial nests in attracting bees? A review</a><p class="pub-cite"><b>E. Rahimi</b>, S. Barghjelveh, P. Dong. <i>Journal of Ecology and Environment</i> 45(1), 16 (2021).</p><p class="pub-meta"><span class="theme">Pollinator data and research trends</span><a class="pub-link" href="https://doi.org/10.1186/s41610-021-00192-z" rel="noopener">doi:10.1186/s41610-021-00192-z</a></p></div><span class="cites"><span class="n">58</span> citations</span></li><li class="pub d-sdm" id="p2021-estimating-potential-range-shift-some" data-year="2021" data-domain="sdm" data-theme="sdm-range" data-cites="43" data-journal="Journal of Ecology and Environment" data-search="Estimating potential range shift of some wild bees in response to climate change scenarios in northwestern regions of Iran E. Rahimi S. Barghjelveh P. Dong Journal of Ecology and Environment Range shifts of pollinators and crops 2021 10.1186/s41610-021-00189-8"><div class="pub-body"><a class="pub-title" href="https://doi.org/10.1186/s41610-021-00189-8" rel="noopener">Estimating potential range shift of some wild bees in response to climate change scenarios in northwestern regions of Iran</a><p class="pub-cite"><b>E. Rahimi</b>, S. Barghjelveh, P. Dong. <i>Journal of Ecology and Environment</i> 45(1), 14 (2021).</p><p class="pub-meta"><span class="theme">Range shifts of pollinators and crops</span><a class="pub-link" href="https://doi.org/10.1186/s41610-021-00189-8" rel="noopener">doi:10.1186/s41610-021-00189-8</a></p></div><span class="cites"><span class="n">43</span> citations</span></li><li class="pub d-pol" id="p2021-estimating-landscape-structure-effects-pollination" data-year="2021" data-domain="pol" data-theme="pol-svc" data-cites="36" data-journal="Ecological Processes" data-search="Estimating landscape structure effects on pollination for management of agricultural landscapes E. Rahimi S. Barghjelveh P. Dong Ecological Processes Pollination services and landscape modelling 2021 10.1186/s13717-021-00331-3"><div class="pub-body"><a class="pub-title" href="https://doi.org/10.1186/s13717-021-00331-3" rel="noopener">Estimating landscape structure effects on pollination for management of agricultural landscapes</a><p class="pub-cite"><b>E. Rahimi</b>, S. Barghjelveh, P. Dong. <i>Ecological Processes</i> 10(1), 59 (2021).</p><p class="pub-meta"><span class="theme">Pollination services and landscape modelling</span><a class="pub-link" href="https://doi.org/10.1186/s13717-021-00331-3" rel="noopener">doi:10.1186/s13717-021-00331-3</a></p></div><span class="cites"><span class="n">36</span> citations</span></li><li class="pub d-pol" id="p2021-using-lonsdorf-model-estimating-habitat" data-year="2021" data-domain="pol" data-theme="pol-svc" data-cites="28" data-journal="Ecological Processes" data-search="Using the Lonsdorf model for estimating habitat loss and fragmentation effects on pollination service E. Rahimi S. Barghjelveh P. Dong Ecological Processes Pollination services and landscape modelling 2021 10.1186/s13717-021-00291-8"><div class="pub-body"><a class="pub-title" href="https://doi.org/10.1186/s13717-021-00291-8" rel="noopener">Using the Lonsdorf model for estimating habitat loss and fragmentation effects on pollination service</a><p class="pub-cite"><b>E. Rahimi</b>, S. Barghjelveh, P. Dong. <i>Ecological Processes</i> 10(1), 22 (2021).</p><p class="pub-meta"><span class="theme">Pollination services and landscape modelling</span><a class="pub-link" href="https://doi.org/10.1186/s13717-021-00291-8" rel="noopener">doi:10.1186/s13717-021-00291-8</a></p></div><span class="cites"><span class="n">28</span> citations</span></li><li class="pub d-pol" id="p2021-pollmap-software-crop-pollination-mapping" data-year="2021" data-domain="pol" data-theme="pol-svc" data-cites="17" data-journal="Journal of Ecology and Environment" data-search="PollMap: a software for crop pollination mapping in agricultural landscapes E. Rahimi S. Barghjelveh P. Dong M.A. Pirlar M.M. Jahanbakhshian Journal of Ecology and Environment Pollination services and landscape modelling 2021 10.1186/s41610-021-00210-0"><div class="pub-body"><a class="pub-title" href="https://doi.org/10.1186/s41610-021-00210-0" rel="noopener">PollMap: a software for crop pollination mapping in agricultural landscapes</a><p class="pub-cite"><b>E. Rahimi</b>, S. Barghjelveh, P. Dong, M.A. Pirlar, M.M. Jahanbakhshian. <i>Journal of Ecology and Environment</i> 45(1), 27 (2021).</p><p class="pub-meta"><span class="theme">Pollination services and landscape modelling</span><a class="pub-link" href="https://doi.org/10.1186/s41610-021-00210-0" rel="noopener">doi:10.1186/s41610-021-00210-0</a></p></div><span class="cites"><span class="n">17</span> citations</span></li><li class="pub d-pol" id="p2021-using-lonsdorf-estimap-models-large" data-year="2021" data-domain="pol" data-theme="pol-svc" data-cites="7" data-journal="Environmental Resources Research" data-search="Using the Lonsdorf and ESTIMAP models for large-scale pollination mapping (Case study: Iran) E. Rahimi S. Barghjelveh P. Dong Environmental Resources Research Pollination services and landscape modelling 2021 10.22069/ijerr.2021.18872.1332"><div class="pub-body"><a class="pub-title" href="https://doi.org/10.22069/ijerr.2021.18872.1332" rel="noopener">Using the Lonsdorf and ESTIMAP models for large-scale pollination mapping (Case study: Iran)</a><p class="pub-cite"><b>E. Rahimi</b>, S. Barghjelveh, P. Dong. <i>Environmental Resources Research</i> 9(2), 235–251 (2021).</p><p class="pub-meta"><span class="theme">Pollination services and landscape modelling</span><a class="pub-link" href="https://doi.org/10.22069/ijerr.2021.18872.1332" rel="noopener">doi:10.22069/ijerr.2021.18872.1332</a></p></div><span class="cites"><span class="n">7</span> citations</span></li></ol></section><section class="pub-group"><h3 class="group-head"><span>2020</span><span class="group-count">2 papers</span></h3><ol class="pubs"><li class="pub d-bio" id="p2020-zoning-oshtrankou-protected-area-using" data-year="2020" data-domain="bio" data-theme="bio-pa" data-cites="3" data-journal="Environmental Researches" data-search="Zoning of Oshtrankou Protected Area using multi-criteria evaluation and K-means clustering algorithm E. Rahimi S. Barghjelveh Environmental Researches Protected areas, environmental pressures and planning 2020 "><div class="pub-body"><a class="pub-title" href="https://dorl.net/dor/20.1001.1.20089597.1399.11.21.5.4" rel="noopener">Zoning of Oshtrankou Protected Area using multi-criteria evaluation and K-means clustering algorithm</a><p class="pub-cite"><b>E. Rahimi</b>, S. Barghjelveh. <i>Environmental Researches</i> 11(21), 43–60 (2020).</p><p class="pub-meta"><span class="theme">Protected areas, environmental pressures and planning</span><a class="pub-link" href="https://dorl.net/dor/20.1001.1.20089597.1399.11.21.5.4" rel="noopener">DOR 20.1001.1.20089597.1399.11.21.5.4</a><span class="flag">In Persian</span></p></div><span class="cites"><span class="n">3</span> citations</span></li><li class="pub d-bio" id="p2020-suitable-site-priority-establish-urban" data-year="2020" data-domain="bio" data-theme="bio-pa" data-cites="0" data-journal="Journal of Environmental Science and Technology" data-search="Suitable site priority to establish urban nuisance industries using multi-criteria decision analysis and mathematical programming models S. Soltanian E. Rahimi A. Salarvand M. Jahandideh Journal of Environmental Science and Technology Protected areas, environmental pressures and planning 2020 "><div class="pub-body"><a class="pub-title" href="https://sanad.iau.ir/en/Article/837655" rel="noopener">Suitable site priority to establish urban nuisance industries using multi-criteria decision analysis and mathematical programming models</a><p class="pub-cite">S. Soltanian, <b>E. Rahimi</b>, A. Salarvand, M. Jahandideh. <i>Journal of Environmental Science and Technology</i> 22(2) (2020).</p><p class="pub-meta"><span class="theme">Protected areas, environmental pressures and planning</span><a class="pub-link" href="https://sanad.iau.ir/en/Article/837655" rel="noopener">Journal page</a><span class="flag">In Persian</span></p></div></li></ol></section><section class="pub-group"><h3 class="group-head"><span>2019</span><span class="group-count">1 paper</span></h3><ol class="pubs"><li class="pub d-rs" id="p2019-complexity-theory-measuring-complexity-ecosystems" data-year="2019" data-domain="rs" data-theme="rs-frag" data-cites="0" data-journal="Environmental Researches" data-search="Complexity theory and measuring complexity of ecosystems in a landscape E. Rahimi A.R. Salman Mahini Environmental Researches Landscape pattern, heterogeneity and fragmentation 2019 "><div class="pub-body"><a class="pub-title" href="https://www.iraneiap.ir/article_106925.html?lang=en" rel="noopener">Complexity theory and measuring complexity of ecosystems in a landscape</a><p class="pub-cite"><b>E. Rahimi</b>, A.R. Salman Mahini. <i>Environmental Researches</i> 10(19), 19–34 (2019).</p><p class="pub-meta"><span class="theme">Landscape pattern, heterogeneity and fragmentation</span><a class="pub-link" href="https://www.iraneiap.ir/article_106925.html?lang=en" rel="noopener">Journal page</a><span class="ident">DOR 20.1001.1.20089597.1398.10.19.3.1</span><span class="flag">In Persian</span></p></div></li></ol></section><section class="pub-group"><h3 class="group-head"><span>2018</span><span class="group-count">1 paper</span></h3><ol class="pubs"><li class="pub d-rs" id="p2018-percolation-theory-its-applications-landscape" data-year="2018" data-domain="rs" data-theme="rs-frag" data-cites="3" data-journal="Environmental Researches" data-search="Percolation theory and its applications in landscape ecology E. Rahimi A.R. Salman Mahini Environmental Researches Landscape pattern, heterogeneity and fragmentation 2018 "><div class="pub-body"><a class="pub-title" href="https://www.iraneiap.ir/article_81473.html?lang=en" rel="noopener">Percolation theory and its applications in landscape ecology</a><p class="pub-cite"><b>E. Rahimi</b>, A.R. Salman Mahini. <i>Environmental Researches</i> 9(17), 47–61 (2018).</p><p class="pub-meta"><span class="theme">Landscape pattern, heterogeneity and fragmentation</span><a class="pub-link" href="https://www.iraneiap.ir/article_81473.html?lang=en" rel="noopener">Journal page</a><span class="ident">DOR 20.1001.1.20089597.1397.9.17.6.3</span><span class="flag">In Persian</span></p></div><span class="cites"><span class="n">3</span> citations</span></li></ol></section><section class="pub-group"><h3 class="group-head"><span>2017</span><span class="group-count">1 paper</span></h3><ol class="pubs"><li class="pub d-rs" id="p2017-identifying-quantifying-predicting-landscape-patterns" data-year="2017" data-domain="rs" data-theme="rs-frag" data-cites="0" data-journal="Environmental Researches" data-search="Identifying, quantifying and predicting of landscape patterns in space and time E. Rahimi A.R. Salman Mahini Environmental Researches Landscape pattern, heterogeneity and fragmentation 2017 "><div class="pub-body"><a class="pub-title" href="https://www.iraneiap.ir/article_81187.html?lang=en" rel="noopener">Identifying, quantifying and predicting of landscape patterns in space and time</a><p class="pub-cite"><b>E. Rahimi</b>, A.R. Salman Mahini. <i>Environmental Researches</i> 7(14), 43–60 (2017).</p><p class="pub-meta"><span class="theme">Landscape pattern, heterogeneity and fragmentation</span><a class="pub-link" href="https://www.iraneiap.ir/article_81187.html?lang=en" rel="noopener">Journal page</a><span class="ident">DOR 20.1001.1.20089597.1395.7.14.5.2</span><span class="flag">In Persian</span></p></div></li></ol></section><section class="pub-group"><h3 class="group-head"><span>2016</span><span class="group-count">3 papers</span></h3><ol class="pubs"><li class="pub d-rs" id="p2016-comparison-continuous-discrete-indices-measuring" data-year="2016" data-domain="rs" data-theme="rs-frag" data-cites="6" data-journal="Journal of RS and GIS for Natural Resources" data-search="A comparison of continuous and discrete indices in measuring Gorgan forest landscape fragmentation E. Rahimi A.R. Salman Mahini S. Soltanian Journal of RS and GIS for Natural Resources Landscape pattern, heterogeneity and fragmentation 2016 "><div class="pub-body"><a class="pub-title" href="https://sanad.iau.ir/en/Article/901985" rel="noopener">A comparison of continuous and discrete indices in measuring Gorgan forest landscape fragmentation</a><p class="pub-cite"><b>E. Rahimi</b>, A.R. Salman Mahini, S. Soltanian. <i>Journal of RS and GIS for Natural Resources</i> 7(3), 30–45 (2016).</p><p class="pub-meta"><span class="theme">Landscape pattern, heterogeneity and fragmentation</span><a class="pub-link" href="https://sanad.iau.ir/en/Article/901985" rel="noopener">Journal page</a><span class="flag">In Persian</span></p></div><span class="cites"><span class="n">6</span> citations</span></li><li class="pub d-rs" id="p2016-comparison-spatial-resolution-landsat-spot" data-year="2016" data-domain="rs" data-theme="rs-frag" data-cites="3" data-journal="Journal of RS and GIS for Natural Resources" data-search="Comparison of spatial resolution of Landsat and SPOT satellite images in measuring landscape fragmentation E. Rahimi A.R. Salman Mahini S.H. Mirkarimi H.R. Kamyab S. Soltanian Journal of RS and GIS for Natural Resources Landscape pattern, heterogeneity and fragmentation 2016 "><div class="pub-body"><a class="pub-title" href="https://sanad.iau.ir/en/Article/901874" rel="noopener">Comparison of spatial resolution of Landsat and SPOT satellite images in measuring landscape fragmentation</a><p class="pub-cite"><b>E. Rahimi</b>, A.R. Salman Mahini, S.H. Mirkarimi, H.R. Kamyab, S. Soltanian. <i>Journal of RS and GIS for Natural Resources</i> 7(1), 13–25 (2016).</p><p class="pub-meta"><span class="theme">Landscape pattern, heterogeneity and fragmentation</span><a class="pub-link" href="https://sanad.iau.ir/en/Article/901874" rel="noopener">Journal page</a><span class="flag">In Persian</span></p></div><span class="cites"><span class="n">3</span> citations</span></li><li class="pub d-rs" id="p2016-application-spatial-autocorrelation-techniques-measure" data-year="2016" data-domain="rs" data-theme="rs-frag" data-cites="1" data-journal="Journal of Environmental Studies" data-search="Application of spatial autocorrelation techniques to measure urban sprawl, case study: Gorgan City E. Rahimi A.R. Salman Mahini S.H. Mirkarimi Journal of Environmental Studies Landscape pattern, heterogeneity and fragmentation 2016 10.22059/jes.2016.58103"><div class="pub-body"><a class="pub-title" href="https://doi.org/10.22059/jes.2016.58103" rel="noopener">Application of spatial autocorrelation techniques to measure urban sprawl, case study: Gorgan City</a><p class="pub-cite"><b>E. Rahimi</b>, A.R. Salman Mahini, S.H. Mirkarimi. <i>Journal of Environmental Studies</i> 42(1), 97–113 (2016).</p><p class="pub-meta"><span class="theme">Landscape pattern, heterogeneity and fragmentation</span><a class="pub-link" href="https://doi.org/10.22059/jes.2016.58103" rel="noopener">doi:10.22059/jes.2016.58103</a><span class="flag">In Persian</span></p></div><span class="cites"><span class="n">1</span> citation</span></li></ol></section></div>
+
+      <div class="journals-block">
+        <h3>Journals</h3>
+        <p>Papers have appeared in 33 journals. Select one to list its papers.</p>
+        <ul class="journals"><li><a href="#publications" data-journal="Journal of Ecology and Environment">Journal of Ecology and Environment</a><span class="count">7</span></li><li><a href="#publications" data-journal="Insects">Insects</a><span class="count">5</span></li><li><a href="#publications" data-journal="Ecology and Evolution">Ecology and Evolution</a><span class="count">4</span></li><li><a href="#publications" data-journal="Environmental Researches">Environmental Researches</a><span class="count">4</span></li><li><a href="#publications" data-journal="Community Ecology">Community Ecology</a><span class="count">3</span></li><li><a href="#publications" data-journal="Ecological Processes">Ecological Processes</a><span class="count">3</span></li><li><a href="#publications" data-journal="Journal of Environmental Studies and Sciences">Journal of Environmental Studies and Sciences</a><span class="count">3</span></li><li><a href="#publications" data-journal="Journal of Landscape Ecology">Journal of Landscape Ecology</a><span class="count">3</span></li><li><a href="#publications" data-journal="Journal of Sustainable Agriculture and Environment">Journal of Sustainable Agriculture and Environment</a><span class="count">3</span></li><li><a href="#publications" data-journal="Agriculture &amp; Food Security">Agriculture &amp; Food Security</a><span class="count">2</span></li><li><a href="#publications" data-journal="Entomological Research">Entomological Research</a><span class="count">2</span></li><li><a href="#publications" data-journal="Environmental Resources Research">Environmental Resources Research</a><span class="count">2</span></li><li><a href="#publications" data-journal="Journal of RS and GIS for Natural Resources">Journal of RS and GIS for Natural Resources</a><span class="count">2</span></li><li><a href="#publications" data-journal="Korean Journal of Remote Sensing">Korean Journal of Remote Sensing</a><span class="count">2</span></li><li><a href="#publications" data-journal="Land">Land</a><span class="count">2</span></li><li><a href="#publications" data-journal="Agricultural Research">Agricultural Research</a><span class="count">1</span></li><li><a href="#publications" data-journal="Agrosystems, Geosciences &amp; Environment">Agrosystems, Geosciences &amp; Environment</a><span class="count">1</span></li><li><a href="#publications" data-journal="Arthropod-Plant Interactions">Arthropod-Plant Interactions</a><span class="count">1</span></li><li><a href="#publications" data-journal="Biology">Biology</a><span class="count">1</span></li><li><a href="#publications" data-journal="BMC Ecology and Evolution">BMC Ecology and Evolution</a><span class="count">1</span></li><li><a href="#publications" data-journal="Environments">Environments</a><span class="count">1</span></li><li><a href="#publications" data-journal="European Journal of Wildlife Research">European Journal of Wildlife Research</a><span class="count">1</span></li><li><a href="#publications" data-journal="Forests">Forests</a><span class="count">1</span></li><li><a href="#publications" data-journal="Frontiers in Remote Sensing">Frontiers in Remote Sensing</a><span class="count">1</span></li><li><a href="#publications" data-journal="Journal of Apiculture">Journal of Apiculture</a><span class="count">1</span></li><li><a href="#publications" data-journal="Journal of Environmental Science and Technology">Journal of Environmental Science and Technology</a><span class="count">1</span></li><li><a href="#publications" data-journal="Journal of Environmental Studies">Journal of Environmental Studies</a><span class="count">1</span></li><li><a href="#publications" data-journal="Journal of the Indian Society of Remote Sensing">Journal of the Indian Society of Remote Sensing</a><span class="count">1</span></li><li><a href="#publications" data-journal="Journal of Wildlife and Biodiversity">Journal of Wildlife and Biodiversity</a><span class="count">1</span></li><li><a href="#publications" data-journal="Scientific Reports">Scientific Reports</a><span class="count">1</span></li><li><a href="#publications" data-journal="Tropical Ecology">Tropical Ecology</a><span class="count">1</span></li><li><a href="#publications" data-journal="Urban Agriculture &amp; Regional Food Systems">Urban Agriculture &amp; Regional Food Systems</a><span class="count">1</span></li><li><a href="#publications" data-journal="Urban Ecosystems">Urban Ecosystems</a><span class="count">1</span></li></ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="recognition" aria-label="Awards and teaching">
+    <div class="wrap two-col">
+      <div>
+        <h2>Awards</h2>
+        <article class="award">
+          <svg class="swatch" viewBox="0 0 48 32" aria-hidden="true"><rect width="48" height="32" rx="2"/><rect class="rows" width="48" height="32" rx="2" fill="url(#rows-v)"/></svg>
+          <div>
+            <h3>Insects Best Paper Award 2026</h3>
+            <p>For <a href="https://doi.org/10.3390/insects15020127" rel="noopener">Global Trends in Climate Suitability of Bees: Ups and Downs in a Warming World</a> (Rahimi and Jung, <i>Insects</i> 15(2), 127, 2024), a global species distribution modelling assessment of how climate change shifts habitat suitability for bees. The journal selected it as one of five award-winning articles among those it published in 2024.</p>
+            <p class="award-links"><a href="https://www.mdpi.com/journal/insects/awards/3629" rel="noopener">Award announcement</a></p>
+          </div>
+        </article>
+      </div>
+      <div>
+        <h2>Teaching</h2>
+        <ul class="teaching">
+          <li>
+            <h3>Species distribution modelling</h3>
+            <p>Graduate course, 2026. SDM methods, MaxEnt and ecological niche theory.</p>
+          </li>
+          <li>
+            <h3>Ecology</h3>
+            <p>Undergraduate course with lectures and laboratory, 2025.</p>
+          </li>
+        </ul>
+        <p class="muted">Both at Gyeongkuk National University, South Korea.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="education" aria-labelledby="edu-h">
+    <div class="wrap">
+      <h2 id="edu-h">Education and positions</h2>
+      <ol class="timeline">
+        <li>
+          <span class="when">2022 to present</span>
+          <div><h3>Postdoctoral researcher</h3><p>Gyeongkuk National University, South Korea, in the lab of Prof. Chuleui Jung. Pollination ecology, remote sensing and invasion ecology.</p></div>
+        </li>
+        <li>
+          <span class="when">2017 to 2021</span>
+          <div><h3>PhD in Environmental Sciences</h3><p>Shahid Beheshti University, Tehran, Iran. GPA 18/20.</p></div>
+        </li>
+        <li>
+          <span class="when">2013 to 2015</span>
+          <div><h3>MSc in Environmental Sciences</h3><p>Gorgan University of Agricultural Sciences and Natural Resources, Iran. GPA 18.29/20.</p></div>
+        </li>
+        <li>
+          <span class="when">2009 to 2013</span>
+          <div><h3>BSc in Environmental Sciences</h3><p>Khatam Al Anbia Behbahan University of Technology, Iran. GPA 17.2/20.</p></div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="section" id="contact" aria-labelledby="contact-h">
+    <div class="wrap">
+      <h2 id="contact-h">Contact</h2>
+      <p class="section-lede">I welcome enquiries about faculty positions, research collaborations and invited talks in ecology, pollination biology, remote sensing and environmental science.</p>
+      <dl class="contact-list">
+        <div><dt>Email</dt><dd><a href="mailto:ehsanrahimi666@gmail.com">ehsanrahimi666@gmail.com</a></dd></div>
+        <div><dt>Location</dt><dd>Gyeongkuk National University, Andong, South Korea</dd></div>
+        <div><dt>Profiles</dt><dd><a href="https://scholar.google.com/citations?user=vUdulZUAAAAJ&amp;hl=en" rel="noopener">Google Scholar</a>, <a href="https://orcid.org/0000-0002-8401-472X" rel="noopener">ORCID 0000-0002-8401-472X</a>, <a href="https://www.linkedin.com/in/ehsan-rahimi-288a10149/" rel="noopener">LinkedIn</a></dd></div>
+        <div><dt>References</dt><dd>Prof. Chuleui Jung, Gyeongkuk National University, and Prof. Pinliang Dong, University of North Texas</dd></div>
+      </dl>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>© 2026 Ehsan Rahimi</p>
+    <p>Publication records checked against Crossref, ORCID and Google Scholar. Citation metrics from Google Scholar, retrieved <time datetime="2026-09-29">29 September 2026</time>.</p>
+  </div>
+</footer>
+
+<script type="application/json" id="taxonomy">{"domains": [{"id": "rs", "name": "Remote sensing and landscape science"}, {"id": "pol", "name": "Pollination and agricultural ecology"}, {"id": "sdm", "name": "Species distribution modelling and climate change"}, {"id": "bio", "name": "Biodiversity and conservation"}], "themes": [{"id": "rs-crop", "domain": "rs", "name": "Crop mapping and vegetation phenology"}, {"id": "rs-lst", "domain": "rs", "name": "Vegetation, climate and land surface temperature"}, {"id": "rs-frag", "domain": "rs", "name": "Landscape pattern, heterogeneity and fragmentation"}, {"id": "rs-data", "domain": "rs", "name": "Data and global time-series analysis"}, {"id": "pol-net", "domain": "pol", "name": "Plant–pollinator networks"}, {"id": "pol-svc", "domain": "pol", "name": "Pollination services and landscape modelling"}, {"id": "pol-crop", "domain": "pol", "name": "Crop–pollinator spatial dynamics"}, {"id": "pol-urban", "domain": "pol", "name": "Urban agriculture"}, {"id": "pol-data", "domain": "pol", "name": "Pollinator data and research trends"}, {"id": "sdm-range", "domain": "sdm", "name": "Range shifts of pollinators and crops"}, {"id": "sdm-inv", "domain": "sdm", "name": "Invasion ecology and niche dynamics"}, {"id": "sdm-meth", "domain": "sdm", "name": "Predictors and species interactions in SDMs"}, {"id": "bio-pa", "domain": "bio", "name": "Protected areas, environmental pressures and planning"}, {"id": "bio-corr", "domain": "bio", "name": "Wildlife corridors and habitat connectivity"}]}</script>
+<script>
+(function () {
+  "use strict";
+  var doc = document.documentElement;
+  doc.classList.add("js");
+  var reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* ---------------------------------------------------------------- menu */
+  var menuBtn = document.querySelector(".menu");
+  var nav = document.getElementById("site-nav");
+  function closeMenu() { menuBtn.setAttribute("aria-expanded", "false"); nav.classList.remove("open"); }
+  if (menuBtn && nav) {
+    menuBtn.addEventListener("click", function () {
+      var open = menuBtn.getAttribute("aria-expanded") === "true";
+      menuBtn.setAttribute("aria-expanded", String(!open));
+      nav.classList.toggle("open", !open);
+    });
+    nav.addEventListener("click", function (e) { if (e.target.closest("a")) closeMenu(); });
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && nav.classList.contains("open")) { closeMenu(); menuBtn.focus(); }
+    });
+  }
+
+  /* ---------------------------------------------------------------- publications */
+  var list = document.getElementById("pub-list");
+  var taxEl = document.getElementById("taxonomy");
+  if (!list || !taxEl) return;
+  var tax = JSON.parse(taxEl.textContent);
+  var domainName = {}, themeName = {};
+  tax.domains.forEach(function (d) { domainName[d.id] = d.name; });
+  tax.themes.forEach(function (t) { themeName[t.id] = t.name; });
+
+  function norm(s) {
+    s = String(s || "");
+    if (s.normalize) s = s.normalize("NFD").replace(/[̀-ͯ]/g, "");
+    return s.toLowerCase().replace(/[‐-―]/g, "-");
+  }
+  function plural(n, w) { return n + " " + w + (n === 1 ? "" : "s"); }
+
+  var items = Array.prototype.map.call(list.querySelectorAll(".pub"), function (el, i) {
+    return {
+      el: el, id: el.id, idx: i,
+      year: +el.getAttribute("data-year"),
+      domain: el.getAttribute("data-domain"),
+      theme: el.getAttribute("data-theme"),
+      cites: +el.getAttribute("data-cites"),
+      journal: el.getAttribute("data-journal"),
+      text: norm(el.getAttribute("data-search"))
+    };
+  });
+  var byId = {};
+  items.forEach(function (it) { byId[it.id] = it; });
+
+  var state = { q: "", domain: "all", theme: null, journal: null, order: "year" };
+  var search = document.getElementById("pub-search");
+  var status = document.getElementById("pub-status");
+  var chips = Array.prototype.slice.call(document.querySelectorAll(".chips .chip"));
+  var orderBtns = Array.prototype.slice.call(document.querySelectorAll(".order button"));
+
+  function isFiltered() { return state.q || state.domain !== "all" || state.theme || state.journal; }
+
+  function matches(it, terms) {
+    if (state.domain !== "all" && it.domain !== state.domain) return false;
+    if (state.theme && it.theme !== state.theme) return false;
+    if (state.journal && it.journal !== state.journal) return false;
+    for (var i = 0; i < terms.length; i++) if (it.text.indexOf(terms[i]) === -1) return false;
+    return true;
+  }
+
+  function head(tag, cls, label, count, domain) {
+    var h = document.createElement(tag);
+    h.className = cls + (domain ? " d-" + domain : "");
+    if (domain && tag === "h3") {
+      var dot = document.createElement("i");
+      dot.className = "dot"; dot.setAttribute("aria-hidden", "true");
+      h.appendChild(dot);
+    }
+    var t = document.createElement("span"); t.textContent = label; h.appendChild(t);
+    if (count != null) {
+      var c = document.createElement("span"); c.className = "group-count"; c.textContent = plural(count, "paper");
+      h.appendChild(c);
+    }
+    return h;
+  }
+  function olOf(arr) {
+    var ol = document.createElement("ol"); ol.className = "pubs";
+    arr.forEach(function (it) { ol.appendChild(it.el); });
+    return ol;
+  }
+  function byYear(a, b) { return b.year - a.year || a.idx - b.idx; }
+
+  function render() {
+    var terms = norm(state.q).split(/\s+/).filter(Boolean);
+    var vis = items.filter(function (it) { return matches(it, terms); });
+    var frag = document.createDocumentFragment();
+
+    if (!vis.length) {
+      var p = document.createElement("p"); p.className = "empty";
+      p.textContent = "No papers match these filters. Try fewer words, or clear the filters.";
+      frag.appendChild(p);
+    } else if (state.order === "cites") {
+      vis.sort(function (a, b) { return b.cites - a.cites || byYear(a, b); });
+      var sec = document.createElement("section"); sec.className = "pub-group";
+      sec.appendChild(olOf(vis));
+      frag.appendChild(sec);
+    } else if (state.order === "area") {
+      tax.domains.forEach(function (d) {
+        var inD = vis.filter(function (it) { return it.domain === d.id; });
+        if (!inD.length) return;
+        var sec = document.createElement("section"); sec.className = "pub-group";
+        sec.appendChild(head("h3", "group-head domain", d.name, inD.length, d.id));
+        tax.themes.forEach(function (t) {
+          if (t.domain !== d.id) return;
+          var inT = inD.filter(function (it) { return it.theme === t.id; }).sort(byYear);
+          if (!inT.length) return;
+          sec.appendChild(head("h4", "theme-head", t.name, null, d.id));
+          sec.appendChild(olOf(inT));
+        });
+        frag.appendChild(sec);
+      });
+    } else {
+      vis.sort(byYear);
+      var years = [];
+      vis.forEach(function (it) { if (years.indexOf(it.year) === -1) years.push(it.year); });
+      years.forEach(function (y) {
+        var inY = vis.filter(function (it) { return it.year === y; });
+        var sec = document.createElement("section"); sec.className = "pub-group";
+        sec.appendChild(head("h3", "group-head", String(y), inY.length));
+        sec.appendChild(olOf(inY));
+        frag.appendChild(sec);
+      });
+    }
+    while (list.firstChild) list.removeChild(list.firstChild);
+    list.appendChild(frag);
+    updateStatus(vis.length);
+    chips.forEach(function (c) { c.setAttribute("aria-pressed", String(c.getAttribute("data-domain") === state.domain)); });
+    orderBtns.forEach(function (b) { b.setAttribute("aria-pressed", String(b.getAttribute("data-order") === state.order)); });
+  }
+
+  function updateStatus(n) {
+    while (status.firstChild) status.removeChild(status.firstChild);
+    var parts = [];
+    if (state.domain !== "all" && !state.theme) parts.push("in " + domainName[state.domain]);
+    if (state.theme) parts.push("in " + themeName[state.theme]);
+    if (state.journal) parts.push("in " + state.journal);
+    if (state.q) parts.push("matching “" + state.q.trim() + "”");
+    var text = isFiltered()
+      ? "Showing " + n + " of " + plural(items.length, "paper") + " " + parts.join(", ") + "."
+      : "Showing all " + plural(items.length, "paper") + ".";
+    status.appendChild(document.createTextNode(text));
+    if (isFiltered()) {
+      var b = document.createElement("button");
+      b.type = "button"; b.textContent = "Clear filters";
+      b.addEventListener("click", function () { reset(); render(); search.focus(); });
+      status.appendChild(b);
+    }
+  }
+
+  function reset() { state.q = ""; state.domain = "all"; state.theme = null; state.journal = null; if (search) search.value = ""; }
+
+  var timer;
+  if (search) {
+    search.addEventListener("input", function () {
+      clearTimeout(timer);
+      timer = setTimeout(function () { state.q = search.value; render(); }, 120);
+    });
+  }
+  chips.forEach(function (c) {
+    c.addEventListener("click", function () { state.domain = c.getAttribute("data-domain"); state.theme = null; render(); });
+  });
+  orderBtns.forEach(function (b) {
+    b.addEventListener("click", function () { state.order = b.getAttribute("data-order"); render(); });
+  });
+
+  /* links elsewhere on the page that open a filtered list */
+  document.addEventListener("click", function (e) {
+    var a = e.target.closest("a[data-theme], a[data-domain], a[data-journal]");
+    if (!a) return;
+    reset();
+    if (a.hasAttribute("data-theme")) {
+      state.theme = a.getAttribute("data-theme");
+      var t = tax.themes.filter(function (x) { return x.id === state.theme; })[0];
+      if (t) state.domain = t.domain;
+    } else if (a.hasAttribute("data-domain")) {
+      state.domain = a.getAttribute("data-domain");
+    } else {
+      state.journal = a.getAttribute("data-journal");
+    }
+    render();
+  });
+
+  /* ---------------------------------------------------------------- treemap */
+  function showPaper(id) {
+    var it = byId[id];
+    if (!it) return;
+    if (!it.el.isConnected) { reset(); render(); }
+    it.el.scrollIntoView({ block: "center", behavior: reduceMotion ? "auto" : "smooth" });
+    it.el.classList.remove("flash");
+    void it.el.offsetWidth;
+    it.el.classList.add("flash");
+    var link = it.el.querySelector(".pub-title");
+    if (link) link.focus({ preventScroll: true });
+  }
+
+  var tm = document.getElementById("treemap");
+  var cap = document.getElementById("tm-caption");
+  if (tm && cap) {
+    var capDefault = cap.textContent;
+    var active = null;
+    tm.addEventListener("pointerover", function (e) {
+      var g = e.target.closest(".parcel");
+      if (!g || g === active) return;
+      if (active) active.classList.remove("is-active");
+      active = g; g.classList.add("is-active");
+      cap.textContent = g.getAttribute("data-label");
+    });
+    tm.addEventListener("pointerleave", function () {
+      if (active) active.classList.remove("is-active");
+      active = null; cap.textContent = capDefault;
+    });
+    tm.addEventListener("click", function (e) {
+      var g = e.target.closest(".parcel");
+      if (g) showPaper(g.getAttribute("data-id"));
+    });
+  }
+
+  function fromHash() {
+    var id = decodeURIComponent(location.hash.slice(1));
+    if (byId[id]) showPaper(id);
+  }
+  window.addEventListener("hashchange", fromHash);
+
+  render();
+  if (location.hash) fromHash();
+})();
+</script>
+</body>
+</html>
