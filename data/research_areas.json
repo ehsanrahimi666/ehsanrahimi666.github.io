@@ -1,0 +1,48 @@
+{
+  "domains": [
+    {
+      "id": "rs",
+      "name": "Remote sensing and landscape science",
+      "short": "Remote sensing and landscape",
+      "chip": "Remote sensing",
+      "summary": "Satellite imagery for monitoring vegetation, crops and land surface temperature from single fields to the whole globe: phenology-based crop mapping, NDVI–LST relationships, global time-series data, and the theory and metrics of landscape pattern and fragmentation."
+    },
+    {
+      "id": "pol",
+      "name": "Pollination and agricultural ecology",
+      "short": "Pollination and agriculture",
+      "chip": "Pollination",
+      "summary": "How landscape structure, fragmentation and climate change affect pollinator communities and the crop pollination services they provide: plant–pollinator networks, spatial service models (including the PollMap software), crop–pollinator overlap, urban agriculture and trends in pollinator data."
+    },
+    {
+      "id": "sdm",
+      "name": "Species distribution modelling and climate change",
+      "short": "Distribution modelling and climate",
+      "chip": "Species distributions",
+      "summary": "Species distribution models that project how habitat suitability shifts under future climates, applied to bees, butterflies, pollinator-dependent crops, invasive hornets and Persian fallow deer, together with work on predictor choice and on adding species interactions to these models."
+    },
+    {
+      "id": "bio",
+      "name": "Biodiversity and conservation",
+      "short": "Biodiversity and conservation",
+      "chip": "Conservation",
+      "summary": "Human and climatic pressures on Iran's protected areas, wetlands and reservoirs, protected-area zoning and land-use planning, and the corridors that keep wildlife populations connected."
+    }
+  ],
+  "themes": [
+    {"id": "rs-crop", "domain": "rs", "name": "Crop mapping and vegetation phenology"},
+    {"id": "rs-lst", "domain": "rs", "name": "Vegetation, climate and land surface temperature"},
+    {"id": "rs-frag", "domain": "rs", "name": "Landscape pattern, heterogeneity and fragmentation"},
+    {"id": "rs-data", "domain": "rs", "name": "Data and global time-series analysis"},
+    {"id": "pol-net", "domain": "pol", "name": "Plant–pollinator networks"},
+    {"id": "pol-svc", "domain": "pol", "name": "Pollination services and landscape modelling"},
+    {"id": "pol-crop", "domain": "pol", "name": "Crop–pollinator spatial dynamics"},
+    {"id": "pol-urban", "domain": "pol", "name": "Urban agriculture"},
+    {"id": "pol-data", "domain": "pol", "name": "Pollinator data and research trends"},
+    {"id": "sdm-range", "domain": "sdm", "name": "Range shifts of pollinators and crops"},
+    {"id": "sdm-inv", "domain": "sdm", "name": "Invasion ecology and niche dynamics"},
+    {"id": "sdm-meth", "domain": "sdm", "name": "Predictors and species interactions in SDMs"},
+    {"id": "bio-pa", "domain": "bio", "name": "Protected areas, environmental pressures and planning"},
+    {"id": "bio-corr", "domain": "bio", "name": "Wildlife corridors and habitat connectivity"}
+  ]
+}

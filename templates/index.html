@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ehsan Rahimi | Pollination ecology and landscape science</title>
+<meta name="description" content="Ehsan Rahimi is a postdoctoral researcher at Gyeongkuk National University, South Korea, working on pollination ecology, landscape ecology, remote sensing and species distribution modelling. %%N_PUBS%% peer-reviewed papers; %%CITATIONS%% citations on Google Scholar.">
+<meta name="author" content="Ehsan Rahimi">
+<meta property="og:type" content="profile">
+<meta property="og:title" content="Ehsan Rahimi | Pollination ecology and landscape science">
+<meta property="og:description" content="Postdoctoral researcher at Gyeongkuk National University. %%N_PUBS%% papers on pollination ecology, landscape ecology, remote sensing and species distribution modelling.">
+<meta property="profile:first_name" content="Ehsan">
+<meta property="profile:last_name" content="Rahimi">
+<meta name="theme-color" content="#FAFBF7" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0F1613" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect x='1' y='1' width='17' height='18' rx='2' fill='%232B6A8E'/%3E%3Crect x='20' y='1' width='11' height='12' rx='2' fill='%23C8920F'/%3E%3Crect x='20' y='15' width='11' height='16' rx='2' fill='%233C7A3F'/%3E%3Crect x='1' y='21' width='17' height='10' rx='2' fill='%237E4A87'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400;0,500;0,700;1,400&family=Alegreya+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap">
+<script type="application/ld+json">%%JSONLD%%</script>
+<style>
+/* ------------------------------------------------------------------ tokens */
+:root {
+  color-scheme: light dark;
+  --paper: #FAFBF7;
+  --surface: #FFFFFF;
+  --ink: #1E2A24;
+  --canopy: #173B2B;
+  --muted: #56625A;
+  --rule: #DDE3DB;
+  --soft: #EEF2EC;
+  --link: #1D5B78;
+  --pollen: #E0A41B;
+  --focus: #C98C0A;
+  --rows: rgba(255, 255, 255, .24);
+  /* research areas, drawn from land-cover map classes */
+  --rs: #2B6A8E;  --rs-ink: #245A78;
+  --pol: #C8920F; --pol-ink: #86600A;
+  --sdm: #3C7A3F; --sdm-ink: #2F6532;
+  --bio: #7E4A87; --bio-ink: #6A3C73;
+  --serif: "Alegreya", Georgia, "Times New Roman", serif;
+  --sans: "Alegreya Sans", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --bar-h: 60px;
+  --wrap: 1120px;
+  --gutter: clamp(16px, 4vw, 32px);
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: #0F1613;
+    --surface: #151E1A;
+    --ink: #E4EAE5;
+    --canopy: #CFE6D6;
+    --muted: #A2AEA6;
+    --rule: #2A3831;
+    --soft: #1B2621;
+    --link: #8FC6E0;
+    --pollen: #E8B84A;
+    --focus: #E8B84A;
+    --rows: rgba(0, 0, 0, .26);
+    --rs: #4F8DB0;  --rs-ink: #93C4DF;
+    --pol: #CFA23A; --pol-ink: #E6C06A;
+    --sdm: #5E9C60; --sdm-ink: #9ACB9B;
+    --bio: #9C6FA6; --bio-ink: #D0A9D8;
+  }
+}
+.d-rs  { --d: var(--rs);  --d-ink: var(--rs-ink); }
+.d-pol { --d: var(--pol); --d-ink: var(--pol-ink); }
+.d-sdm { --d: var(--sdm); --d-ink: var(--sdm-ink); }
+.d-bio { --d: var(--bio); --d-ink: var(--bio-ink); }
+
+/* ------------------------------------------------------------------ base */
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+@media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 1.125rem;
+  line-height: 1.55;
+  font-variant-numeric: lining-nums;
+  overflow-x: hidden;
+}
+h1, h2, h3, h4 { font-family: var(--serif); font-weight: 500; color: var(--canopy); margin: 0; line-height: 1.2; }
+h2 { font-size: 2.25rem; letter-spacing: -.005em; }
+h3 { font-size: 1.5rem; }
+p { margin: 0; }
+a { color: var(--link); text-underline-offset: .18em; text-decoration-thickness: 1px; }
+a:hover { text-decoration-thickness: 2px; }
+:focus-visible { outline: 2px solid var(--focus); outline-offset: 3px; border-radius: 3px; }
+.wrap { max-width: var(--wrap); margin: 0 auto; padding: 0 var(--gutter); }
+.vh { position: absolute !important; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap; }
+.defs { position: absolute; width: 0; height: 0; overflow: hidden; }
+.row-line { fill: var(--rows); }
+.skip { position: absolute; left: 12px; top: -48px; z-index: 50; background: var(--canopy); color: var(--paper); padding: 8px 14px; border-radius: 6px; }
+.skip:focus { top: 10px; }
+section[id], .pub { scroll-margin-top: calc(var(--bar-h) + 20px); }
+.muted { color: var(--muted); }
+
+/* ------------------------------------------------------------------ top bar */
+.bar {
+  position: sticky; top: 0; z-index: 20;
+  height: var(--bar-h);
+  background: var(--paper);
+  background: color-mix(in srgb, var(--paper) 90%, transparent);
+  -webkit-backdrop-filter: saturate(1.2) blur(8px);
+  backdrop-filter: saturate(1.2) blur(8px);
+  border-bottom: 1px solid var(--rule);
+}
+.bar-inner { height: 100%; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+.bar-name { font-family: var(--serif); font-size: 1.3rem; font-weight: 500; color: var(--canopy); text-decoration: none; }
+#site-nav { display: flex; gap: 22px; }
+#site-nav a { color: var(--ink); text-decoration: none; font-size: 1rem; padding: 6px 0; }
+#site-nav a:hover { text-decoration: underline; }
+.menu { display: none; font: inherit; font-size: 1rem; color: var(--ink); background: none; border: 1px solid var(--rule); border-radius: 6px; padding: 5px 12px; cursor: pointer; }
+@media (max-width: 860px) {
+  .menu { display: inline-block; }
+  #site-nav {
+    display: none;
+    position: absolute; top: var(--bar-h); left: 0; right: 0;
+    flex-direction: column; gap: 0;
+    background: var(--paper);
+    border-bottom: 1px solid var(--rule);
+    padding: 6px var(--gutter) 14px;
+  }
+  #site-nav.open { display: flex; }
+  #site-nav a { padding: 11px 0; border-bottom: 1px solid var(--rule); }
+  #site-nav a:last-child { border-bottom: 0; }
+  html:not(.js) #site-nav { display: flex; position: static; flex-direction: row; flex-wrap: wrap; gap: 4px 16px; padding: 0; border: 0; background: none; }
+  html:not(.js) .menu { display: none; }
+  html:not(.js) .bar { height: auto; padding: 10px 0; }
+}
+
+/* ------------------------------------------------------------------ hero */
+.hero { padding: clamp(40px, 7vw, 88px) 0 clamp(48px, 7vw, 96px); }
+.hero-grid { display: grid; grid-template-columns: minmax(0, 1.02fr) minmax(0, 1fr); gap: clamp(32px, 5vw, 64px); align-items: center; }
+.portrait { display: block; width: 112px; height: 112px; object-fit: cover; border-radius: 10px; margin-bottom: 24px; }
+.hero h1 { font-size: clamp(3rem, 6.4vw, 4.5rem); line-height: 1; letter-spacing: -.02em; }
+.role { font-family: var(--serif); font-style: italic; font-size: clamp(1.3rem, 2.2vw, 1.55rem); color: var(--muted); margin-top: 12px; }
+.lede { font-family: var(--serif); font-size: 1.3125rem; line-height: 1.5; margin-top: 28px; max-width: 34em; }
+.affil { margin-top: 20px; color: var(--muted); }
+.record { margin-top: 6px; }
+.actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 18px; margin-top: 30px; }
+.btn { display: inline-block; background: var(--canopy); color: var(--paper); text-decoration: none; font-weight: 500; padding: 10px 18px; border-radius: 6px; }
+.btn:hover { background: var(--ink); }
+.actions a:not(.btn) { color: var(--ink); }
+
+.hero-map { margin: 0; }
+.treemap { display: block; width: 100%; height: auto; border-radius: 8px; background: var(--paper); }
+.treemap .parcel > rect:first-of-type { fill: var(--d); transition: fill-opacity .15s; }
+.treemap .rows { pointer-events: none; }
+.treemap .parcel { cursor: pointer; }
+.treemap .parcel:hover > rect:first-of-type,
+.treemap .parcel.is-active > rect:first-of-type { fill-opacity: 1; stroke: var(--ink); stroke-width: 1.5; }
+.award-dot { fill: var(--pollen); stroke: var(--paper); stroke-width: 2; pointer-events: none; }
+.hero-map figcaption { margin-top: 14px; font-size: .9375rem; color: var(--muted); }
+.tm-caption { min-height: 3em; }
+.legend { list-style: none; margin: 10px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px 18px; }
+.legend li { display: inline-flex; align-items: center; gap: 7px; }
+.dot { display: inline-block; width: 11px; height: 11px; border-radius: 2px; background: var(--d); flex: none; font-style: normal; }
+.legend .legend-award .dot { background: var(--pollen); border-radius: 50%; }
+
+/* ------------------------------------------------------------------ sections */
+.section { padding: clamp(56px, 7vw, 88px) 0; border-top: 1px solid var(--rule); }
+.section-lede { margin-top: 12px; color: var(--muted); max-width: 44em; }
+.prose p { font-family: var(--serif); font-size: 1.1875rem; line-height: 1.65; max-width: 36em; }
+.prose p + p { margin-top: 1em; }
+
+.about-grid { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); gap: clamp(32px, 6vw, 72px); }
+.about-grid h2 { margin-bottom: 24px; }
+.methods h3 { font-size: 1.3125rem; margin: 8px 0 14px; }
+.methods dl { margin: 0; }
+.methods dt { font-weight: 700; color: var(--canopy); margin-top: 16px; }
+.methods dt:first-child { margin-top: 0; }
+.methods dd { margin: 2px 0 0; color: var(--muted); }
+
+/* research areas */
+.areas { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 48px 56px; margin-top: 40px; }
+.area { border-top: 3px solid var(--d); padding-top: 18px; display: flex; flex-direction: column; }
+.area-head { display: flex; align-items: center; gap: 14px; }
+.swatch { width: 44px; height: 30px; flex: none; }
+.swatch rect:first-child { fill: var(--d); }
+.area h3 { font-size: 1.4rem; }
+.area > p { margin-top: 14px; }
+.themes { list-style: none; margin: 18px 0 0; padding: 0; }
+.themes li { display: flex; align-items: baseline; gap: 10px; padding: 5px 0; }
+.themes li::after { content: ""; order: 1; flex: 1; border-bottom: 1px dotted var(--rule); transform: translateY(-4px); }
+.themes a { color: var(--ink); text-decoration-color: var(--rule); }
+.themes a:hover { text-decoration-color: var(--ink); }
+.themes .count { order: 2; color: var(--muted); font-size: 1rem; font-variant-numeric: tabular-nums; }
+.area-all { margin-top: 16px; align-self: flex-start; color: var(--d-ink); font-weight: 500; }
+
+/* ------------------------------------------------------------------ publications */
+.pubs-head { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 32px 48px; align-items: end; }
+.cites-fig { margin: 0; width: 300px; }
+.cites-chart { display: block; width: 100%; height: auto; overflow: visible; }
+.cites-chart .col { fill: var(--canopy); }
+.cites-chart .col.partial { fill-opacity: .5; }
+.cites-chart text { font-family: var(--sans); font-size: 13px; fill: var(--muted); text-anchor: middle; }
+.cites-chart .val { fill: var(--ink); }
+.cites-fig figcaption { font-size: .875rem; color: var(--muted); margin-top: 8px; line-height: 1.4; }
+
+.controls { margin-top: 40px; display: grid; gap: 14px; }
+.search-box input {
+  width: 100%; font: inherit; font-size: 1.0625rem; color: var(--ink);
+  background: var(--surface); border: 1px solid var(--rule); border-radius: 6px; padding: 11px 14px;
+}
+.search-box input::placeholder { color: var(--muted); opacity: 1; }
+.control-row { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px 24px; align-items: center; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip {
+  font: inherit; font-size: .96875rem; color: var(--ink); cursor: pointer;
+  display: inline-flex; align-items: center; gap: 7px;
+  background: var(--surface); border: 1px solid var(--rule); border-radius: 999px; padding: 5px 13px;
+}
+.chip span { color: var(--muted); font-variant-numeric: tabular-nums; }
+.chip:hover { border-color: var(--muted); }
+.chip[aria-pressed="true"] { background: var(--canopy); border-color: var(--canopy); color: var(--paper); }
+.chip[class*="d-"][aria-pressed="true"] { background: var(--d-ink); border-color: var(--d-ink); }
+.chip[aria-pressed="true"] span { color: inherit; opacity: .8; }
+.chip[aria-pressed="true"] .dot { background: var(--paper); }
+.order { display: inline-flex; border: 1px solid var(--rule); border-radius: 6px; overflow: hidden; background: var(--surface); }
+.order button { font: inherit; font-size: .96875rem; color: var(--muted); background: none; border: 0; padding: 6px 13px; cursor: pointer; }
+.order button + button { border-left: 1px solid var(--rule); }
+.order button[aria-pressed="true"] { color: var(--ink); background: var(--soft); box-shadow: inset 0 -2px 0 var(--canopy); }
+html:not(.js) .controls { display: none; }
+
+.status { margin-top: 18px; color: var(--muted); font-size: 1rem; min-height: 1.55em; }
+.status button { font: inherit; color: var(--link); background: none; border: 0; padding: 0; margin-left: 8px; text-decoration: underline; cursor: pointer; }
+
+.pub-list { margin-top: 8px; }
+.group-head {
+  position: sticky; top: var(--bar-h); z-index: 2;
+  display: flex; align-items: baseline; gap: 14px;
+  font-size: 1.625rem; padding: 14px 0 8px; margin-top: 18px;
+  background: var(--paper); border-bottom: 1px solid var(--rule);
+}
+.group-head.domain { gap: 12px; align-items: center; }
+.group-head .dot { width: 14px; height: 14px; }
+.group-count { font-family: var(--sans); font-size: .9375rem; color: var(--muted); font-weight: 400; }
+.theme-head { font-family: var(--sans); font-size: 1rem; font-weight: 700; color: var(--d-ink); margin: 22px 0 0; }
+.pubs { list-style: none; margin: 0; padding: 0; }
+.pub {
+  display: grid; grid-template-columns: 4px minmax(0, 1fr) auto; column-gap: 18px;
+  padding: 15px 0; border-bottom: 1px solid var(--rule);
+}
+.pub::before { content: ""; background: var(--d); border-radius: 2px; }
+.pub-title { font-family: var(--serif); font-size: 1.1875rem; font-weight: 500; line-height: 1.35; color: var(--ink); text-decoration-color: color-mix(in srgb, var(--ink) 28%, transparent); }
+.pub-title:hover { text-decoration-color: var(--ink); }
+.pub-cite { font-size: 1rem; margin-top: 4px; }
+.pub-cite b { font-weight: 700; }
+.pub-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 3px 16px; margin-top: 5px; font-size: .9375rem; color: var(--muted); }
+.pub-meta .theme { color: var(--d-ink); }
+.pub-link { color: var(--link); overflow-wrap: anywhere; }
+.ident { overflow-wrap: anywhere; }
+.flag { font-size: .8125rem; line-height: 1.5; border: 1px solid var(--rule); border-radius: 4px; padding: 0 6px; color: var(--muted); }
+.flag.award { border-color: var(--pollen); background: color-mix(in srgb, var(--pollen) 16%, transparent); color: var(--ink); }
+.cites { text-align: right; font-size: .875rem; color: var(--muted); white-space: nowrap; padding-top: 2px; }
+.cites .n { display: block; font-family: var(--serif); font-size: 1.375rem; line-height: 1.1; color: var(--ink); font-variant-numeric: tabular-nums; }
+.pub.flash { animation: flash 1.8s ease-out; }
+@keyframes flash { from { background: color-mix(in srgb, var(--pollen) 30%, transparent); } to { background: transparent; } }
+.empty { padding: 28px 0; color: var(--muted); }
+
+.journals-block { margin-top: 64px; }
+.journals-block h3 { font-size: 1.5rem; }
+.journals-block > p { margin-top: 8px; color: var(--muted); }
+.journals { list-style: none; margin: 20px 0 0; padding: 0; columns: 3 280px; column-gap: 40px; }
+.journals li { display: flex; justify-content: space-between; gap: 12px; break-inside: avoid; padding: 6px 0; border-bottom: 1px dotted var(--rule); }
+.journals a { color: var(--ink); text-decoration-color: var(--rule); }
+.journals a:hover { text-decoration-color: var(--ink); }
+.journals .count { color: var(--muted); font-variant-numeric: tabular-nums; }
+
+/* ------------------------------------------------------------------ awards, teaching */
+.two-col { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 48px clamp(32px, 6vw, 72px); }
+.award { display: grid; grid-template-columns: 44px minmax(0, 1fr); gap: 18px; margin-top: 28px; }
+.award .swatch rect:first-child { fill: var(--pollen); }
+.award h3 { font-size: 1.375rem; }
+.award p { margin-top: 10px; }
+.award-links { display: flex; flex-wrap: wrap; gap: 8px 20px; }
+.teaching { list-style: none; margin: 28px 0 0; padding: 0; }
+.teaching li { padding: 14px 0; border-top: 1px solid var(--rule); }
+.teaching li:first-child { border-top: 0; padding-top: 0; }
+.teaching h3 { font-size: 1.3125rem; }
+.teaching p { margin-top: 4px; color: var(--muted); }
+
+/* ------------------------------------------------------------------ education */
+.timeline { list-style: none; margin: 32px 0 0; padding: 0; }
+.timeline li { display: grid; grid-template-columns: 150px minmax(0, 1fr); gap: 8px 32px; padding: 18px 0; border-top: 1px solid var(--rule); }
+.timeline li:first-child { border-top: 0; }
+.when { color: var(--muted); font-variant-numeric: tabular-nums; padding-top: 3px; }
+.timeline h3 { font-size: 1.3125rem; }
+.timeline p { margin-top: 4px; color: var(--muted); }
+
+/* ------------------------------------------------------------------ contact, footer */
+.contact-list { margin: 32px 0 0; }
+.contact-list div { display: grid; grid-template-columns: 150px minmax(0, 1fr); gap: 4px 32px; padding: 14px 0; border-top: 1px solid var(--rule); }
+.contact-list dt { font-weight: 700; color: var(--canopy); }
+.contact-list dd { margin: 0; }
+footer { border-top: 1px solid var(--rule); padding: 32px 0 48px; font-size: .9375rem; color: var(--muted); }
+footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 32px; }
+
+/* ------------------------------------------------------------------ responsive */
+@media (max-width: 900px) {
+  .hero-grid, .about-grid { grid-template-columns: minmax(0, 1fr); }
+  .pubs-head { grid-template-columns: minmax(0, 1fr); }
+  .cites-fig { width: min(320px, 100%); }
+}
+@media (max-width: 760px) {
+  .areas, .two-col { grid-template-columns: minmax(0, 1fr); }
+  h2 { font-size: 1.875rem; }
+}
+@media (max-width: 600px) {
+  body { font-size: 1.0625rem; }
+  .pub { grid-template-columns: 4px minmax(0, 1fr); column-gap: 14px; }
+  .pub::before { grid-row: 1 / span 2; }
+  .pub .cites { grid-column: 2; text-align: left; margin-top: 6px; padding: 0; }
+  .pub .cites .n { display: inline; font-family: var(--sans); font-size: inherit; color: var(--ink); }
+  .timeline li, .contact-list div { grid-template-columns: minmax(0, 1fr); }
+  .control-row { flex-direction: column; align-items: stretch; }
+  .order { align-self: flex-start; }
+  .group-head { font-size: 1.375rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .pub.flash { animation: none; outline: 2px solid var(--pollen); }
+  .treemap .parcel > rect:first-of-type { transition: none; }
+}
+@media print {
+  :root { --paper: #fff; --ink: #000; --muted: #333; --canopy: #000; --link: #000; }
+  .bar, .skip, .hero-map, .actions, .controls, .status, .journals-block, .cites-fig, .area-all { display: none !important; }
+  body { font-size: 10.5pt; }
+  .section { padding: 14pt 0; }
+  .group-head { position: static; }
+  .pub { break-inside: avoid; padding: 6pt 0; }
+  a { color: inherit; text-decoration: none; }
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<svg class="defs" aria-hidden="true" focusable="false">
+  <defs>
+    <pattern id="rows-v" width="5" height="5" patternUnits="userSpaceOnUse"><rect class="row-line" width="1.3" height="5"/></pattern>
+    <pattern id="rows-h" width="5" height="5" patternUnits="userSpaceOnUse"><rect class="row-line" width="5" height="1.3"/></pattern>
+  </defs>
+</svg>
+
+<header class="bar">
+  <div class="wrap bar-inner">
+    <a class="bar-name" href="#top">Ehsan Rahimi</a>
+    <button class="menu" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+    <nav id="site-nav" aria-label="Sections">
+      <a href="#about">About</a>
+      <a href="#research">Research</a>
+      <a href="#publications">Publications</a>
+      <a href="#recognition">Awards and teaching</a>
+      <a href="#education">Education</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <section class="hero" id="top" aria-labelledby="name">
+    <div class="wrap hero-grid">
+      <div class="hero-text">
+        %%PORTRAIT%%
+        <h1 id="name">Ehsan Rahimi</h1>
+        <p class="role">Pollination ecology and landscape science</p>
+        <p class="lede">I study how climate and landscape change shape biodiversity, plant–pollinator interactions and the ecosystem services they support, using remote sensing, species distribution models and geospatial analysis.</p>
+        <p class="affil">Postdoctoral researcher, Gyeongkuk National University, Andong, South Korea</p>
+        <p class="record">%%N_PUBS%% peer-reviewed papers in %%N_JOURNALS%% journals since %%FIRST_YEAR%%. On Google Scholar: %%CITATIONS%% citations, h-index %%H_INDEX%%, i10-index %%I10_INDEX%%.</p>
+        <div class="actions">
+          <a class="btn" href="#publications">Publications</a>
+          <a href="%%SCHOLAR_URL%%" rel="noopener">Google Scholar</a>
+          <a href="https://orcid.org/0000-0002-8401-472X" rel="noopener">ORCID</a>
+          <a href="https://www.linkedin.com/in/ehsan-rahimi-288a10149/" rel="noopener">LinkedIn</a>
+          <a href="mailto:ehsanrahimi666@gmail.com">Email</a>
+        </div>
+      </div>
+      <figure class="hero-map">
+        %%TREEMAP%%
+        <figcaption>
+          <p class="tm-caption" id="tm-caption">Each parcel is one paper, sized by its citations and coloured by research area. Select a parcel to find the paper in the list.</p>
+          <ul class="legend">%%LEGEND%%<li class="legend-award"><i class="dot" aria-hidden="true"></i>Best paper award</li></ul>
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="section" id="about" aria-labelledby="about-h">
+    <div class="wrap about-grid">
+      <div>
+        <h2 id="about-h">About</h2>
+        <div class="prose">
+          <p>I am an environmental scientist and postdoctoral researcher at Gyeongkuk National University in Andong, South Korea, working in the lab of Prof. Chuleui Jung. I study how climate, land use and landscape structure shape biodiversity, species interactions and ecosystem functioning, from single fields to the whole globe.</p>
+          <p>Much of my work concerns plant–pollinator interactions and the pollination services that support food production and human well-being. I combine field ecology, satellite remote sensing, geospatial analysis and species distribution modelling to address questions in pollination ecology, landscape ecology, biodiversity conservation and sustainable agriculture.</p>
+          <p>My current research uses drone-based remote sensing, computer vision and deep learning to detect, map and quantify flowering resources in forest and grassland ecosystems.</p>
+        </div>
+      </div>
+      <div class="methods">
+        <h3>Methods and tools</h3>
+        <dl>
+          <dt>Ecology and biodiversity</dt>
+          <dd>Pollination ecology, plant–pollinator interactions and networks, community ecology, habitat connectivity, biodiversity conservation</dd>
+          <dt>Modelling and statistics</dt>
+          <dd>Species distribution and ecological niche models, InVEST and Lonsdorf pollination models, landscape fragmentation analysis, machine learning and deep learning</dd>
+          <dt>Remote sensing and GIS</dt>
+          <dd>Google Earth Engine, Landsat and Sentinel-2, vegetation and climate indices, phenology analysis, UAV imagery, ArcGIS Pro, QGIS</dd>
+          <dt>Programming</dt>
+          <dd>R and Python</dd>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="research" aria-labelledby="research-h">
+    <div class="wrap">
+      <h2 id="research-h">Research areas</h2>
+      <p class="section-lede">My work falls into four connected areas. Select a theme to list its papers.</p>
+      <div class="areas">%%AREAS%%</div>
+    </div>
+  </section>
+
+  <section class="section" id="publications" aria-labelledby="pubs-h">
+    <div class="wrap">
+      <div class="pubs-head">
+        <div>
+          <h2 id="pubs-h">Publications</h2>
+          <p class="section-lede">%%N_PUBS%% peer-reviewed journal articles, each linked to its published version. Citation counts are from Google Scholar.</p>
+        </div>
+        <figure class="cites-fig">
+          %%CITES_CHART%%
+          <figcaption>Citations per year on Google Scholar, retrieved %%RETRIEVED%%. The last bar covers part of the year.</figcaption>
+        </figure>
+      </div>
+
+      <div class="controls">
+        <div class="search-box" role="search">
+          <label class="vh" for="pub-search">Search publications</label>
+          <input id="pub-search" type="search" placeholder="Search by title, co-author, journal or year" autocomplete="off" spellcheck="false">
+        </div>
+        <div class="control-row">
+          <div class="chips" role="group" aria-label="Filter by research area">%%DOMAIN_FILTERS%%</div>
+          <div class="order" role="group" aria-label="Order papers">
+            <button type="button" data-order="year" aria-pressed="true">Newest first</button>
+            <button type="button" data-order="cites" aria-pressed="false">Most cited</button>
+            <button type="button" data-order="area" aria-pressed="false">By area</button>
+          </div>
+        </div>
+      </div>
+      <p class="status" id="pub-status" aria-live="polite"></p>
+      <div class="pub-list" id="pub-list">%%PUBLICATIONS%%</div>
+
+      <div class="journals-block">
+        <h3>Journals</h3>
+        <p>Papers have appeared in %%N_JOURNALS%% journals. Select one to list its papers.</p>
+        <ul class="journals">%%JOURNALS%%</ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="recognition" aria-label="Awards and teaching">
+    <div class="wrap two-col">
+      <div>
+        <h2>Awards</h2>
+        <article class="award">
+          <svg class="swatch" viewBox="0 0 48 32" aria-hidden="true"><rect width="48" height="32" rx="2"/><rect class="rows" width="48" height="32" rx="2" fill="url(#rows-v)"/></svg>
+          <div>
+            <h3>Insects Best Paper Award 2026</h3>
+            <p>For <a href="https://doi.org/10.3390/insects15020127" rel="noopener">Global Trends in Climate Suitability of Bees: Ups and Downs in a Warming World</a> (Rahimi and Jung, <i>Insects</i> 15(2), 127, 2024), a global species distribution modelling assessment of how climate change shifts habitat suitability for bees. The journal selected it as one of five award-winning articles among those it published in 2024.</p>
+            <p class="award-links"><a href="https://www.mdpi.com/journal/insects/awards/3629" rel="noopener">Award announcement</a></p>
+          </div>
+        </article>
+      </div>
+      <div>
+        <h2>Teaching</h2>
+        <ul class="teaching">
+          <li>
+            <h3>Species distribution modelling</h3>
+            <p>Graduate course, 2026. SDM methods, MaxEnt and ecological niche theory.</p>
+          </li>
+          <li>
+            <h3>Ecology</h3>
+            <p>Undergraduate course with lectures and laboratory, 2025.</p>
+          </li>
+        </ul>
+        <p class="muted">Both at Gyeongkuk National University, South Korea.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="education" aria-labelledby="edu-h">
+    <div class="wrap">
+      <h2 id="edu-h">Education and positions</h2>
+      <ol class="timeline">
+        <li>
+          <span class="when">2022 to present</span>
+          <div><h3>Postdoctoral researcher</h3><p>Gyeongkuk National University, South Korea, in the lab of Prof. Chuleui Jung. Pollination ecology, remote sensing and invasion ecology.</p></div>
+        </li>
+        <li>
+          <span class="when">2017 to 2021</span>
+          <div><h3>PhD in Environmental Sciences</h3><p>Shahid Beheshti University, Tehran, Iran. GPA 18/20.</p></div>
+        </li>
+        <li>
+          <span class="when">2013 to 2015</span>
+          <div><h3>MSc in Environmental Sciences</h3><p>Gorgan University of Agricultural Sciences and Natural Resources, Iran. GPA 18.29/20.</p></div>
+        </li>
+        <li>
+          <span class="when">2009 to 2013</span>
+          <div><h3>BSc in Environmental Sciences</h3><p>Khatam Al Anbia Behbahan University of Technology, Iran. GPA 17.2/20.</p></div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="section" id="contact" aria-labelledby="contact-h">
+    <div class="wrap">
+      <h2 id="contact-h">Contact</h2>
+      <p class="section-lede">I welcome enquiries about faculty positions, research collaborations and invited talks in ecology, pollination biology, remote sensing and environmental science.</p>
+      <dl class="contact-list">
+        <div><dt>Email</dt><dd><a href="mailto:ehsanrahimi666@gmail.com">ehsanrahimi666@gmail.com</a></dd></div>
+        <div><dt>Location</dt><dd>Gyeongkuk National University, Andong, South Korea</dd></div>
+        <div><dt>Profiles</dt><dd><a href="%%SCHOLAR_URL%%" rel="noopener">Google Scholar</a>, <a href="https://orcid.org/0000-0002-8401-472X" rel="noopener">ORCID 0000-0002-8401-472X</a>, <a href="https://www.linkedin.com/in/ehsan-rahimi-288a10149/" rel="noopener">LinkedIn</a></dd></div>
+        <div><dt>References</dt><dd>Prof. Chuleui Jung, Gyeongkuk National University, and Prof. Pinliang Dong, University of North Texas</dd></div>
+      </dl>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>© %%YEAR_NOW%% Ehsan Rahimi</p>
+    <p>Publication records checked against Crossref, ORCID and Google Scholar. Citation metrics from Google Scholar, retrieved <time datetime="%%RETRIEVED_ISO%%">%%RETRIEVED%%</time>.</p>
+  </div>
+</footer>
+
+<script type="application/json" id="taxonomy">%%TAXONOMY%%</script>
+<script>
+(function () {
+  "use strict";
+  var doc = document.documentElement;
+  doc.classList.add("js");
+  var reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* ---------------------------------------------------------------- menu */
+  var menuBtn = document.querySelector(".menu");
+  var nav = document.getElementById("site-nav");
+  function closeMenu() { menuBtn.setAttribute("aria-expanded", "false"); nav.classList.remove("open"); }
+  if (menuBtn && nav) {
+    menuBtn.addEventListener("click", function () {
+      var open = menuBtn.getAttribute("aria-expanded") === "true";
+      menuBtn.setAttribute("aria-expanded", String(!open));
+      nav.classList.toggle("open", !open);
+    });
+    nav.addEventListener("click", function (e) { if (e.target.closest("a")) closeMenu(); });
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && nav.classList.contains("open")) { closeMenu(); menuBtn.focus(); }
+    });
+  }
+
+  /* ---------------------------------------------------------------- publications */
+  var list = document.getElementById("pub-list");
+  var taxEl = document.getElementById("taxonomy");
+  if (!list || !taxEl) return;
+  var tax = JSON.parse(taxEl.textContent);
+  var domainName = {}, themeName = {};
+  tax.domains.forEach(function (d) { domainName[d.id] = d.name; });
+  tax.themes.forEach(function (t) { themeName[t.id] = t.name; });
+
+  function norm(s) {
+    s = String(s || "");
+    if (s.normalize) s = s.normalize("NFD").replace(/[̀-ͯ]/g, "");
+    return s.toLowerCase().replace(/[‐-―]/g, "-");
+  }
+  function plural(n, w) { return n + " " + w + (n === 1 ? "" : "s"); }
+
+  var items = Array.prototype.map.call(list.querySelectorAll(".pub"), function (el, i) {
+    return {
+      el: el, id: el.id, idx: i,
+      year: +el.getAttribute("data-year"),
+      domain: el.getAttribute("data-domain"),
+      theme: el.getAttribute("data-theme"),
+      cites: +el.getAttribute("data-cites"),
+      journal: el.getAttribute("data-journal"),
+      text: norm(el.getAttribute("data-search"))
+    };
+  });
+  var byId = {};
+  items.forEach(function (it) { byId[it.id] = it; });
+
+  var state = { q: "", domain: "all", theme: null, journal: null, order: "year" };
+  var search = document.getElementById("pub-search");
+  var status = document.getElementById("pub-status");
+  var chips = Array.prototype.slice.call(document.querySelectorAll(".chips .chip"));
+  var orderBtns = Array.prototype.slice.call(document.querySelectorAll(".order button"));
+
+  function isFiltered() { return state.q || state.domain !== "all" || state.theme || state.journal; }
+
+  function matches(it, terms) {
+    if (state.domain !== "all" && it.domain !== state.domain) return false;
+    if (state.theme && it.theme !== state.theme) return false;
+    if (state.journal && it.journal !== state.journal) return false;
+    for (var i = 0; i < terms.length; i++) if (it.text.indexOf(terms[i]) === -1) return false;
+    return true;
+  }
+
+  function head(tag, cls, label, count, domain) {
+    var h = document.createElement(tag);
+    h.className = cls + (domain ? " d-" + domain : "");
+    if (domain && tag === "h3") {
+      var dot = document.createElement("i");
+      dot.className = "dot"; dot.setAttribute("aria-hidden", "true");
+      h.appendChild(dot);
+    }
+    var t = document.createElement("span"); t.textContent = label; h.appendChild(t);
+    if (count != null) {
+      var c = document.createElement("span"); c.className = "group-count"; c.textContent = plural(count, "paper");
+      h.appendChild(c);
+    }
+    return h;
+  }
+  function olOf(arr) {
+    var ol = document.createElement("ol"); ol.className = "pubs";
+    arr.forEach(function (it) { ol.appendChild(it.el); });
+    return ol;
+  }
+  function byYear(a, b) { return b.year - a.year || a.idx - b.idx; }
+
+  function render() {
+    var terms = norm(state.q).split(/\s+/).filter(Boolean);
+    var vis = items.filter(function (it) { return matches(it, terms); });
+    var frag = document.createDocumentFragment();
+
+    if (!vis.length) {
+      var p = document.createElement("p"); p.className = "empty";
+      p.textContent = "No papers match these filters. Try fewer words, or clear the filters.";
+      frag.appendChild(p);
+    } else if (state.order === "cites") {
+      vis.sort(function (a, b) { return b.cites - a.cites || byYear(a, b); });
+      var sec = document.createElement("section"); sec.className = "pub-group";
+      sec.appendChild(olOf(vis));
+      frag.appendChild(sec);
+    } else if (state.order === "area") {
+      tax.domains.forEach(function (d) {
+        var inD = vis.filter(function (it) { return it.domain === d.id; });
+        if (!inD.length) return;
+        var sec = document.createElement("section"); sec.className = "pub-group";
+        sec.appendChild(head("h3", "group-head domain", d.name, inD.length, d.id));
+        tax.themes.forEach(function (t) {
+          if (t.domain !== d.id) return;
+          var inT = inD.filter(function (it) { return it.theme === t.id; }).sort(byYear);
+          if (!inT.length) return;
+          sec.appendChild(head("h4", "theme-head", t.name, null, d.id));
+          sec.appendChild(olOf(inT));
+        });
+        frag.appendChild(sec);
+      });
+    } else {
+      vis.sort(byYear);
+      var years = [];
+      vis.forEach(function (it) { if (years.indexOf(it.year) === -1) years.push(it.year); });
+      years.forEach(function (y) {
+        var inY = vis.filter(function (it) { return it.year === y; });
+        var sec = document.createElement("section"); sec.className = "pub-group";
+        sec.appendChild(head("h3", "group-head", String(y), inY.length));
+        sec.appendChild(olOf(inY));
+        frag.appendChild(sec);
+      });
+    }
+    while (list.firstChild) list.removeChild(list.firstChild);
+    list.appendChild(frag);
+    updateStatus(vis.length);
+    chips.forEach(function (c) { c.setAttribute("aria-pressed", String(c.getAttribute("data-domain") === state.domain)); });
+    orderBtns.forEach(function (b) { b.setAttribute("aria-pressed", String(b.getAttribute("data-order") === state.order)); });
+  }
+
+  function updateStatus(n) {
+    while (status.firstChild) status.removeChild(status.firstChild);
+    var parts = [];
+    if (state.domain !== "all" && !state.theme) parts.push("in " + domainName[state.domain]);
+    if (state.theme) parts.push("in " + themeName[state.theme]);
+    if (state.journal) parts.push("in " + state.journal);
+    if (state.q) parts.push("matching “" + state.q.trim() + "”");
+    var text = isFiltered()
+      ? "Showing " + n + " of " + plural(items.length, "paper") + " " + parts.join(", ") + "."
+      : "Showing all " + plural(items.length, "paper") + ".";
+    status.appendChild(document.createTextNode(text));
+    if (isFiltered()) {
+      var b = document.createElement("button");
+      b.type = "button"; b.textContent = "Clear filters";
+      b.addEventListener("click", function () { reset(); render(); search.focus(); });
+      status.appendChild(b);
+    }
+  }
+
+  function reset() { state.q = ""; state.domain = "all"; state.theme = null; state.journal = null; if (search) search.value = ""; }
+
+  var timer;
+  if (search) {
+    search.addEventListener("input", function () {
+      clearTimeout(timer);
+      timer = setTimeout(function () { state.q = search.value; render(); }, 120);
+    });
+  }
+  chips.forEach(function (c) {
+    c.addEventListener("click", function () { state.domain = c.getAttribute("data-domain"); state.theme = null; render(); });
+  });
+  orderBtns.forEach(function (b) {
+    b.addEventListener("click", function () { state.order = b.getAttribute("data-order"); render(); });
+  });
+
+  /* links elsewhere on the page that open a filtered list */
+  document.addEventListener("click", function (e) {
+    var a = e.target.closest("a[data-theme], a[data-domain], a[data-journal]");
+    if (!a) return;
+    reset();
+    if (a.hasAttribute("data-theme")) {
+      state.theme = a.getAttribute("data-theme");
+      var t = tax.themes.filter(function (x) { return x.id === state.theme; })[0];
+      if (t) state.domain = t.domain;
+    } else if (a.hasAttribute("data-domain")) {
+      state.domain = a.getAttribute("data-domain");
+    } else {
+      state.journal = a.getAttribute("data-journal");
+    }
+    render();
+  });
+
+  /* ---------------------------------------------------------------- treemap */
+  function showPaper(id) {
+    var it = byId[id];
+    if (!it) return;
+    if (!it.el.isConnected) { reset(); render(); }
+    it.el.scrollIntoView({ block: "center", behavior: reduceMotion ? "auto" : "smooth" });
+    it.el.classList.remove("flash");
+    void it.el.offsetWidth;
+    it.el.classList.add("flash");
+    var link = it.el.querySelector(".pub-title");
+    if (link) link.focus({ preventScroll: true });
+  }
+
+  var tm = document.getElementById("treemap");
+  var cap = document.getElementById("tm-caption");
+  if (tm && cap) {
+    var capDefault = cap.textContent;
+    var active = null;
+    tm.addEventListener("pointerover", function (e) {
+      var g = e.target.closest(".parcel");
+      if (!g || g === active) return;
+      if (active) active.classList.remove("is-active");
+      active = g; g.classList.add("is-active");
+      cap.textContent = g.getAttribute("data-label");
+    });
+    tm.addEventListener("pointerleave", function () {
+      if (active) active.classList.remove("is-active");
+      active = null; cap.textContent = capDefault;
+    });
+    tm.addEventListener("click", function (e) {
+      var g = e.target.closest(".parcel");
+      if (g) showPaper(g.getAttribute("data-id"));
+    });
+  }
+
+  function fromHash() {
+    var id = decodeURIComponent(location.hash.slice(1));
+    if (byId[id]) showPaper(id);
+  }
+  window.addEventListener("hashchange", fromHash);
+
+  render();
+  if (location.hash) fromHash();
+})();
+</script>
+</body>
+</html>
