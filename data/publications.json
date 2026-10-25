@@ -66,6 +66,28 @@
     "verified": "Crossref"
   },
   {
+    "id": "p2026-systematic-vegetation-index-discovery-phenology",
+    "year": 2026,
+    "title": "Systematic vegetation index discovery for phenology-based crop mapping",
+    "authors": [
+      "E. Rahimi",
+      "C. Jung"
+    ],
+    "journal": "Frontiers in Remote Sensing",
+    "volume": "7",
+    "issue": null,
+    "pages": "1911652",
+    "doi": "10.3389/frsen.2026.1911652",
+    "url": "https://doi.org/10.3389/frsen.2026.1911652",
+    "identifier": null,
+    "language": "en",
+    "domain": "rs",
+    "theme": "rs-crop",
+    "citations": 0,
+    "award": null,
+    "verified": "Crossref"
+  },
+  {
     "id": "p2026-threshold-based-classification-rapeseed-using",
     "year": 2026,
     "title": "Threshold-based classification of rapeseed using multi-spectral vegetation indices from Sentinel-2",
@@ -170,7 +192,7 @@
     "language": "en",
     "domain": "rs",
     "theme": "rs-lst",
-    "citations": 12,
+    "citations": 16,
     "award": null,
     "verified": "Crossref"
   },
@@ -192,7 +214,7 @@
     "language": "en",
     "domain": "rs",
     "theme": "rs-crop",
-    "citations": 3,
+    "citations": 5,
     "award": null,
     "verified": "Crossref"
   },
@@ -237,7 +259,7 @@
     "language": "en",
     "domain": "rs",
     "theme": "rs-lst",
-    "citations": 79,
+    "citations": 84,
     "award": null,
     "verified": "Crossref"
   },
@@ -305,7 +327,7 @@
     "language": "en",
     "domain": "rs",
     "theme": "rs-lst",
-    "citations": 6,
+    "citations": 9,
     "award": null,
     "verified": "Crossref"
   },
@@ -394,7 +416,7 @@
     "language": "en",
     "domain": "pol",
     "theme": "pol-data",
-    "citations": 9,
+    "citations": 13,
     "award": null,
     "verified": "Crossref"
   },
@@ -662,7 +684,7 @@
     "language": "en",
     "domain": "pol",
     "theme": "pol-net",
-    "citations": 2,
+    "citations": 3,
     "award": null,
     "verified": "Crossref"
   },
@@ -795,7 +817,7 @@
     "language": "en",
     "domain": "sdm",
     "theme": "sdm-range",
-    "citations": 51,
+    "citations": 53,
     "award": "Insects Best Paper Award 2026",
     "verified": "Crossref"
   },
@@ -817,7 +839,7 @@
     "language": "en",
     "domain": "pol",
     "theme": "pol-urban",
-    "citations": 2,
+    "citations": 3,
     "award": null,
     "verified": "Crossref"
   },
@@ -905,7 +927,7 @@
     "language": "en",
     "domain": "rs",
     "theme": "rs-crop",
-    "citations": 14,
+    "citations": 15,
     "award": null,
     "verified": "doi.org handle + KoreaScience landing page"
   },
@@ -950,7 +972,7 @@
     "language": "en",
     "domain": "bio",
     "theme": "bio-corr",
-    "citations": 21,
+    "citations": 22,
     "award": null,
     "verified": "Crossref"
   },
@@ -1042,7 +1064,7 @@
     "language": "en",
     "domain": "pol",
     "theme": "pol-svc",
-    "citations": 64,
+    "citations": 65,
     "award": null,
     "verified": "Crossref"
   },
@@ -1156,7 +1178,7 @@
     "language": "en",
     "domain": "sdm",
     "theme": "sdm-range",
-    "citations": 43,
+    "citations": 44,
     "award": null,
     "verified": "Crossref"
   },
@@ -1179,7 +1201,7 @@
     "language": "en",
     "domain": "pol",
     "theme": "pol-data",
-    "citations": 58,
+    "citations": 61,
     "award": null,
     "verified": "Crossref"
   },
@@ -1227,7 +1249,7 @@
     "language": "en",
     "domain": "rs",
     "theme": "rs-frag",
-    "citations": 59,
+    "citations": 62,
     "award": null,
     "verified": "Crossref"
   },
