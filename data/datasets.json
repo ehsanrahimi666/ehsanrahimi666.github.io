@@ -83,6 +83,13 @@
   ],
   "r_packages": [
     {
+      "name": "pollmap",
+      "title": "Spatial Modelling of Pollination Supply, Demand and Species Distributions",
+      "version": "0.0.0.9000",
+      "url": "https://github.com/ehsanrahimi666/-EhsanRahimi-pollmap-",
+      "note": "Maps wild-bee pollination supply in farmland with the Lonsdorf, InVEST and quality-weighted edge models in one raster framework, links species distribution models to service maps and matches supply to crop pollination demand."
+    },
+    {
       "name": "spinet",
       "title": "Spatial Interaction Networks Under Environmental Change",
       "version": "0.1.2",
@@ -90,25 +97,18 @@
       "note": "Projects ecological interaction networks through space and time from species distribution model output, with network metrics, interaction beta-diversity, rewiring and coextinction robustness."
     },
     {
-      "name": "surfscape",
-      "title": "Composition and Configuration in Continuous Landscape Surfaces",
-      "version": "0.3.0",
-      "url": "https://github.com/ehsanrahimi666/surfscape",
-      "note": "Tests whether continuous landscape metrics on vegetation indices respond to composition or configuration, simulates continuous neutral landscapes and decomposes metric change between dates."
-    },
-    {
-      "name": "cloudscape",
-      "title": "Clear-Observation Availability and Cloud Analysis for Optical Satellite Image Time Series",
-      "version": "0.1.1",
-      "url": "https://github.com/ehsanrahimi666/cloudscape",
-      "note": "Turns Landsat and Sentinel-2 cloud statistics into measures of whether an optical time-series study is feasible at a location, including the effect of cloud loss on phenology retrieval."
-    },
-    {
-      "name": "settlementaffinity",
-      "title": "Species Settlement-Affinity Index from Occurrence Data",
+      "name": "InsectTrack",
+      "title": "Detection, Tracking and Activity Mapping of Insects in Videos",
       "version": "0.1.0",
-      "url": "https://github.com/ehsanrahimi666/settlementaffinity",
-      "note": "Computes how strongly species favour or avoid human settlements from occurrence records, with robust standard errors, and classifies species as avoiders, exploiters, tolerant or uncertain."
+      "url": "https://github.com/ehsanrahimi666/InsectTrack",
+      "note": "Detects and tracks insects in videos with YOLO, open-vocabulary or background-subtraction detectors and turns their trajectories into counts, activity time series, heat maps, flower visits and nest traffic, with standard tracking-accuracy metrics."
+    },
+    {
+      "name": "InsectTrait",
+      "title": "Colour, Pattern and Shape Traits of Insects from Photographs",
+      "version": "0.1.0",
+      "url": "https://github.com/ehsanrahimi666/InsectTrait",
+      "note": "Extracts 67 colour, pattern and shape traits of insects from field photographs or GBIF and iNaturalist observations, with photo screening, colour and exposure checks and trait reliability tests."
     },
     {
       "name": "FlowerTrait",
@@ -118,11 +118,39 @@
       "note": "Extracts flower colour, pattern, symmetry and shape traits from field photographs or GBIF and iNaturalist observations, with photo quality screening and trait reliability checks."
     },
     {
-      "name": "pollmap",
-      "title": "Spatial Modelling of Pollination Supply, Demand and Species Distributions",
-      "version": "0.0.0.9000",
-      "url": "https://github.com/ehsanrahimi666/-EhsanRahimi-pollmap-",
-      "note": "Maps wild-bee pollination supply in farmland with the Lonsdorf, InVEST and quality-weighted edge models in one raster framework, links species distribution models to service maps and matches supply to crop pollination demand."
+      "name": "svid",
+      "title": "Systematic Spectral Index Discovery, Deduplication and Validation",
+      "version": "0.1.0",
+      "url": "https://github.com/ehsanrahimi666/_SVID",
+      "note": "Generates candidate spectral indices from multispectral or hyperspectral bands, removes duplicate formulations and ranks the rest under spatially aware validation with confidence intervals and reference baselines."
+    },
+    {
+      "name": "cloudscape",
+      "title": "Clear-Observation Availability and Cloud Analysis for Optical Satellite Image Time Series",
+      "version": "0.1.1",
+      "url": "https://github.com/ehsanrahimi666/cloudscape",
+      "note": "Turns Landsat and Sentinel-2 cloud statistics into measures of whether an optical time-series study is feasible at a location, including the effect of cloud loss on phenology retrieval."
+    },
+    {
+      "name": "surfscape",
+      "title": "Composition and Configuration in Continuous Landscape Surfaces",
+      "version": "0.3.0",
+      "url": "https://github.com/ehsanrahimi666/surfscape",
+      "note": "Tests whether continuous landscape metrics on vegetation indices respond to composition or configuration, simulates continuous neutral landscapes and decomposes metric change between dates."
+    },
+    {
+      "name": "darkniche",
+      "title": "Climatic Dark Diversity and Directional Niche Coverage",
+      "version": "0.1.0",
+      "url": "https://github.com/ehsanrahimi666/darkniche",
+      "note": "Finds species that are absent from a region despite tolerating its climate, using directional niche-coverage metrics, analytical null models and validation against introduced ranges, with results for all 619 terrestrial ecoregions."
+    },
+    {
+      "name": "settlementaffinity",
+      "title": "Species Settlement-Affinity Index from Occurrence Data",
+      "version": "0.1.0",
+      "url": "https://github.com/ehsanrahimi666/settlementaffinity",
+      "note": "Computes how strongly species favour or avoid human settlements from occurrence records, with robust standard errors, and classifies species as avoiders, exploiters, tolerant or uncertain."
     }
   ]
 }
