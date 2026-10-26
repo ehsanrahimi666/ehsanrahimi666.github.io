@@ -237,9 +237,13 @@ def render_domain_filters(pubs, areas):
 
 def render_journals(pubs):
     counts = Counter(p["journal"] for p in pubs)
+    doms = {}
+    for p in pubs:
+        doms.setdefault(p["journal"], Counter())[p["domain"]] += 1
     items = sorted(counts.items(), key=lambda kv: (-kv[1], kv[0].lower()))
     return "".join(
-        f'<li><a href="#publications" data-journal="{esc(j)}">{esc(j)}</a><span class="count">{n}</span></li>'
+        f'<li class="d-{doms[j].most_common(1)[0][0]}"><a href="#publications" data-journal="{esc(j)}">'
+        f'<span>{esc(j)}</span><span class="count">{n}</span></a></li>'
         for j, n in items
     )
 
@@ -321,6 +325,17 @@ def render_editorial(recog):
         f'<p>{esc(e["text"])}</p>'
         f'<p class="aw-links"><a class="aw-link" href="{esc(e["url"])}" rel="noopener">Special Issue page</a></p></article>'
         for e in recog["editorial"])
+
+
+def render_packages(extras):
+    pkgs = extras.get("r_packages") or []
+    if not pkgs:
+        return ""
+    items = "".join(
+        f'<li><a class="ds-title" href="{esc(r["url"])}" rel="noopener"><code>{esc(r["name"])}</code>: {esc(r["title"])}</a>'
+        f'<span class="ds-meta">{esc(r.get("note") or "R package on GitHub")}</span></li>' for r in pkgs)
+    return (f'<h3 class="sub-h">R packages</h3><p class="section-lede">Open-source R packages on GitHub.</p>'
+            f'<ul class="datasets pkgs">{items}</ul>')
 
 
 def render_datasets(extras):
@@ -412,6 +427,7 @@ def main():
         "AWARDS": render_awards(recog, pubs),
         "EDITORIAL": render_editorial(recog),
         "DATASETS": render_datasets(extras),
+        "R_PACKAGES": render_packages(extras),
         "N_DATASETS": str(len(extras["datasets"])),
         "GITHUB_URL": esc(extras["github"]),
         "ZENODO_URL": esc(extras["zenodo"]),
