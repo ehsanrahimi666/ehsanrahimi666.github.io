@@ -332,9 +332,14 @@ def render_packages(extras):
     if not pkgs:
         return ""
     items = "".join(
-        f'<li><a class="ds-title" href="{esc(r["url"])}" rel="noopener"><code>{esc(r["name"])}</code>: {esc(r["title"])}</a>'
-        f'<span class="ds-meta">{esc(r.get("note") or "R package on GitHub")}</span></li>' for r in pkgs)
-    return (f'<h3 class="sub-h">R packages</h3><p class="section-lede">Open-source R packages on GitHub.</p>'
+        f'<li><span class="pkg-head"><span class="pkg-name">{esc(r["name"])}</span>'
+        f'<span class="pkg-ver">v{esc(r.get("version", ""))}</span></span>'
+        f'<a class="ds-title" href="{esc(r["url"])}" rel="noopener">{esc(r["title"])}</a>'
+        f'<span class="pkg-note">{esc(r.get("note") or "")}</span>'
+        f'<span class="ds-meta">R package · <a href="{esc(r["url"])}" rel="noopener">{esc(r["url"].replace("https://", ""))}</a></span></li>'
+        for r in pkgs)
+    return (f'<h3 class="sub-h">R packages</h3><p class="section-lede">Open-source R packages I develop, '
+            f'with source code and installation instructions on GitHub.</p>'
             f'<ul class="datasets pkgs">{items}</ul>')
 
 

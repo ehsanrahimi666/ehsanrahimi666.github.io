@@ -80,5 +80,35 @@
       "doi": "10.5281/zenodo.23255838",
       "url": "https://doi.org/10.5281/zenodo.23255838"
     }
+  ],
+  "r_packages": [
+    {
+      "name": "spinet",
+      "title": "Spatial Interaction Networks Under Environmental Change",
+      "version": "0.1.2",
+      "url": "https://github.com/ehsanrahimi666/spinet",
+      "note": "Projects ecological interaction networks through space and time from species distribution model output, with network metrics, interaction beta-diversity, rewiring and coextinction robustness."
+    },
+    {
+      "name": "surfscape",
+      "title": "Composition and Configuration in Continuous Landscape Surfaces",
+      "version": "0.3.0",
+      "url": "https://github.com/ehsanrahimi666/surfscape",
+      "note": "Tests whether continuous landscape metrics on vegetation indices respond to composition or configuration, simulates continuous neutral landscapes and decomposes metric change between dates."
+    },
+    {
+      "name": "cloudscape",
+      "title": "Clear-Observation Availability and Cloud Analysis for Optical Satellite Image Time Series",
+      "version": "0.1.1",
+      "url": "https://github.com/ehsanrahimi666/cloudscape",
+      "note": "Turns Landsat and Sentinel-2 cloud statistics into measures of whether an optical time-series study is feasible at a location, including the effect of cloud loss on phenology retrieval."
+    },
+    {
+      "name": "FlowerTrait",
+      "title": "Colour, Pattern, Symmetry and Shape Traits of Flowers from Photographs",
+      "version": "0.1.0",
+      "url": "https://github.com/ehsanrahimi666/FlowerTrait",
+      "note": "Extracts flower colour, pattern, symmetry and shape traits from field photographs or GBIF and iNaturalist observations, with photo quality screening and trait reliability checks."
+    }
   ]
 }
