@@ -12,6 +12,9 @@ citation metrics is one command rather than hand-editing HTML.
 | `data/publications.json` | One record per paper. The source of truth for the publication list. |
 | `data/research_areas.json` | The four research areas and their themes (names, summaries). |
 | `data/metrics.json` | Google Scholar citations, h-index, i10-index and citations per year. |
+| `data/recognition.json` | Awards (with certificate links) and editorial roles, shown in the Awards section and the hero card. |
+| `data/datasets.json` | GitHub and Zenodo links and the list of published datasets. |
+| `assets/awards/` | Award certificates (PDF) and their thumbnails. |
 | `templates/index.html` | Page layout, styles, scripts and fixed text (about, teaching, education, contact). |
 | `scripts/build.py` | Builds `index.html` from the template and the data. |
 | `scripts/update_data.py` | Finds new papers on ORCID, refreshes Scholar metrics, then rebuilds. |
@@ -47,6 +50,8 @@ pushes it there. Papers without a DOI must be added to `data/publications.json` 
   when there is a DOI), `domain`, `theme`, `citations`, `language` (`en` or `fa`).
   The build stops with a clear message if a record is incomplete or a DOI is duplicated.
 * **Research areas or themes**: `data/research_areas.json`.
+* **An award**: put the certificate PDF in `assets/awards/`, add an entry to `data/recognition.json`, and add the award's short name to the paper's `award` list in `data/publications.json` (a list, so a paper can carry several awards).
+* **A dataset**: add it to `data/datasets.json`.
 * **About, teaching, education, contact text**: `templates/index.html`, then rebuild.
 * **Portrait**: save a square photo as `assets/profile.jpg` and rebuild; it appears above
   your name.

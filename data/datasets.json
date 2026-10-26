@@ -1,0 +1,84 @@
+{
+  "github": "https://github.com/ehsanrahimi666",
+  "zenodo": "https://zenodo.org/search?q=metadata.creators.person_or_org.identifiers.identifier%3A%220000-0002-8401-472X%22",
+  "datasets": [
+    {
+      "title": "FloralTraits v1.0: colour, pattern, symmetry and shape traits of 787 flowering-plant species from 192,127 citizen-science photographs",
+      "year": 2026,
+      "authors": [
+        "Rahimi, Ehsan",
+        "Jung, Chuleui"
+      ],
+      "doi": "10.5281/zenodo.23659385",
+      "url": "https://doi.org/10.5281/zenodo.23659385"
+    },
+    {
+      "title": "SettlementAffinity v1.0: settlement affinity of 698,550 plant and animal species and species richness of urban settlements",
+      "year": 2026,
+      "authors": [
+        "Rahimi, Ehsan"
+      ],
+      "doi": "10.5281/zenodo.23620348",
+      "url": "https://doi.org/10.5281/zenodo.23620348"
+    },
+    {
+      "title": "A global two-sided dataset of plant–flower visitor interactions and partner-family dependence",
+      "year": 2026,
+      "authors": [
+        "Rahimi, Ehsan",
+        "Jung, Chuleui"
+      ],
+      "doi": "10.5281/zenodo.23619747",
+      "url": "https://doi.org/10.5281/zenodo.23619747"
+    },
+    {
+      "title": "A global dataset of terrestrial animal dependence on single host, food-plant and prey families",
+      "year": 2026,
+      "authors": [
+        "Rahimi, Ehsan",
+        "Jung, Chuleui"
+      ],
+      "doi": "10.5281/zenodo.23619745",
+      "url": "https://doi.org/10.5281/zenodo.23619745"
+    },
+    {
+      "title": "A global dataset of 222 million biodiversity photo observations in GBIF by species, grid cell and country",
+      "year": 2026,
+      "authors": [
+        "Rahimi, Ehsan"
+      ],
+      "doi": "10.5281/zenodo.23619953",
+      "url": "https://doi.org/10.5281/zenodo.23619953"
+    },
+    {
+      "title": "WingTraits v1.0: colour, pattern and shape traits of 945 butterfly species from 228,375 citizen-science photographs",
+      "year": 2026,
+      "authors": [
+        "Rahimi, Ehsan",
+        "Jung, Chuleui"
+      ],
+      "doi": "10.5281/zenodo.23449617",
+      "url": "https://doi.org/10.5281/zenodo.23449617"
+    },
+    {
+      "title": "Global disturbance-recovery atlas v1.0: greenness and land surface temperature trajectories around 7,559 disturbances and matched controls",
+      "year": 2026,
+      "authors": [
+        "Rahimi, Ehsan",
+        "Jung, Chuleui"
+      ],
+      "doi": "10.5281/zenodo.23448393",
+      "url": "https://doi.org/10.5281/zenodo.23448393"
+    },
+    {
+      "title": "NicheGrid v1.0: range-derived climatic niches of 45,547 species in a common climate space",
+      "year": 2026,
+      "authors": [
+        "Rahimi, Ehsan",
+        "Jung, Chuleui"
+      ],
+      "doi": "10.5281/zenodo.23255838",
+      "url": "https://doi.org/10.5281/zenodo.23255838"
+    }
+  ]
+}

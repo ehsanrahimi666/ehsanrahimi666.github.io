@@ -9,6 +9,8 @@ Inputs
     data/research_areas.json  research domains and themes
     data/metrics.json         Google Scholar metrics
     templates/index.html      page template with %%TOKEN%% placeholders
+    data/recognition.json     awards (with certificate links) and editorial roles
+    data/datasets.json        GitHub and Zenodo links and published datasets
     assets/profile.jpg        optional portrait; shown in the header if present
 Output
     index.html
@@ -18,7 +20,6 @@ Only the Python standard library is used.
 from __future__ import annotations
 
 import datetime as dt
-import hashlib
 import html
 import json
 import re
@@ -33,7 +34,8 @@ OUTPUT = ROOT / "index.html"
 PORTRAIT = "assets/profile.jpg"
 
 SELF_SURNAME = "Rahimi"
-TREEMAP_W, TREEMAP_H = 640, 460
+STAR = ('<svg class="star" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.4 5.9.8-4.3 4.1 1 5.8L10 '
+        '14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.8z"/></svg>')
 REQUIRED = ("id", "year", "title", "authors", "journal", "url", "domain", "theme", "citations", "language")
 
 if hasattr(sys.stdout, "reconfigure"):
@@ -98,93 +100,30 @@ def validate(pubs, areas):
 
 
 # --------------------------------------------------------------------------- treemap
-def _worst(row, side):
-    s = sum(a for _, a in row)
-    big, small = max(a for _, a in row), min(a for _, a in row)
-    return max(side * side * big / (s * s), (s * s) / (side * side * small))
-
-
-def squarify(items, x, y, w, h):
-    """Squarified treemap (Bruls, Huizing & van Wijk 2000).
-
-    items: list of (key, weight) with weight > 0. Returns [(key, x, y, w, h)].
-    """
-    total = sum(v for _, v in items)
-    if total <= 0 or w <= 0 or h <= 0:
+def awards_of(p):
+    a = p.get("award")
+    if not a:
         return []
-    scale = w * h / total
-    areas = [(k, v * scale) for k, v in sorted(items, key=lambda kv: -kv[1])]
-    out = []
-    while areas:
-        side = min(w, h)
-        row, i = [areas[0]], 1
-        while i < len(areas) and _worst(row + [areas[i]], side) <= _worst(row, side):
-            row.append(areas[i])
-            i += 1
-        areas = areas[i:]
-        s = sum(a for _, a in row)
-        if w >= h:  # column along the left edge
-            cw, cy = s / h, y
-            for k, a in row:
-                ch = a / cw
-                out.append((k, x, cy, cw, ch))
-                cy += ch
-            x, w = x + cw, w - cw
-        else:  # row along the top edge
-            rh, cx = s / w, x
-            for k, a in row:
-                rw = a / rh
-                out.append((k, cx, y, rw, rh))
-                cx += rw
-            y, h = y + rh, h - rh
-    return out
+    return [a] if isinstance(a, str) else list(a)
 
 
-def shade(pid: str) -> float:
-    """Deterministic 0.80–1.00 opacity so neighbouring parcels read like fields."""
-    n = int(hashlib.sha1(pid.encode()).hexdigest()[:4], 16) / 0xFFFF
-    return round(0.80 + 0.20 * n, 2)
-
-
-def render_treemap(pubs, areas):
-    order = [d["id"] for d in areas["domains"]]
-    weight = {p["id"]: p["citations"] + 2 for p in pubs}
-    by_dom = OrderedDict((d, [p for p in pubs if p["domain"] == d]) for d in order)
-    dom_items = [(d, sum(weight[p["id"]] for p in ps)) for d, ps in by_dom.items() if ps]
-    dom_gap, parcel_gap = 3.0, 1.2
-    parts = []
-    for d, dx, dy, dw, dh in squarify(dom_items, 0, 0, TREEMAP_W, TREEMAP_H):
-        ix, iy, iw, ih = dx + dom_gap / 2, dy + dom_gap / 2, dw - dom_gap, dh - dom_gap
-        papers = sorted(by_dom[d], key=lambda p: (-weight[p["id"]], -p["year"]))
-        cells = squarify([(p["id"], weight[p["id"]]) for p in papers], ix, iy, iw, ih)
-        lookup = {p["id"]: p for p in papers}
-        for pid, x, y, w, h in cells:
-            p = lookup[pid]
-            gx, gy = x + parcel_gap / 2, y + parcel_gap / 2
-            gw, gh = max(w - parcel_gap, 0.5), max(h - parcel_gap, 0.5)
-            rows = "rows-v" if gh >= gw else "rows-h"
-            cites = plural(p["citations"], "citation")
-            label = f"{p['year']}, {p['journal']}: {plain(p['title'])} ({cites})"
-            marker = ""
-            if p.get("award"):
-                marker = (f'<circle class="award-dot" cx="{gx + gw / 2:.1f}" cy="{gy + gh / 2:.1f}" r="5"/>')
-            parts.append(
-                f'<g class="parcel d-{p["domain"]}" data-id="{esc(pid)}" data-label="{esc(label)}">'
-                f'<rect x="{gx:.1f}" y="{gy:.1f}" width="{gw:.1f}" height="{gh:.1f}" fill-opacity="{shade(pid)}"/>'
-                f'<rect class="rows" x="{gx:.1f}" y="{gy:.1f}" width="{gw:.1f}" height="{gh:.1f}" fill="url(#{rows})"/>'
-                f"{marker}</g>"
-            )
-    total = len(pubs)
-    desc = (f"Treemap of {total} papers grouped by research area; each rectangle is one paper "
-            "and its area grows with the paper's Google Scholar citations.")
-    return (
-        f'<svg id="treemap" class="treemap" viewBox="0 0 {TREEMAP_W} {TREEMAP_H}" role="img" '
-        f'aria-labelledby="treemap-title treemap-desc" preserveAspectRatio="xMidYMid meet">'
-        f'<title id="treemap-title">Publications as field parcels</title>'
-        f'<desc id="treemap-desc">{esc(desc)}</desc>'
-        + "".join(parts)
-        + "</svg>"
-    )
+def render_mix(pubs, areas):
+    """Stacked bar of papers per research area, each segment a link that filters the list."""
+    dcount = Counter(p["domain"] for p in pubs)
+    total = sum(dcount.values()) or 1
+    segs, keys = [], []
+    for d in areas["domains"]:
+        n = dcount[d["id"]]
+        if not n:
+            continue
+        pct = 100 * n / total
+        segs.append(f'<a class="mix-seg d-{d["id"]}" href="#publications" data-domain="{d["id"]}" '
+                    f'style="flex-grow:{n}" title="{esc(d["name"])}: {plural(n, "paper")}">'
+                    f'<span>{round(pct)}%</span></a>')
+        keys.append(f'<li class="d-{d["id"]}"><i class="dot" aria-hidden="true"></i>'
+                    f'<a href="#publications" data-domain="{d["id"]}">{esc(d["short"])}</a> <b>{n}</b></li>')
+    return (f'<div class="mix-bar" role="img" aria-label="Papers by research area">{"".join(segs)}</div>'
+            f'<ul class="mix-key">{"".join(keys)}</ul>')
 
 
 # --------------------------------------------------------------------------- citation text
@@ -225,8 +164,8 @@ def pub_item(p, themes):
             extra.append(f'<span class="ident">{esc(p["identifier"])}</span>')
     if p["language"] == "fa":
         extra.append('<span class="flag">In Persian</span>')
-    if p.get("award"):
-        extra.append(f'<span class="flag award">{esc(p["award"])}</span>')
+    for a in awards_of(p):
+        extra.append(f'<a class="flag award" href="#recognition">{STAR}{esc(a)}</a>')
     cites = (f'<span class="cites"><span class="n">{p["citations"]}</span> '
              f'{"citation" if p["citations"] == 1 else "citations"}</span>') if p["citations"] else ""
     search = " ".join([plain(p["title"]), " ".join(p["authors"]), p["journal"], theme, str(p["year"]),
@@ -296,13 +235,6 @@ def render_domain_filters(pubs, areas):
     return "".join(btns)
 
 
-def render_legend(areas):
-    return "".join(
-        f'<li class="d-{d["id"]}"><i class="dot" aria-hidden="true"></i>{esc(d["short"])}</li>'
-        for d in areas["domains"]
-    )
-
-
 def render_journals(pubs):
     counts = Counter(p["journal"] for p in pubs)
     items = sorted(counts.items(), key=lambda kv: (-kv[1], kv[0].lower()))
@@ -339,7 +271,76 @@ def render_cites_chart(metrics):
     )
 
 
-def render_jsonld(pubs, metrics):
+def award_link(link):
+    url = link["url"]
+    if url.endswith(".pdf"):
+        return (f'<a class="aw-link pdf" href="{esc(url)}" target="_blank" rel="noopener">'
+                f'{esc(link["label"])}</a>')
+    return f'<a class="aw-link" href="{esc(url)}" rel="noopener">{esc(link["label"])}</a>'
+
+
+def render_awards(recog, pubs):
+    by_id = {p["id"]: p for p in pubs}
+    cards = []
+    for a in recog["awards"]:
+        p = by_id.get(a.get("paper"))
+        paper = ""
+        if p:
+            paper = (f'<p class="aw-paper"><a href="{esc(p["url"])}" rel="noopener">{safe_title(p["title"])}</a> '
+                     f'<span class="muted"><i>{esc(p["journal"])}</i>, {p["year"]}</span></p>')
+        links = "".join(award_link(l) for l in a.get("links", []))
+        if a.get("thumb"):
+            main = next((l["url"] for l in a.get("links", []) if l["url"].endswith(".pdf")), a["links"][0]["url"])
+            visual = (f'<a class="aw-thumb" href="{esc(main)}" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">'
+                      f'<img src="{esc(a["thumb"])}" alt="" loading="lazy"></a>')
+        else:
+            visual = f'<div class="aw-thumb aw-medal" aria-hidden="true">{MEDAL}</div>'
+        cards.append(
+            f'<article class="aw-card d-{a["tone"]}" id="{esc(a["id"])}">{visual}'
+            f'<div class="aw-body"><p class="aw-kicker">{esc(a["body"])} · {a["year"]}</p>'
+            f'<h3>{esc(a["title"])}</h3>{paper}<p class="aw-text">{esc(a["text"])}</p>'
+            f'<p class="aw-links">{links}</p></div></article>'
+        )
+    return "".join(cards)
+
+
+def render_honours(recog):
+    items = "".join(
+        f'<li class="d-{a["tone"]}"><a href="#{esc(a["id"])}">{STAR}<span>{esc(a["title"])}'
+        f'<small>{esc(a["body"])}</small></span></a></li>' for a in recog["awards"])
+    for e in recog["editorial"]:
+        items += (f'<li class="d-bio"><a href="{esc(e["url"])}" rel="noopener">{PEN}<span>{esc(e["role"])}, {esc(e["venue"])}'
+                  f'<small>Special Issue on pollinator diversity</small></span></a></li>')
+    return items
+
+
+def render_editorial(recog):
+    return "".join(
+        f'<article class="ed-card"><p class="aw-kicker">{esc(e["role"])} · {esc(e["venue"])}</p>'
+        f'<h3><a href="{esc(e["url"])}" rel="noopener">{esc(e["title"])}</a></h3>'
+        f'<p>{esc(e["text"])}</p>'
+        f'<p class="aw-links"><a class="aw-link" href="{esc(e["url"])}" rel="noopener">Special Issue page</a></p></article>'
+        for e in recog["editorial"])
+
+
+def render_datasets(extras):
+    return "".join(
+        f'<li><a class="ds-title" href="{esc(d["url"])}" rel="noopener">{esc(d["title"])}</a>'
+        f'<span class="ds-meta">{esc(", ".join(d["authors"]))} · Zenodo, {d["year"]} · doi:{esc(d["doi"])}</span></li>'
+        for d in extras["datasets"])
+
+
+MEDAL = ('<svg viewBox="0 0 64 64"><defs><linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">'
+         '<stop offset="0" stop-color="#F7D774"/><stop offset=".55" stop-color="#E0A41B"/><stop offset="1" stop-color="#A86E05"/>'
+         '</linearGradient></defs><path d="M20 4h10l4 18h-10z" fill="#2B6A8E"/><path d="M44 4H34l-4 18h10z" fill="#3C7A3F"/>'
+         '<circle cx="32" cy="40" r="19" fill="url(#gold)"/><circle cx="32" cy="40" r="14" fill="none" stroke="#fff" '
+         'stroke-opacity=".55" stroke-width="1.5"/><path d="M32 30l3 6.2 6.8.9-5 4.7 1.3 6.7L32 45.3l-6.1 3.2 1.3-6.7-5-4.7 '
+         '6.8-.9z" fill="#fff" fill-opacity=".9"/></svg>')
+PEN = ('<svg class="star" viewBox="0 0 20 20" aria-hidden="true"><path d="M3 14.5V17h2.5l8.6-8.6-2.5-2.5zM16.7 5.8a.9.9 0 0 0 '
+       '0-1.3l-1.2-1.2a.9.9 0 0 0-1.3 0l-1 1 2.5 2.5z"/></svg>')
+
+
+def render_jsonld(pubs, metrics, extras):
     person = {
         "@context": "https://schema.org",
         "@type": "Person",
@@ -359,10 +360,11 @@ def render_jsonld(pubs, metrics):
             "https://orcid.org/0000-0002-8401-472X",
             metrics["profile_url"],
             "https://www.linkedin.com/in/ehsan-rahimi-288a10149/",
+            extras["github"],
         ],
         "knowsAbout": ["Pollination ecology", "Landscape ecology", "Remote sensing",
                        "Species distribution modelling", "Biodiversity conservation", "Deep learning"],
-        "award": sorted({p["award"] for p in pubs if p.get("award")}),
+        "award": sorted({a for p in pubs for a in awards_of(p)}),
     }
     return json.dumps(person, ensure_ascii=False, indent=1).replace("</", "<\\/")
 
@@ -378,6 +380,8 @@ def main():
     pubs = load_json("publications.json")
     areas = load_json("research_areas.json")
     metrics = load_json("metrics.json")
+    recog = load_json("recognition.json")
+    extras = load_json("datasets.json")
     validate(pubs, areas)
     themes = {t["id"]: t for t in areas["themes"]}
 
@@ -403,14 +407,21 @@ def main():
         "RETRIEVED": retrieved_txt,
         "RETRIEVED_ISO": metrics["retrieved"],
         "YEAR_NOW": str(dt.date.today().year),
-        "TREEMAP": render_treemap(pubs, areas),
-        "LEGEND": render_legend(areas),
+        "MIX": render_mix(pubs, areas),
+        "HONOURS": render_honours(recog),
+        "AWARDS": render_awards(recog, pubs),
+        "EDITORIAL": render_editorial(recog),
+        "DATASETS": render_datasets(extras),
+        "N_DATASETS": str(len(extras["datasets"])),
+        "GITHUB_URL": esc(extras["github"]),
+        "ZENODO_URL": esc(extras["zenodo"]),
+        "N_AWARDS": str(len(recog["awards"])),
         "AREAS": render_areas(pubs, areas),
         "DOMAIN_FILTERS": render_domain_filters(pubs, areas),
         "PUBLICATIONS": render_publications(pubs, themes),
         "JOURNALS": render_journals(pubs),
         "CITES_CHART": render_cites_chart(metrics),
-        "JSONLD": render_jsonld(pubs, metrics),
+        "JSONLD": render_jsonld(pubs, metrics, extras),
         "TAXONOMY": json.dumps(taxonomy, ensure_ascii=False).replace("</", "<\\/"),
         "PORTRAIT": render_portrait(),
     }

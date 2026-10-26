@@ -1,0 +1,52 @@
+{
+  "awards": [
+    {
+      "id": "award-ksrs-2026",
+      "title": "Best Citation Paper Award 2026",
+      "body": "Korean Society of Remote Sensing",
+      "year": 2026,
+      "paper": "p2024-efficiency-long-short-term-memory",
+      "text": "Most cited paper published in the Korean Journal of Remote Sensing in 2024–2025. Announced at the KSRS 2026 Fall Annual Meeting in Busan.",
+      "links": [
+        {"label": "Award notice (PDF)", "url": "assets/awards/ksrs-best-citation-paper-award-2026.pdf"}
+      ],
+      "thumb": "assets/awards/ksrs-best-citation-thumb.jpg",
+      "tone": "rs"
+    },
+    {
+      "id": "award-insects-top-downloaded",
+      "title": "Top Downloaded Paper 2024–2025",
+      "body": "Insects (MDPI)",
+      "year": 2026,
+      "paper": "p2024-global-trends-climate-suitability-bees",
+      "text": "Among the 20 most downloaded of about 2,000 papers published in Insects in 2024–2025.",
+      "links": [
+        {"label": "Certificate (PDF)", "url": "assets/awards/insects-top-downloaded-paper-2024-2025.pdf"}
+      ],
+      "thumb": "assets/awards/insects-top-downloaded-thumb.jpg",
+      "tone": "sdm"
+    },
+    {
+      "id": "award-insects-best-paper",
+      "title": "Insects Best Paper Award 2026",
+      "body": "Insects (MDPI)",
+      "year": 2026,
+      "paper": "p2024-global-trends-climate-suitability-bees",
+      "text": "One of five award-winning articles among all papers the journal published in 2024.",
+      "links": [
+        {"label": "Award announcement", "url": "https://www.mdpi.com/journal/insects/awards/3629"}
+      ],
+      "thumb": null,
+      "tone": "pol"
+    }
+  ],
+  "editorial": [
+    {
+      "role": "Guest Editor",
+      "venue": "Insects (MDPI)",
+      "title": "Special Issue: Pollinator Diversity, Ecosystem Services, and Conservation in a Changing World",
+      "text": "Co-edited with Prof. Chuleui Jung. Submissions are open until 10 December 2026.",
+      "url": "https://www.mdpi.com/journal/insects/special_issues/2B7O7GV91V"
+    }
+  ]
+}

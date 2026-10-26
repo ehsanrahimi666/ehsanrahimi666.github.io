@@ -818,7 +818,10 @@
     "domain": "sdm",
     "theme": "sdm-range",
     "citations": 53,
-    "award": "Insects Best Paper Award 2026",
+    "award": [
+      "Insects Best Paper Award 2026",
+      "Top Downloaded Paper 2024–2025"
+    ],
     "verified": "Crossref"
   },
   {
@@ -928,7 +931,9 @@
     "domain": "rs",
     "theme": "rs-crop",
     "citations": 15,
-    "award": null,
+    "award": [
+      "KSRS Best Citation Paper Award 2026"
+    ],
     "verified": "doi.org handle + KoreaScience landing page"
   },
   {
