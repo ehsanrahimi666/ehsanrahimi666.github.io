@@ -49,7 +49,7 @@
   --serif: "Alegreya", Georgia, "Times New Roman", serif;
   --sans: "Alegreya Sans", "Segoe UI", system-ui, -apple-system, sans-serif;
   --bar-h: 60px;
-  --wrap: 1120px;
+  --wrap: 1240px;
   --gutter: clamp(16px, 4vw, 32px);
 }
 @media (prefers-color-scheme: dark) {
@@ -149,8 +149,8 @@ section[id], .pub { scroll-margin-top: calc(var(--bar-h) + 20px); }
 }
 
 /* ------------------------------------------------------------------ hero */
-.hero { padding: clamp(28px, 4vw, 44px) 0 clamp(40px, 5vw, 64px); }
-.hero-grid { display: grid; grid-template-columns: minmax(0, 1.02fr) minmax(0, 1fr); gap: clamp(32px, 5vw, 64px); align-items: center; }
+.hero { padding: clamp(20px, 2.4vw, 32px) 0 clamp(40px, 5vw, 64px); }
+.hero-grid { display: grid; grid-template-columns: minmax(0, .86fr) minmax(0, 1.14fr); gap: clamp(28px, 4vw, 52px); align-items: center; }
 .hero-grid > .glance { align-self: start; }
 .portrait { display: block; width: 112px; height: 112px; object-fit: cover; border-radius: 10px; margin-bottom: 24px; }
 .hero h1 { font-size: clamp(3rem, 6.4vw, 4.5rem); line-height: 1; letter-spacing: -.02em; }
@@ -188,40 +188,43 @@ section[id], .pub { scroll-margin-top: calc(var(--bar-h) + 20px); }
 .glance {
   background: color-mix(in srgb, var(--surface) 88%, transparent);
   -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
-  border: 1px solid var(--rule); border-radius: 18px; padding: clamp(16px, 2vw, 22px);
+  border: 1px solid var(--rule); border-radius: 20px; padding: clamp(18px, 1.9vw, 26px) clamp(18px, 2vw, 26px) clamp(18px, 1.7vw, 24px);
   box-shadow: var(--shadow);
 }
-.glance h2 { font-family: var(--sans); font-size: .8125rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
-.stats { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 8px; margin-top: 10px; }
+.glance h2 { font-family: var(--sans); font-size: .875rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+.stats { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 10px; margin-top: 12px; }
 .d-post { --d: #C2410C; --d-ink: #B13A0A; }
 @media (prefers-color-scheme: dark) { .d-post { --d: #EA7A45; --d-ink: #F2A27A; } }
 .stat {
-  display: block; text-decoration: none; color: var(--ink); border-radius: 12px; padding: 10px 12px;
+  display: block; text-decoration: none; color: var(--ink); border-radius: 14px; padding: 14px 12px 13px;
   background: linear-gradient(135deg, color-mix(in srgb, var(--d) 18%, var(--surface)), color-mix(in srgb, var(--d) 6%, var(--surface)));
   border: 1px solid color-mix(in srgb, var(--d) 28%, transparent);
 }
 a.stat:hover { border-color: var(--d); }
-.stat .num { display: block; font-family: var(--serif); font-size: clamp(1.6rem, 2.6vw, 2.1rem); line-height: 1; color: var(--d-ink); font-variant-numeric: lining-nums tabular-nums; }
-.stat .lbl { display: block; margin-top: 4px; font-size: .8125rem; line-height: 1.25; color: var(--muted); }
-.glance-block { margin-top: 16px; }
-.mix-bar { display: flex; height: 26px; border-radius: 8px; overflow: hidden; margin-top: 10px; gap: 2px; }
-.mix-seg { background: var(--d); color: #fff; text-decoration: none; display: flex; align-items: center; justify-content: center; font-size: .8125rem; font-weight: 700; min-width: 34px; transition: filter .15s; }
+.stat .num { display: block; font-family: var(--serif); font-size: clamp(2.1rem, 3.3vw, 3.05rem); line-height: 1; color: var(--d-ink); font-variant-numeric: lining-nums tabular-nums; white-space: nowrap; }
+.stat .num.long { font-size: clamp(1.7rem, 2.5vw, 2.3rem); }
+.stat .lbl { display: block; margin-top: 8px; font-size: clamp(.9375rem, 1.15vw, 1.0625rem); font-weight: 500; line-height: 1.2; color: var(--ink); }
+.stat .sub { display: block; margin-top: 2px; font-size: clamp(.75rem, .95vw, .875rem); line-height: 1.25; color: var(--muted); }
+.nb { white-space: nowrap; }
+.glance-block { margin-top: 20px; }
+.mix-bar { display: flex; height: 32px; border-radius: 9px; overflow: hidden; margin-top: 12px; gap: 2px; }
+.mix-seg { background: var(--d); color: #fff; text-decoration: none; display: flex; align-items: center; justify-content: center; font-size: .9375rem; font-weight: 700; min-width: 40px; transition: filter .15s; }
 .mix-seg:hover { filter: brightness(1.12); }
-.mix-key { list-style: none; margin: 8px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 2px 14px; font-size: .875rem; }
+.mix-key { list-style: none; margin: 10px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 4px 18px; font-size: 1rem; }
 .mix-key li { display: inline-flex; align-items: center; gap: 6px; }
 .mix-key a { color: var(--ink); text-decoration: none; }
 .mix-key a:hover { text-decoration: underline; }
 .mix-key b { color: var(--d-ink); font-weight: 700; }
-.honours { list-style: none; margin: 8px 0 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+.honours { list-style: none; margin: 10px 0 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
 .honours a {
-  display: flex; align-items: center; gap: 10px; height: 100%; text-decoration: none; color: var(--ink);
-  padding: 8px 10px; border-radius: 10px; border: 1px solid var(--rule);
+  display: flex; align-items: center; gap: 12px; height: 100%; text-decoration: none; color: var(--ink);
+  padding: 12px 14px; border-radius: 12px; border: 1px solid var(--rule);
   background: linear-gradient(90deg, color-mix(in srgb, var(--d) 14%, var(--surface)), var(--surface) 70%);
 }
 .honours a:hover { border-color: var(--d); }
-.honours .star { width: 20px; height: 20px; flex: none; fill: var(--d); }
-.honours span { display: flex; flex-direction: column; line-height: 1.2; font-weight: 500; font-size: .9375rem; }
-.honours small { font-size: .8125rem; font-weight: 400; color: var(--muted); }
+.honours .star { width: 24px; height: 24px; flex: none; fill: var(--d); }
+.honours span { display: flex; flex-direction: column; gap: 2px; line-height: 1.22; font-weight: 500; font-size: 1.0625rem; text-wrap: balance; }
+.honours small { font-size: .875rem; font-weight: 400; color: var(--muted); }
 .dot { display: inline-block; width: 11px; height: 11px; border-radius: 2px; background: var(--d); flex: none; font-style: normal; }
 
 /* ------------------------------------------------------------------ sections */
@@ -505,6 +508,10 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
   .cites-fig { width: min(320px, 100%); }
 }
 @media (max-width: 1100px) {
+  .stat { padding: 12px 9px 11px; }
+  .nb { white-space: normal; }
+}
+@media (max-width: 600px) {
   .stats { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 }
 @media (max-width: 980px) {
@@ -595,11 +602,11 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
       <aside class="glance" aria-labelledby="glance-h">
         <h2 id="glance-h">At a glance</h2>
         <div class="stats">
-          <a class="stat d-rs" href="#publications"><span class="num">%%N_PUBS%%</span><span class="lbl">peer-reviewed papers</span></a>
-          <a class="stat d-pol" href="%%SCHOLAR_URL%%" rel="noopener"><span class="num">%%CITATIONS%%</span><span class="lbl">citations on Google Scholar</span></a>
-          <a class="stat d-sdm" href="%%SCHOLAR_URL%%" rel="noopener"><span class="num">%%H_INDEX%%</span><span class="lbl">h-index (i10-index %%I10_INDEX%%)</span></a>
-          <a class="stat d-bio" href="#recognition"><span class="num">%%N_AWARDS%%</span><span class="lbl">paper awards</span></a>
-          <a class="stat d-post" href="#education"><span class="num">%%POSTDOC_YEARS%%+</span><span class="lbl">years as postdoc</span></a>
+          <a class="stat d-rs" href="#publications"><span class="num">%%N_PUBS%%</span><span class="lbl">papers</span><span class="sub"><span class="nb">peer-reviewed</span></span></a>
+          <a class="stat d-pol" href="%%SCHOLAR_URL%%" rel="noopener"><span class="num%%CITES_CLASS%%">%%CITATIONS%%</span><span class="lbl">citations</span><span class="sub">Google Scholar</span></a>
+          <a class="stat d-sdm" href="%%SCHOLAR_URL%%" rel="noopener"><span class="num">%%H_INDEX%%</span><span class="lbl">h-index</span><span class="sub"><span class="nb">i10-index</span> %%I10_INDEX%%</span></a>
+          <a class="stat d-bio" href="#recognition"><span class="num">%%N_AWARDS%%</span><span class="lbl">awards</span><span class="sub">for papers</span></a>
+          <a class="stat d-post" href="#education"><span class="num">%%POSTDOC_YEARS%%+</span><span class="lbl">years</span><span class="sub">as postdoc</span></a>
         </div>
         <div class="glance-block">
           <h2>Papers by research area</h2>
@@ -628,8 +635,8 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
           <article class="card about-card d-sdm"><span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="9" y="10" width="6" height="4" rx="1"/><path d="M9 11 5 7M15 11l4-4M9 13l-4 4M15 13l4 4"/><circle cx="5" cy="7" r="2.5"/><circle cx="19" cy="7" r="2.5"/><circle cx="5" cy="17" r="2.5"/><circle cx="19" cy="17" r="2.5"/></svg></span><div><h3>Current research</h3>
             <p>My current research uses drone-based remote sensing, computer vision and deep learning to detect, map and quantify flowering resources in forest and grassland ecosystems.</p></div></article>
         </div>
-        <aside class="card methods">
-          <h3>Methods and tools</h3>
+        <aside class="card methods" aria-labelledby="methods-h">
+          <h3 id="methods-h">Methods and tools</h3>
           <div class="tools">
             <div class="tool d-pol"><b>Ecology and biodiversity</b><span>Pollination ecology, plant–pollinator interactions and networks, community ecology, habitat connectivity, biodiversity conservation</span></div>
             <div class="tool d-sdm"><b>Modelling and statistics</b><span>Species distribution and ecological niche models, InVEST and Lonsdorf pollination models, landscape fragmentation analysis, machine learning and deep learning</span></div>

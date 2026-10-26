@@ -430,6 +430,7 @@ def main():
         "N_JOURNALS": str(n_journals),
         "FIRST_YEAR": str(first_year),
         "CITATIONS": f"{metrics['citations']:,}",
+        "CITES_CLASS": " long" if len(f"{metrics['citations']:,}") >= 5 else "",
         "H_INDEX": str(metrics["h_index"]),
         "I10_INDEX": str(metrics["i10_index"]),
         "SCHOLAR_URL": esc(metrics["profile_url"]),

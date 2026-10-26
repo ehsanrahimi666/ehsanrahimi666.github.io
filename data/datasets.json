@@ -116,6 +116,13 @@
       "version": "0.1.0",
       "url": "https://github.com/ehsanrahimi666/FlowerTrait",
       "note": "Extracts flower colour, pattern, symmetry and shape traits from field photographs or GBIF and iNaturalist observations, with photo quality screening and trait reliability checks."
+    },
+    {
+      "name": "pollmap",
+      "title": "Spatial Modelling of Pollination Supply, Demand and Species Distributions",
+      "version": "0.0.0.9000",
+      "url": "https://github.com/ehsanrahimi666/-EhsanRahimi-pollmap-",
+      "note": "Maps wild-bee pollination supply in farmland with the Lonsdorf, InVEST and quality-weighted edge models in one raster framework, links species distribution models to service maps and matches supply to crop pollination demand."
     }
   ]
 }
