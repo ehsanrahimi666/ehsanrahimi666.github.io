@@ -104,6 +104,13 @@
       "note": "Turns Landsat and Sentinel-2 cloud statistics into measures of whether an optical time-series study is feasible at a location, including the effect of cloud loss on phenology retrieval."
     },
     {
+      "name": "settlementaffinity",
+      "title": "Species Settlement-Affinity Index from Occurrence Data",
+      "version": "0.1.0",
+      "url": "https://github.com/ehsanrahimi666/settlementaffinity",
+      "note": "Computes how strongly species favour or avoid human settlements from occurrence records, with robust standard errors, and classifies species as avoiders, exploiters, tolerant or uncertain."
+    },
+    {
       "name": "FlowerTrait",
       "title": "Colour, Pattern, Symmetry and Shape Traits of Flowers from Photographs",
       "version": "0.1.0",

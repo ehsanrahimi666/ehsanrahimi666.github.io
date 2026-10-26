@@ -192,7 +192,9 @@ section[id], .pub { scroll-margin-top: calc(var(--bar-h) + 20px); }
   box-shadow: var(--shadow);
 }
 .glance h2 { font-family: var(--sans); font-size: .8125rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
-.stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; margin-top: 10px; }
+.stats { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 8px; margin-top: 10px; }
+.d-post { --d: #C2410C; --d-ink: #B13A0A; }
+@media (prefers-color-scheme: dark) { .d-post { --d: #EA7A45; --d-ink: #F2A27A; } }
 .stat {
   display: block; text-decoration: none; color: var(--ink); border-radius: 12px; padding: 10px 12px;
   background: linear-gradient(135deg, color-mix(in srgb, var(--d) 18%, var(--surface)), color-mix(in srgb, var(--d) 6%, var(--surface)));
@@ -335,11 +337,16 @@ html:not(.js) .controls { display: none; }
 .group-count { font-family: var(--sans); font-size: .9375rem; color: var(--muted); font-weight: 400; }
 .theme-head { font-family: var(--sans); font-size: 1rem; font-weight: 700; color: var(--d-ink); margin: 22px 0 0; }
 .pubs { list-style: none; margin: 0; padding: 0; }
+.pubs { display: grid; gap: 12px; padding-top: 12px; }
 .pub {
-  display: grid; grid-template-columns: 4px minmax(0, 1fr) auto; column-gap: 18px;
-  padding: 15px 0; border-bottom: 1px solid var(--rule);
+  display: grid; grid-template-columns: 5px minmax(0, 1fr) auto; column-gap: 18px;
+  padding: 16px 20px 16px 0; border-radius: 14px; overflow: hidden;
+  background: linear-gradient(110deg, color-mix(in srgb, var(--d) 9%, var(--surface)), var(--surface) 55%);
+  border: 1px solid color-mix(in srgb, var(--d) 24%, var(--rule)); box-shadow: 0 1px 2px rgba(23, 59, 43, .05);
+  transition: box-shadow .15s, border-color .15s;
 }
-.pub::before { content: ""; background: var(--d); border-radius: 2px; }
+.pub:hover { border-color: var(--d); box-shadow: var(--shadow); }
+.pub::before { content: ""; background: var(--d); margin: -16px 0; }
 .pub-title { font-family: var(--serif); font-size: 1.1875rem; font-weight: 500; line-height: 1.35; color: var(--ink); text-decoration-color: color-mix(in srgb, var(--ink) 28%, transparent); }
 .pub-title:hover { text-decoration-color: var(--ink); }
 .pub-cite { font-size: 1rem; margin-top: 4px; }
@@ -357,8 +364,8 @@ html:not(.js) .controls { display: none; }
 }
 .flag.award:hover { border-color: var(--pollen); }
 .flag .star { width: 13px; height: 13px; fill: var(--pollen); }
-.cites { text-align: right; font-size: .875rem; color: var(--muted); white-space: nowrap; padding-top: 2px; }
-.cites .n { display: block; font-family: var(--serif); font-size: 1.375rem; line-height: 1.1; color: var(--ink); font-variant-numeric: tabular-nums; }
+.cites { text-align: center; font-size: .8125rem; color: var(--muted); white-space: nowrap; align-self: start; min-width: 74px; padding: 6px 10px; border-radius: 12px; background: color-mix(in srgb, var(--d) 12%, var(--surface)); }
+.cites .n { display: block; font-family: var(--serif); font-size: 1.5rem; line-height: 1.1; color: var(--d-ink); font-variant-numeric: tabular-nums; }
 .pub.flash { animation: flash 1.8s ease-out; }
 @keyframes flash { from { background: color-mix(in srgb, var(--pollen) 30%, transparent); } to { background: transparent; } }
 .empty { padding: 28px 0; color: var(--muted); }
@@ -498,7 +505,7 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
   .cites-fig { width: min(320px, 100%); }
 }
 @media (max-width: 1100px) {
-  .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .stats { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 }
 @media (max-width: 980px) {
   .awards-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -511,7 +518,8 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
   body { font-size: 1.0625rem; }
   .pub { grid-template-columns: 4px minmax(0, 1fr); column-gap: 14px; }
   .pub::before { grid-row: 1 / span 2; }
-  .pub .cites { grid-column: 2; text-align: left; margin-top: 6px; padding: 0; }
+  .pub { padding-right: 14px; }
+  .pub .cites { grid-column: 2; justify-self: start; text-align: left; margin-top: 8px; padding: 2px 10px; min-width: 0; }
   .pub .cites .n { display: inline; font-family: var(--sans); font-size: inherit; color: var(--ink); }
   .timeline li, .contact-list div { grid-template-columns: minmax(0, 1fr); }
   .honours { grid-template-columns: minmax(0, 1fr); }
@@ -591,6 +599,7 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
           <a class="stat d-pol" href="%%SCHOLAR_URL%%" rel="noopener"><span class="num">%%CITATIONS%%</span><span class="lbl">citations on Google Scholar</span></a>
           <a class="stat d-sdm" href="%%SCHOLAR_URL%%" rel="noopener"><span class="num">%%H_INDEX%%</span><span class="lbl">h-index (i10-index %%I10_INDEX%%)</span></a>
           <a class="stat d-bio" href="#recognition"><span class="num">%%N_AWARDS%%</span><span class="lbl">paper awards</span></a>
+          <a class="stat d-post" href="#education"><span class="num">%%POSTDOC_YEARS%%+</span><span class="lbl">years as postdoc</span></a>
         </div>
         <div class="glance-block">
           <h2>Papers by research area</h2>

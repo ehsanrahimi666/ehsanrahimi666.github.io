@@ -242,7 +242,9 @@ section[id], .pub { scroll-margin-top: calc(var(--bar-h) + 20px); }
   box-shadow: var(--shadow);
 }
 .glance h2 { font-family: var(--sans); font-size: .8125rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
-.stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; margin-top: 10px; }
+.stats { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 8px; margin-top: 10px; }
+.d-post { --d: #C2410C; --d-ink: #B13A0A; }
+@media (prefers-color-scheme: dark) { .d-post { --d: #EA7A45; --d-ink: #F2A27A; } }
 .stat {
   display: block; text-decoration: none; color: var(--ink); border-radius: 12px; padding: 10px 12px;
   background: linear-gradient(135deg, color-mix(in srgb, var(--d) 18%, var(--surface)), color-mix(in srgb, var(--d) 6%, var(--surface)));
@@ -385,11 +387,16 @@ html:not(.js) .controls { display: none; }
 .group-count { font-family: var(--sans); font-size: .9375rem; color: var(--muted); font-weight: 400; }
 .theme-head { font-family: var(--sans); font-size: 1rem; font-weight: 700; color: var(--d-ink); margin: 22px 0 0; }
 .pubs { list-style: none; margin: 0; padding: 0; }
+.pubs { display: grid; gap: 12px; padding-top: 12px; }
 .pub {
-  display: grid; grid-template-columns: 4px minmax(0, 1fr) auto; column-gap: 18px;
-  padding: 15px 0; border-bottom: 1px solid var(--rule);
+  display: grid; grid-template-columns: 5px minmax(0, 1fr) auto; column-gap: 18px;
+  padding: 16px 20px 16px 0; border-radius: 14px; overflow: hidden;
+  background: linear-gradient(110deg, color-mix(in srgb, var(--d) 9%, var(--surface)), var(--surface) 55%);
+  border: 1px solid color-mix(in srgb, var(--d) 24%, var(--rule)); box-shadow: 0 1px 2px rgba(23, 59, 43, .05);
+  transition: box-shadow .15s, border-color .15s;
 }
-.pub::before { content: ""; background: var(--d); border-radius: 2px; }
+.pub:hover { border-color: var(--d); box-shadow: var(--shadow); }
+.pub::before { content: ""; background: var(--d); margin: -16px 0; }
 .pub-title { font-family: var(--serif); font-size: 1.1875rem; font-weight: 500; line-height: 1.35; color: var(--ink); text-decoration-color: color-mix(in srgb, var(--ink) 28%, transparent); }
 .pub-title:hover { text-decoration-color: var(--ink); }
 .pub-cite { font-size: 1rem; margin-top: 4px; }
@@ -407,8 +414,8 @@ html:not(.js) .controls { display: none; }
 }
 .flag.award:hover { border-color: var(--pollen); }
 .flag .star { width: 13px; height: 13px; fill: var(--pollen); }
-.cites { text-align: right; font-size: .875rem; color: var(--muted); white-space: nowrap; padding-top: 2px; }
-.cites .n { display: block; font-family: var(--serif); font-size: 1.375rem; line-height: 1.1; color: var(--ink); font-variant-numeric: tabular-nums; }
+.cites { text-align: center; font-size: .8125rem; color: var(--muted); white-space: nowrap; align-self: start; min-width: 74px; padding: 6px 10px; border-radius: 12px; background: color-mix(in srgb, var(--d) 12%, var(--surface)); }
+.cites .n { display: block; font-family: var(--serif); font-size: 1.5rem; line-height: 1.1; color: var(--d-ink); font-variant-numeric: tabular-nums; }
 .pub.flash { animation: flash 1.8s ease-out; }
 @keyframes flash { from { background: color-mix(in srgb, var(--pollen) 30%, transparent); } to { background: transparent; } }
 .empty { padding: 28px 0; color: var(--muted); }
@@ -548,7 +555,7 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
   .cites-fig { width: min(320px, 100%); }
 }
 @media (max-width: 1100px) {
-  .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .stats { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 }
 @media (max-width: 980px) {
   .awards-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -561,7 +568,8 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
   body { font-size: 1.0625rem; }
   .pub { grid-template-columns: 4px minmax(0, 1fr); column-gap: 14px; }
   .pub::before { grid-row: 1 / span 2; }
-  .pub .cites { grid-column: 2; text-align: left; margin-top: 6px; padding: 0; }
+  .pub { padding-right: 14px; }
+  .pub .cites { grid-column: 2; justify-self: start; text-align: left; margin-top: 8px; padding: 2px 10px; min-width: 0; }
   .pub .cites .n { display: inline; font-family: var(--sans); font-size: inherit; color: var(--ink); }
   .timeline li, .contact-list div { grid-template-columns: minmax(0, 1fr); }
   .honours { grid-template-columns: minmax(0, 1fr); }
@@ -641,6 +649,7 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
           <a class="stat d-pol" href="https://scholar.google.com/citations?user=vUdulZUAAAAJ&amp;hl=en" rel="noopener"><span class="num">817</span><span class="lbl">citations on Google Scholar</span></a>
           <a class="stat d-sdm" href="https://scholar.google.com/citations?user=vUdulZUAAAAJ&amp;hl=en" rel="noopener"><span class="num">16</span><span class="lbl">h-index (i10-index 24)</span></a>
           <a class="stat d-bio" href="#recognition"><span class="num">3</span><span class="lbl">paper awards</span></a>
+          <a class="stat d-post" href="#education"><span class="num">4+</span><span class="lbl">years as postdoc</span></a>
         </div>
         <div class="glance-block">
           <h2>Papers by research area</h2>
@@ -761,7 +770,7 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
         <a class="code-btn gh" href="https://github.com/ehsanrahimi666" rel="noopener"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>GitHub: ehsanrahimi666</a>
         <a class="code-btn zn" href="https://zenodo.org/search?q=metadata.creators.person_or_org.identifiers.identifier%3A%220000-0002-8401-472X%22" rel="noopener"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 3h14v3L8 14h9v3H3v-3l9-8H3z"/></svg>Zenodo: 8 datasets</a>
       </div>
-      <h3 class="sub-h">R packages</h3><p class="section-lede">Open-source R packages I develop, with source code and installation instructions on GitHub.</p><ul class="datasets pkgs"><li><span class="pkg-head"><span class="pkg-name">spinet</span><span class="pkg-ver">v0.1.2</span></span><a class="ds-title" href="https://github.com/ehsanrahimi666/spinet" rel="noopener">Spatial Interaction Networks Under Environmental Change</a><span class="pkg-note">Projects ecological interaction networks through space and time from species distribution model output, with network metrics, interaction beta-diversity, rewiring and coextinction robustness.</span><span class="ds-meta">R package · <a href="https://github.com/ehsanrahimi666/spinet" rel="noopener">github.com/ehsanrahimi666/spinet</a></span></li><li><span class="pkg-head"><span class="pkg-name">surfscape</span><span class="pkg-ver">v0.3.0</span></span><a class="ds-title" href="https://github.com/ehsanrahimi666/surfscape" rel="noopener">Composition and Configuration in Continuous Landscape Surfaces</a><span class="pkg-note">Tests whether continuous landscape metrics on vegetation indices respond to composition or configuration, simulates continuous neutral landscapes and decomposes metric change between dates.</span><span class="ds-meta">R package · <a href="https://github.com/ehsanrahimi666/surfscape" rel="noopener">github.com/ehsanrahimi666/surfscape</a></span></li><li><span class="pkg-head"><span class="pkg-name">cloudscape</span><span class="pkg-ver">v0.1.1</span></span><a class="ds-title" href="https://github.com/ehsanrahimi666/cloudscape" rel="noopener">Clear-Observation Availability and Cloud Analysis for Optical Satellite Image Time Series</a><span class="pkg-note">Turns Landsat and Sentinel-2 cloud statistics into measures of whether an optical time-series study is feasible at a location, including the effect of cloud loss on phenology retrieval.</span><span class="ds-meta">R package · <a href="https://github.com/ehsanrahimi666/cloudscape" rel="noopener">github.com/ehsanrahimi666/cloudscape</a></span></li><li><span class="pkg-head"><span class="pkg-name">FlowerTrait</span><span class="pkg-ver">v0.1.0</span></span><a class="ds-title" href="https://github.com/ehsanrahimi666/FlowerTrait" rel="noopener">Colour, Pattern, Symmetry and Shape Traits of Flowers from Photographs</a><span class="pkg-note">Extracts flower colour, pattern, symmetry and shape traits from field photographs or GBIF and iNaturalist observations, with photo quality screening and trait reliability checks.</span><span class="ds-meta">R package · <a href="https://github.com/ehsanrahimi666/FlowerTrait" rel="noopener">github.com/ehsanrahimi666/FlowerTrait</a></span></li></ul>
+      <h3 class="sub-h">R packages</h3><p class="section-lede">Open-source R packages I develop, with source code and installation instructions on GitHub.</p><ul class="datasets pkgs"><li><span class="pkg-head"><span class="pkg-name">spinet</span><span class="pkg-ver">v0.1.2</span></span><a class="ds-title" href="https://github.com/ehsanrahimi666/spinet" rel="noopener">Spatial Interaction Networks Under Environmental Change</a><span class="pkg-note">Projects ecological interaction networks through space and time from species distribution model output, with network metrics, interaction beta-diversity, rewiring and coextinction robustness.</span><span class="ds-meta">R package · <a href="https://github.com/ehsanrahimi666/spinet" rel="noopener">github.com/ehsanrahimi666/spinet</a></span></li><li><span class="pkg-head"><span class="pkg-name">surfscape</span><span class="pkg-ver">v0.3.0</span></span><a class="ds-title" href="https://github.com/ehsanrahimi666/surfscape" rel="noopener">Composition and Configuration in Continuous Landscape Surfaces</a><span class="pkg-note">Tests whether continuous landscape metrics on vegetation indices respond to composition or configuration, simulates continuous neutral landscapes and decomposes metric change between dates.</span><span class="ds-meta">R package · <a href="https://github.com/ehsanrahimi666/surfscape" rel="noopener">github.com/ehsanrahimi666/surfscape</a></span></li><li><span class="pkg-head"><span class="pkg-name">cloudscape</span><span class="pkg-ver">v0.1.1</span></span><a class="ds-title" href="https://github.com/ehsanrahimi666/cloudscape" rel="noopener">Clear-Observation Availability and Cloud Analysis for Optical Satellite Image Time Series</a><span class="pkg-note">Turns Landsat and Sentinel-2 cloud statistics into measures of whether an optical time-series study is feasible at a location, including the effect of cloud loss on phenology retrieval.</span><span class="ds-meta">R package · <a href="https://github.com/ehsanrahimi666/cloudscape" rel="noopener">github.com/ehsanrahimi666/cloudscape</a></span></li><li><span class="pkg-head"><span class="pkg-name">settlementaffinity</span><span class="pkg-ver">v0.1.0</span></span><a class="ds-title" href="https://github.com/ehsanrahimi666/settlementaffinity" rel="noopener">Species Settlement-Affinity Index from Occurrence Data</a><span class="pkg-note">Computes how strongly species favour or avoid human settlements from occurrence records, with robust standard errors, and classifies species as avoiders, exploiters, tolerant or uncertain.</span><span class="ds-meta">R package · <a href="https://github.com/ehsanrahimi666/settlementaffinity" rel="noopener">github.com/ehsanrahimi666/settlementaffinity</a></span></li><li><span class="pkg-head"><span class="pkg-name">FlowerTrait</span><span class="pkg-ver">v0.1.0</span></span><a class="ds-title" href="https://github.com/ehsanrahimi666/FlowerTrait" rel="noopener">Colour, Pattern, Symmetry and Shape Traits of Flowers from Photographs</a><span class="pkg-note">Extracts flower colour, pattern, symmetry and shape traits from field photographs or GBIF and iNaturalist observations, with photo quality screening and trait reliability checks.</span><span class="ds-meta">R package · <a href="https://github.com/ehsanrahimi666/FlowerTrait" rel="noopener">github.com/ehsanrahimi666/FlowerTrait</a></span></li></ul>
       <h3 class="sub-h">Datasets on Zenodo</h3>
       <ul class="datasets"><li><a class="ds-title" href="https://doi.org/10.5281/zenodo.23659385" rel="noopener">FloralTraits v1.0: colour, pattern, symmetry and shape traits of 787 flowering-plant species from 192,127 citizen-science photographs</a><span class="ds-meta">Rahimi, Ehsan, Jung, Chuleui · Zenodo, 2026 · doi:10.5281/zenodo.23659385</span></li><li><a class="ds-title" href="https://doi.org/10.5281/zenodo.23620348" rel="noopener">SettlementAffinity v1.0: settlement affinity of 698,550 plant and animal species and species richness of urban settlements</a><span class="ds-meta">Rahimi, Ehsan · Zenodo, 2026 · doi:10.5281/zenodo.23620348</span></li><li><a class="ds-title" href="https://doi.org/10.5281/zenodo.23619747" rel="noopener">A global two-sided dataset of plant–flower visitor interactions and partner-family dependence</a><span class="ds-meta">Rahimi, Ehsan, Jung, Chuleui · Zenodo, 2026 · doi:10.5281/zenodo.23619747</span></li><li><a class="ds-title" href="https://doi.org/10.5281/zenodo.23619745" rel="noopener">A global dataset of terrestrial animal dependence on single host, food-plant and prey families</a><span class="ds-meta">Rahimi, Ehsan, Jung, Chuleui · Zenodo, 2026 · doi:10.5281/zenodo.23619745</span></li><li><a class="ds-title" href="https://doi.org/10.5281/zenodo.23619953" rel="noopener">A global dataset of 222 million biodiversity photo observations in GBIF by species, grid cell and country</a><span class="ds-meta">Rahimi, Ehsan · Zenodo, 2026 · doi:10.5281/zenodo.23619953</span></li><li><a class="ds-title" href="https://doi.org/10.5281/zenodo.23449617" rel="noopener">WingTraits v1.0: colour, pattern and shape traits of 945 butterfly species from 228,375 citizen-science photographs</a><span class="ds-meta">Rahimi, Ehsan, Jung, Chuleui · Zenodo, 2026 · doi:10.5281/zenodo.23449617</span></li><li><a class="ds-title" href="https://doi.org/10.5281/zenodo.23448393" rel="noopener">Global disturbance-recovery atlas v1.0: greenness and land surface temperature trajectories around 7,559 disturbances and matched controls</a><span class="ds-meta">Rahimi, Ehsan, Jung, Chuleui · Zenodo, 2026 · doi:10.5281/zenodo.23448393</span></li><li><a class="ds-title" href="https://doi.org/10.5281/zenodo.23255838" rel="noopener">NicheGrid v1.0: range-derived climatic niches of 45,547 species in a common climate space</a><span class="ds-meta">Rahimi, Ehsan, Jung, Chuleui · Zenodo, 2026 · doi:10.5281/zenodo.23255838</span></li></ul>
     </div>

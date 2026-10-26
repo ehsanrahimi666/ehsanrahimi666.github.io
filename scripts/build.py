@@ -248,6 +248,15 @@ def render_journals(pubs):
     )
 
 
+POSTDOC_START = dt.date(2022, 6, 1)
+
+
+def postdoc_years():
+    """Completed years since the postdoc started (June 2022)."""
+    t = dt.date.today()
+    return t.year - POSTDOC_START.year - ((t.month, t.day) < (POSTDOC_START.month, POSTDOC_START.day))
+
+
 def render_cites_chart(metrics):
     per_year = sorted((int(y), int(v)) for y, v in metrics["citations_per_year"].items())
     if not per_year:
@@ -437,6 +446,7 @@ def main():
         "GITHUB_URL": esc(extras["github"]),
         "ZENODO_URL": esc(extras["zenodo"]),
         "N_AWARDS": str(len(recog["awards"])),
+        "POSTDOC_YEARS": str(postdoc_years()),
         "AREAS": render_areas(pubs, areas),
         "DOMAIN_FILTERS": render_domain_filters(pubs, areas),
         "PUBLICATIONS": render_publications(pubs, themes),
