@@ -125,6 +125,13 @@
       "note": "Generates candidate spectral indices from multispectral or hyperspectral bands, removes duplicate formulations and ranks the rest under spatially aware validation with confidence intervals and reference baselines."
     },
     {
+      "name": "fieldborders",
+      "title": "Agricultural Field Boundaries from Sentinel-2 Time Series",
+      "version": "1.0.0",
+      "url": "https://github.com/ehsanrahimi666/fieldborders",
+      "note": "Delineates agricultural fields from Sentinel-2 time series by ranking bands and indices by how their seasonal change contrasts across field borders, then turns learned edge and cropland maps into field polygons, with optional fusion with Fields of The World deep models and object-level accuracy assessment."
+    },
+    {
       "name": "cloudscape",
       "title": "Clear-Observation Availability and Cloud Analysis for Optical Satellite Image Time Series",
       "version": "0.1.1",
