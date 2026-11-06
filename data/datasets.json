@@ -3,6 +3,46 @@
   "zenodo": "https://zenodo.org/search?q=metadata.creators.person_or_org.identifiers.identifier%3A%220000-0002-8401-472X%22",
   "datasets": [
     {
+      "title": "Taxonomically harmonized global index of plant distribution, trait, phylogeny and naturalization data",
+      "year": 2026,
+      "authors": [
+        "Rahimi, Ehsan",
+        "Jung, Chuleui"
+      ],
+      "doi": "10.5281/zenodo.23977148",
+      "url": "https://doi.org/10.5281/zenodo.23977148"
+    },
+    {
+      "title": "FruitTraits v1.0: fruit colour of fleshy-fruited woody plants measured in citizen-science photographs worldwide",
+      "year": 2026,
+      "authors": [
+        "Rahimi, Ehsan",
+        "Jung, Chuleui"
+      ],
+      "doi": "10.5281/zenodo.23905279",
+      "url": "https://doi.org/10.5281/zenodo.23905279"
+    },
+    {
+      "title": "A global dataset of effort-corrected shifts in recorded species distributions from GBIF, 1950–2025",
+      "year": 2026,
+      "authors": [
+        "Rahimi, Ehsan",
+        "Jung, Chuleui"
+      ],
+      "doi": "10.5281/zenodo.23841749",
+      "url": "https://doi.org/10.5281/zenodo.23841749"
+    },
+    {
+      "title": "InvasionNiche v1.0: native and introduced climatic niches of 14,475 species from range maps, GBIF occurrences and SInAS regions",
+      "year": 2026,
+      "authors": [
+        "Rahimi, Ehsan",
+        "Jung, Chuleui"
+      ],
+      "doi": "10.5281/zenodo.23834341",
+      "url": "https://doi.org/10.5281/zenodo.23834341"
+    },
+    {
       "title": "FloralTraits v1.0: colour, pattern, symmetry and shape traits of 787 flowering-plant species from 192,127 citizen-science photographs",
       "year": 2026,
       "authors": [
@@ -158,6 +198,13 @@
       "version": "0.1.0",
       "url": "https://github.com/ehsanrahimi666/settlementaffinity",
       "note": "Computes how strongly species favour or avoid human settlements from occurrence records, with robust standard errors, and classifies species as avoiders, exploiters, tolerant or uncertain."
+    },
+    {
+      "name": "FruitTrait",
+      "title": "Colour of Fleshy Fruits from Field Photographs",
+      "version": "0.1.0",
+      "url": "https://github.com/ehsanrahimi666/FruitTrait",
+      "note": "Measures the colour of single fleshy fruits in field photographs or GBIF and iNaturalist observations, outlining each fruit, classifying ripe and dry fruits, and reporting white-balanced CIELAB colour with trait repeatability and camera-invariance checks."
     }
   ]
 }
