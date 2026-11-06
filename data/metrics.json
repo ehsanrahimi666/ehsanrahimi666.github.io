@@ -1,8 +1,8 @@
 {
   "source": "Google Scholar",
   "profile_url": "https://scholar.google.com/citations?user=vUdulZUAAAAJ&hl=en",
-  "retrieved": "2026-11-01",
-  "citations": 826,
+  "retrieved": "2026-11-06",
+  "citations": 830,
   "h_index": 16,
   "i10_index": 24,
   "citations_per_year": {
@@ -11,6 +11,6 @@
     "2023": 67,
     "2024": 161,
     "2025": 257,
-    "2026": 286
+    "2026": 290
   }
 }

@@ -236,7 +236,7 @@
     "language": "en",
     "domain": "pol",
     "theme": "pol-crop",
-    "citations": 13,
+    "citations": 14,
     "award": null,
     "verified": "Crossref"
   },
@@ -483,7 +483,7 @@
     "language": "en",
     "domain": "rs",
     "theme": "rs-lst",
-    "citations": 3,
+    "citations": 4,
     "award": null,
     "verified": "Crossref"
   },
@@ -817,7 +817,7 @@
     "language": "en",
     "domain": "sdm",
     "theme": "sdm-range",
-    "citations": 53,
+    "citations": 54,
     "award": [
       "Insects Best Paper Award 2026",
       "Top Downloaded Paper 2024–2025"
@@ -1023,7 +1023,7 @@
     "language": "en",
     "domain": "bio",
     "theme": "bio-pa",
-    "citations": 15,
+    "citations": 16,
     "award": null,
     "verified": "Crossref"
   },
